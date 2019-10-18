@@ -1,0 +1,7 @@
+/target
+/jars
+.project
+/dogsteps.iml
+/.classpath
+/.idea
+/.settings
