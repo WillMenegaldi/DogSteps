@@ -1,6 +1,5 @@
-package br.com.dogsteps.service;
+package br.com.dogsteps.services;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -15,48 +14,41 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import br.com.dogsteps.models.Tes;
+import br.com.dogsteps.models.Pet;
+import br.com.dogsteps.repositories.RepositoryPet;
 
 @Path("/dogwalker")
 public class Service {
-	List<Tes> lis = new ArrayList<Tes>();
 
+	RepositoryPet rp = new RepositoryPet();
 	@GET
 	@Path("/dogwalkers")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Tes> index() {
-		lis.add(new Tes(1, "Jao", 18));
-		lis.add(new Tes(2, "Jao", 18));
-		lis.add(new Tes(3, "Jao", 18));
-		lis.add(new Tes(4, "Jao", 18));
-		return lis;
+	public List<Pet> index() {
+		return rp.getList();
 	}
 
 	@GET
 	@Path("/dogwalker/{id}")
 	@Produces(MediaType.APPLICATION_JSON) // Retorna um tipo especifico, seja uma lista ou um apenas
-	public Tes show(@PathParam("id") int id) {
+	public Pet show(@PathParam("id") int id) {
 		System.out.println(id);
-		lis.add(new Tes(1, "Jao", 18));
-		lis.add(new Tes(2, "Jao", 18));
-		lis.add(new Tes(3, "Jao", 18));
-		lis.add(new Tes(4, "Jao", 18));
-		return lis.get(id);
+		return rp.getTes(id);
 	}
 
 	@POST
 	@Path("/dogwalkers")
 	@Consumes(MediaType.APPLICATION_JSON) // rotarna um response
-	public Response store(Tes tes) {
-		Tes t = tes;
+	public Response store(Pet tes) {
+		Pet t = tes;
 		return Response.status(Status.CREATED).build();
 	}
 
 	@PUT
 	@Path("/dogwalker")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response update(Tes tes) {
-		Tes t = tes;
+	public Response update(Pet tes) {
+		Pet t = tes;
 		//Fazer atualização
 		
 		return Response.status(Status.CREATED).build();

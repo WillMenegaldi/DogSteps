@@ -2,20 +2,20 @@ package br.com.dogsteps.models;
 
 import java.io.Serializable;
 
-public class Tes implements Serializable {
+public class Pet implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
 	private int codigo;
 	private String nome;
 	private int idade;
-	public Tes(int codigo, String nome, int idade) {
+	public Pet(int codigo, String nome, int idade) {
 		super();
 		this.setCodigo(codigo);
 		this.nome = nome;
 		this.idade = idade;
 	}
-	public Tes() {
+	public Pet() {
 		
 	}
 	
