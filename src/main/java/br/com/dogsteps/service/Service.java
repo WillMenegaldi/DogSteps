@@ -15,13 +15,10 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import br.com.dogsteps.Tes;
+import br.com.dogsteps.models.Tes;
 
 @Path("/dogwalker")
 public class Service {
-
-	// Produces = GET E DELETE, Consumes = PUT E POST
-
 	List<Tes> lis = new ArrayList<Tes>();
 
 	@GET
@@ -51,11 +48,7 @@ public class Service {
 	@Path("/dogwalkers")
 	@Consumes(MediaType.APPLICATION_JSON) // rotarna um response
 	public Response store(Tes tes) {
-		Tes t = new Tes();
-		t.setIdade(tes.getIdade());
-		t.setNome(tes.getNome());
-		System.out.println(t);
-		lis.add(t);
+		Tes t = tes;
 		return Response.status(Status.CREATED).build();
 	}
 
@@ -63,7 +56,7 @@ public class Service {
 	@Path("/dogwalker")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response update(Tes tes) {
-		
+		Tes t = tes;
 		//Fazer atualização
 		
 		return Response.status(Status.CREATED).build();

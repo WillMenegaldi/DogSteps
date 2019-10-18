@@ -1,4 +1,4 @@
-package br.com.dogsteps;
+package br.com.dogsteps.models;
 
 import java.io.Serializable;
 
