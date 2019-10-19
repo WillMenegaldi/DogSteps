@@ -1,44 +1,23 @@
 package br.com.dogsteps.dao;
 
-import br.com.dogsteps.interfaces.DAO;
-import br.com.dogsteps.models.Pet;
+import br.com.dogsteps.models.TesPet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TesDAO implements DAO<Pet, Integer> {
-    List<Pet> lis = new ArrayList<Pet>();
+public class TesDAO {
+    List<TesPet> lis = new ArrayList<>();
 
     public TesDAO(){
-        lis.add(new Pet(1, "Jao", 18));
-        lis.add(new Pet(2, "Jao", 18));
-        lis.add(new Pet(3, "Jao", 18));
-        lis.add(new Pet(4, "Jao", 18));
+        lis.add(new TesPet(1, "Jao", 18));
+        lis.add(new TesPet(2, "Jao", 18));
+        lis.add(new TesPet(3, "Jao", 18));
+        lis.add(new TesPet(4, "Jao", 18));
     }
-    public List<Pet>  getList(){
+    public List<TesPet> getList(){
         return this.lis;
     }
 
-    public Pet getTes(int id){
+    public TesPet getTes(int id){
         return this.lis.get(id);
-    }
-
-    @Override
-    public List<Pet> getAll() {
-        return null;
-    }
-
-    @Override
-    public Pet get() {
-        return null;
-    }
-
-    @Override
-    public void add(Pet pet) {
-    }
-    @Override
-    public void update(Pet pet) {
-    }
-    @Override
-    public void remove(Integer integer) {
     }
 }

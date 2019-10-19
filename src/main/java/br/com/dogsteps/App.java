@@ -24,7 +24,6 @@ public class App {
 
     private static HttpServer startServer() {
         resourceConfig = new ResourceConfig().packages(PACKAGE);
-        resourceConfig.register(FilterResponse.class);
         return GrizzlyHttpServerFactory.createHttpServer(URI.create(BASE_URI), resourceConfig);
     }
 }

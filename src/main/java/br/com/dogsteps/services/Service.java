@@ -13,6 +13,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import br.com.dogsteps.models.Pet;
+import br.com.dogsteps.models.TesPet;
 import br.com.dogsteps.repositories.RepositoryPet;
 
 @Path("/dogwalkers")
@@ -22,14 +23,14 @@ public class Service {
 	@GET
 	@Path("/")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Pet> index() {
+	public List<TesPet> index() {
 		return rp.getList();
 	}
 
 	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON) // Retorna um tipo especifico, seja uma lista ou um apenas
-	public Pet show(@PathParam("id") int id) {
+	public TesPet show(@PathParam("id") int id) {
 		System.out.println(id);
 		return rp.getTes(id);
 	}

@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="dogsteps" target="1.7" />
+      <module name="dogsteps" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>
