@@ -1,55 +1,60 @@
 package br.com.dogsteps.models;
 
-import java.io.Serializable;
+import java.util.ArrayList;
 
-public class Pet implements Serializable {
+public class Pet extends LivingBeing {
 
-	private static final long serialVersionUID = 1L;
-	
-	private int codigo;
-	private String nome;
-	private int idade;
-	public Pet(int codigo, String nome, int idade) {
-		super();
-		this.setCodigo(codigo);
-		this.nome = nome;
-		this.idade = idade;
-	}
-	public Pet() {
-		
-	}
-	
-	
-	public String getNome() {
-		return nome;
+	private Feature features;
+
+	private ArrayList<Rating> ratings;
+
+	private double medianScore;
+
+	private Tutor tutor;
+
+	public Pet(Tutor tutor, Feature feature, String name, String photoUrl, String description, int age) {
+		super(name,photoUrl,age,description);
+		setTutor(tutor);
+		setFeatures(feature);
 	}
 
-
-	public void setNome(String nome) {
-		this.nome = nome;
+	public Feature getFeatures() {
+		return features;
 	}
 
-
-	public int getIdade() {
-		return idade;
+	public void setFeatures(Feature features) {
+		this.features = features;
 	}
 
-
-	public void setIdade(int idade) {
-		this.idade = idade;
+	public ArrayList<Rating> getRatings() {
+		return ratings;
 	}
 
-
-	@Override
-	public String toString() {
-		return "nome:" + this.nome +
-			   "idade:" + this.idade;
-	}
-	public int getCodigo() {
-		return codigo;
-	}
-	public void setCodigo(int codigo) {
-		this.codigo = codigo;
+	public void setRatings(ArrayList<Rating> ratings) {
+		this.ratings = ratings;
 	}
 
+	public double getMedianScore() {
+		return medianScore;
+	}
+
+	public void setMedianScore(double medianScore) {
+		this.medianScore = medianScore;
+	}
+
+	public Tutor getTutor() {
+		return tutor;
+	}
+
+	public void setTutor(Tutor tutor) {
+		this.tutor = tutor;
+	}
+
+	public Feature getFeature() {
+		return features;
+	}
+
+	public void setFeature(Feature feature) {
+		this.features = feature;
+	}
 }
