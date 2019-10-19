@@ -9,12 +9,12 @@ import java.util.List;
 public class TesDAO implements DAO<Pet, Integer> {
     List<Pet> lis = new ArrayList<Pet>();
 
-    public TesDAO(){
+    /*public TesDAO(){
         lis.add(new Pet(1, "Jao", 18));
         lis.add(new Pet(2, "Jao", 18));
         lis.add(new Pet(3, "Jao", 18));
         lis.add(new Pet(4, "Jao", 18));
-    }
+    }*/
     public List<Pet>  getList(){
         return this.lis;
     }
@@ -29,17 +29,22 @@ public class TesDAO implements DAO<Pet, Integer> {
     }
 
     @Override
-    public Pet get() {
+    public Pet get(Integer integer) {
         return null;
     }
 
     @Override
-    public void add(Pet pet) {
+    public boolean add(Pet pet) {
+        return false;
     }
+
     @Override
-    public void update(Pet pet) {
+    public boolean remove(Integer integer) {
+        return false;
     }
+
     @Override
-    public void remove(Integer integer) {
+    public boolean update(Pet pet, Integer integer) {
+        return false;
     }
 }
