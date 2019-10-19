@@ -1,7 +1,6 @@
 package br.com.dogsteps.services;
 
 import java.util.List;
-
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -13,23 +12,22 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
-
 import br.com.dogsteps.models.Pet;
 import br.com.dogsteps.repositories.RepositoryPet;
 
-@Path("/dogwalker")
+@Path("/dogwalkers")
 public class Service {
 
 	RepositoryPet rp = new RepositoryPet();
 	@GET
-	@Path("/dogwalkers")
+	@Path("/")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Pet> index() {
 		return rp.getList();
 	}
 
 	@GET
-	@Path("/dogwalker/{id}")
+	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON) // Retorna um tipo especifico, seja uma lista ou um apenas
 	public Pet show(@PathParam("id") int id) {
 		System.out.println(id);
@@ -37,7 +35,7 @@ public class Service {
 	}
 
 	@POST
-	@Path("/dogwalkers")
+	@Path("/")
 	@Consumes(MediaType.APPLICATION_JSON) // rotarna um response
 	public Response store(Pet tes) {
 		Pet t = tes;
@@ -45,7 +43,7 @@ public class Service {
 	}
 
 	@PUT
-	@Path("/dogwalker")
+	@Path("/")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response update(Pet tes) {
 		Pet t = tes;
@@ -55,7 +53,7 @@ public class Service {
 	}
 
 	@DELETE
-	@Path("/dogwalkers/{id}")
+	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response remove(@PathParam("id") int id) {
 		
@@ -63,5 +61,4 @@ public class Service {
 				
 		return Response.status(Status.CREATED).build();
 	}
-
 }

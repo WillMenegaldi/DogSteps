@@ -2,7 +2,6 @@ package br.com.dogsteps.dao;
 
 import br.com.dogsteps.interfaces.DAO;
 import br.com.dogsteps.models.Pet;
-
 import java.util.ArrayList;
 import java.util.List;
 

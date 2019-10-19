@@ -1,5 +1,7 @@
 package br.com.dogsteps.interfaces;
+
 import java.util.List;
+
 public interface DAO<T, K> {
     public List<T> getAll();
     public T get();
