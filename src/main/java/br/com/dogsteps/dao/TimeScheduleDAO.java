@@ -3,19 +3,18 @@ package br.com.dogsteps.dao;
 import br.com.dogsteps.interfaces.DAO;
 import br.com.dogsteps.models.Tour;
 
-import javax.ws.rs.core.Response;
 import java.util.List;
+import java.util.Optional;
 
 public class TimeScheduleDAO implements DAO<Tour, Integer> {
 
     @Override
-    public Tour get(Integer integer) {
+    public Optional<Tour> get(Integer integer) {
         return null;
     }
 
     @Override
-    public boolean add(Tour tour) {
-        return false;
+    public void add(Tour tour) {
     }
 
     @Override

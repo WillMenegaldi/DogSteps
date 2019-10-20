@@ -4,17 +4,17 @@ import br.com.dogsteps.interfaces.DAO;
 import br.com.dogsteps.models.Rating;
 
 import java.util.List;
+import java.util.Optional;
 
 public class RatingDao implements DAO<Rating, Integer> {
 
     @Override
-    public Rating get(Integer integer) {
+    public Optional<Rating> get(Integer integer) {
         return null;
     }
 
     @Override
-    public boolean add(Rating rating) {
-        return false;
+    public void add(Rating rating) {
     }
 
     @Override
