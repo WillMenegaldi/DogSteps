@@ -2,7 +2,6 @@ package br.com.dogsteps.repositories;
 
 import br.com.dogsteps.dao.TourDAO;
 import br.com.dogsteps.models.Tour;
-
 import javax.ws.rs.core.Response;
 import java.io.IOException;
 import java.util.List;

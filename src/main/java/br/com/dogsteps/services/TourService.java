@@ -33,7 +33,7 @@ public class TourService {
 
     @POST
     @Path("/")
-    @Consumes(MediaType.APPLICATION_JSON) // rotarna um response
+    @Consumes(MediaType.APPLICATION_JSON) 
     public Response store(Tour tour) {
         return RepositoryTour.add(tour);
     }

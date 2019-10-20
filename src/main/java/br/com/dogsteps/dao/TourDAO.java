@@ -22,7 +22,6 @@ public class TourDAO implements DAO<Tour, Integer> {
 
     public TourDAO(String filename) throws IOException {
         file = new File(filename);
-        //saveInFile();
         tours = readFromFile();
     }
 
@@ -55,8 +54,8 @@ public class TourDAO implements DAO<Tour, Integer> {
     }
 
     private List<Tour> readFromFile() {
+        tours = new ArrayList<>();
         try {
-            tours = new ArrayList<>();
             fileInputStream = new FileInputStream(file);
             inputFile = new ObjectInputStream(fileInputStream);
             while (fileInputStream.available() > 0) {
