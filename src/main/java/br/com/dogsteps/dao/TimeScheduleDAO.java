@@ -18,8 +18,8 @@ public class TimeScheduleDAO implements DAO<Tour, Integer> {
     }
 
     @Override
-    public Tour remove(Integer integer) {
-        return null;
+    public boolean remove(Integer integer) {
+        return false;
     }
 
     @Override

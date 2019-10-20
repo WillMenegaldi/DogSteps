@@ -9,7 +9,7 @@ public interface DAO<T,K> {
 
 	public void add(T t);
 
-	public T remove(K k);
+	public boolean remove(K k);
 
 	public boolean update(T t, K k);
 

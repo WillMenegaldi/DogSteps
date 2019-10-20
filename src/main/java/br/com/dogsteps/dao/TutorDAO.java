@@ -18,8 +18,8 @@ public class TutorDAO implements DAO<Tutor, Integer> {
     }
 
     @Override
-    public Tutor remove(Integer integer) {
-        return null;
+    public boolean remove(Integer integer) {
+        return false;
     }
 
     @Override

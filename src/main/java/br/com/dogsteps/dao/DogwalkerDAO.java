@@ -18,8 +18,8 @@ public class DogwalkerDAO implements DAO<Dogwalker, Integer> {
     }
 
     @Override
-    public Dogwalker remove(Integer integer) {
-        return null;
+    public boolean remove(Integer integer) {
+        return false;
     }
 
     @Override

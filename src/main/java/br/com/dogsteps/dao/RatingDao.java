@@ -18,8 +18,8 @@ public class RatingDao implements DAO<Rating, Integer> {
     }
 
     @Override
-    public Rating remove(Integer integer) {
-        return null;
+    public boolean remove(Integer integer) {
+        return false;
     }
 
     @Override

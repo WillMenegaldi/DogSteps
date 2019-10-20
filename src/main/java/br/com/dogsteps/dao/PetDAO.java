@@ -22,8 +22,8 @@ public class PetDAO implements DAO<Pet,Integer> {
 	}
 
 	@Override
-	public Pet remove(Integer id) {
-		return pets.remove(id);
+	public boolean remove(Integer id) {
+		return pets.remove(id) != null;
 	}
 
 	@Override
