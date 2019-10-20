@@ -3,6 +3,7 @@ package br.com.dogsteps.models;
 import br.com.dogsteps.enums.EPort;
 import br.com.dogsteps.enums.ESex;
 import br.com.dogsteps.exceptions.NegativeValueException;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -40,7 +41,7 @@ public class Pet extends LivingBeing implements Serializable {
 		return ratings;
 	}
 
-	public void addRating(Rating rating) throws NegativeValueException{
+	public void addRating(@NotNull Rating rating) throws NegativeValueException{
 		if(rating.getAvaliation() >= 0){
 			ratings.add(rating);
 			setMedianScore(rating.getAvaliation());
@@ -64,7 +65,7 @@ public class Pet extends LivingBeing implements Serializable {
 		return tutor;
 	}
 
-	public void setTutor(Tutor tutor) {
+	public void setTutor(@NotNull Tutor tutor) {
 		this.tutor = tutor;
 	}
 

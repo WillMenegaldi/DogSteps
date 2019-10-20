@@ -48,12 +48,12 @@ class PetTest{
         Assert.assertTrue("default rating is empty", pet.getRatings().isEmpty());
 
         try {
+            pet.addRating(null);
             pet.addRating(score);
         }
-        catch (NegativeValueException e){
-            //testing a negative value
-        }
-        
+        catch (NegativeValueException e){/*testing a negative value*/}
+        catch (IllegalArgumentException e){/*testing a null reference*/}
+
         pet.addRating(new Rating(4,""));
         Assert.assertEquals("adding new score", 4, pet.getRatings().get(0).getAvaliation());
 
