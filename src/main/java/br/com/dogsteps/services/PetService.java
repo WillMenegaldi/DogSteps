@@ -30,7 +30,7 @@ public class PetService {
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Pet searchPet(int id){return rpPet.getPet(id);}
+    public Pet searchPet(@PathParam("id") int id){return rpPet.getPet(id);}
 
     @POST
     @Path("/")
