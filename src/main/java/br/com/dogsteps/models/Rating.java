@@ -1,6 +1,8 @@
 package br.com.dogsteps.models;
 
-public class  Rating {
+import java.io.Serializable;
+
+public class  Rating  implements Serializable {
 
 	private int avaliation;
 
@@ -36,4 +38,6 @@ public class  Rating {
 	public int getId() {
 		return id;
 	}
+
+	public Rating(){}
 }

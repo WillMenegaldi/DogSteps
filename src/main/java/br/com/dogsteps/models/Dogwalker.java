@@ -48,4 +48,6 @@ public class Dogwalker extends User {
 	public void setMedianScore(double medianScore) {
 		this.medianScore = medianScore;
 	}
+
+	public Dogwalker(){}
 }

@@ -60,4 +60,5 @@ public class Adress {
 		this.city = city;
 	}
 
+	public Adress(){}
 }

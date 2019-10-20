@@ -1,10 +1,11 @@
 package br.com.dogsteps.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Pet extends LivingBeing {
+public class Pet extends LivingBeing implements Serializable {
 
-	private Feature features;
+	private Feature feature;
 
 	private ArrayList<Rating> ratings;
 
@@ -14,16 +15,16 @@ public class Pet extends LivingBeing {
 
 	public Pet(Tutor tutor, Feature feature, String name, String photoUrl, String description, int age) {
 		super(name,photoUrl,age,description);
-		setTutor(tutor);
-		setFeatures(feature);
+		this.feature = feature;
+		this.tutor = tutor;
 	}
 
 	public Feature getFeatures() {
-		return features;
+		return feature;
 	}
 
 	public void setFeatures(Feature features) {
-		this.features = features;
+		this.feature = features;
 	}
 
 	public ArrayList<Rating> getRatings() {
@@ -50,11 +51,11 @@ public class Pet extends LivingBeing {
 		this.tutor = tutor;
 	}
 
-	public Feature getFeature() {
-		return features;
+	@Override
+	public String toString() {
+		return "Name: " + getName();
 	}
 
-	public void setFeature(Feature feature) {
-		this.features = feature;
-	}
+	public Pet(){}
+
 }

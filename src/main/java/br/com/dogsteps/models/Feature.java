@@ -5,7 +5,9 @@ import br.com.dogsteps.enums.EFisicStatus;
 import br.com.dogsteps.enums.EMood;
 import br.com.dogsteps.enums.EPort;
 
-public class Feature {
+import java.io.Serializable;
+
+public class Feature implements Serializable {
 
     private EPort port;
 
@@ -62,4 +64,6 @@ public class Feature {
     public void setPet(Pet pet) {
         this.pet = pet;
     }
+
+    public Feature(){}
 }

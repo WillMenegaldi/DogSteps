@@ -12,4 +12,6 @@ public class Tutor extends User {
 		super(cpf,email,pass,adress, name,age,description,photoURL);
 	}
 
+	public Tutor(){}
+
 }

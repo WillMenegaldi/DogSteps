@@ -58,4 +58,6 @@ public class LivingBeing {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+	public LivingBeing(){}
 }

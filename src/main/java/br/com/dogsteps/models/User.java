@@ -1,6 +1,8 @@
 package br.com.dogsteps.models;
 
-public class User extends LivingBeing {
+import java.io.Serializable;
+
+public class User extends LivingBeing implements Serializable {
 
 	private String cpf;
 
@@ -66,4 +68,5 @@ public class User extends LivingBeing {
 		this.timeSchedule = timeSchedule;
 	}
 
+	public User(){}
 }
