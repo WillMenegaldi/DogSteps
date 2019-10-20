@@ -20,11 +20,11 @@ public class Pet extends LivingBeing implements Serializable {
 
 	private Tutor tutor;
 
-	public Pet(Tutor tutor, Feature feature, String name, String photoUrl, String description, int age, ESex sex, EPort port) {
+	public Pet(Tutor tutor, Feature feature, String name, String photoUrl, String description, int age, ESex sex) {
 		super(name,photoUrl,age,description);
 		setPort(port);
 		setTutor(tutor);
-		setFeatures(feature);
+		setFeature(feature);
 		setSex(sex);
 	}
 
@@ -38,14 +38,6 @@ public class Pet extends LivingBeing implements Serializable {
 
 	public ESex getSex(){
 		return sex;
-	}
-
-	public Feature getFeatures() {
-		return features;
-	}
-
-	public void setFeatures(Feature features) {
-		this.features = features;
 	}
 
 	public ArrayList<Rating> getRatings() {
