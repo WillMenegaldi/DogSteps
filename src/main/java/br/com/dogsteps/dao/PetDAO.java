@@ -12,8 +12,8 @@ public class PetDAO implements DAO<Pet,Integer> {
 	private HashMap<Integer, Pet> pets = new HashMap<>();
 
 	@Override
-	public Optional<Pet> get(Integer id) {
-		return Optional.ofNullable(pets.get(id));
+	public Pet get(Integer id) {
+		return Optional.ofNullable(pets.get(id)).get();
 	}
 
 	@Override

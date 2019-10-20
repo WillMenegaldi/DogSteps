@@ -4,12 +4,11 @@ import br.com.dogsteps.interfaces.DAO;
 import br.com.dogsteps.models.Dogwalker;
 
 import java.util.List;
-import java.util.Optional;
 
 public class DogwalkerDAO implements DAO<Dogwalker, Integer> {
 
     @Override
-    public Optional<Dogwalker> get(Integer integer) {
+    public Dogwalker get(Integer integer) {
         return null;
     }
 

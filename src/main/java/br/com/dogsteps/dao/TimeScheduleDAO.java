@@ -4,12 +4,11 @@ import br.com.dogsteps.interfaces.DAO;
 import br.com.dogsteps.models.Tour;
 
 import java.util.List;
-import java.util.Optional;
 
 public class TimeScheduleDAO implements DAO<Tour, Integer> {
 
     @Override
-    public Optional<Tour> get(Integer integer) {
+    public Tour get(Integer integer) {
         return null;
     }
 

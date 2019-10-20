@@ -4,12 +4,11 @@ import br.com.dogsteps.interfaces.DAO;
 import br.com.dogsteps.models.Tutor;
 
 import java.util.List;
-import java.util.Optional;
 
 public class TutorDAO implements DAO<Tutor, Integer> {
 
     @Override
-    public Optional<Tutor> get(Integer integer) {
+    public Tutor get(Integer integer) {
         return null;
     }
 

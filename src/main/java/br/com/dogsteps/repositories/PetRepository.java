@@ -10,11 +10,20 @@ public class PetRepository {
 	private static PetDAO pet;
 
 	public List<Pet> getList() {
-		return null;
+		return pet.getAll();
 	}
 
 	public Pet getPet(int id) {
-		return null;
+		return pet.get(id);
 	}
 
+    public void savePet(Pet p) { pet.add(p);}
+
+	public boolean removePet(Pet p) {
+		return pet.remove(p.getId());
+	}
+
+	public boolean update(Pet p) {
+		return pet.update(p, p.getId());
+	}
 }
