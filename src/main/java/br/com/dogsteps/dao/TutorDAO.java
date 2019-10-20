@@ -3,24 +3,23 @@ package br.com.dogsteps.dao;
 import br.com.dogsteps.interfaces.DAO;
 import br.com.dogsteps.models.Tutor;
 
-import javax.ws.rs.core.Response;
 import java.util.List;
+import java.util.Optional;
 
 public class TutorDAO implements DAO<Tutor, Integer> {
 
     @Override
-    public Tutor get(Integer integer) {
+    public Optional<Tutor> get(Integer integer) {
         return null;
     }
 
     @Override
-    public boolean add(Tutor tutor) {
-        return false;
+    public void add(Tutor tutor) {
     }
 
     @Override
-    public boolean remove(Integer integer) {
-        return false;
+    public Tutor remove(Integer integer) {
+        return null;
     }
 
     @Override

@@ -4,22 +4,22 @@ import br.com.dogsteps.interfaces.DAO;
 import br.com.dogsteps.models.Tour;
 
 import java.util.List;
+import java.util.Optional;
 
 public class TourDAO implements DAO<Tour, Integer> {
 
     @Override
-    public Tour get(Integer integer) {
+    public Optional<Tour> get(Integer integer) {
         return null;
     }
 
     @Override
-    public boolean add(Tour tour) {
-        return false;
+    public void add(Tour tour) {
     }
 
     @Override
-    public boolean remove(Integer integer) {
-        return false;
+    public Tour remove(Integer integer) {
+        return null;
     }
 
     @Override
