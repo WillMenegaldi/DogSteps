@@ -1,16 +1,17 @@
 package br.com.dogsteps.dao;
 
-import br.com.dogsteps.interfaces.IDAO;
-import br.com.dogsteps.models.Tour;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
-import java.io.ObjectInputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
+import br.com.dogsteps.interfaces.IDAO;
+import br.com.dogsteps.models.Tour;
 
 public class TourDAO implements IDAO<Tour, Integer> {
 

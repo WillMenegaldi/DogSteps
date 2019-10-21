@@ -1,8 +1,9 @@
 package br.com.dogsteps.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class DogWalker extends User {
+public class DogWalker  extends User implements Serializable{
 
 	private Feature prefs;
 

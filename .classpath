@@ -24,26 +24,26 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/João Marcos/OneDrive/Faculdade/2º Semestre/Modular/jars/asm-all-repackaged-2.0.3.jar"/>
-	<classpathentry kind="lib" path="C:/Users/João Marcos/OneDrive/Faculdade/2º Semestre/Modular/jars/auto-depends-2.0.3.jar"/>
-	<classpathentry kind="lib" path="C:/Users/João Marcos/OneDrive/Faculdade/2º Semestre/Modular/jars/gmbal-api-only-3.0.0-b023.jar"/>
-	<classpathentry kind="lib" path="C:/Users/João Marcos/OneDrive/Faculdade/2º Semestre/Modular/jars/grizzly-framework-2.2.9.jar"/>
-	<classpathentry kind="lib" path="C:/Users/João Marcos/OneDrive/Faculdade/2º Semestre/Modular/jars/grizzly-http-2.2.9.jar"/>
-	<classpathentry kind="lib" path="C:/Users/João Marcos/OneDrive/Faculdade/2º Semestre/Modular/jars/grizzly-http-server-2.2.9.jar"/>
-	<classpathentry kind="lib" path="C:/Users/João Marcos/OneDrive/Faculdade/2º Semestre/Modular/jars/grizzly-rcm-2.2.9.jar"/>
-	<classpathentry kind="lib" path="C:/Users/João Marcos/OneDrive/Faculdade/2º Semestre/Modular/jars/guava-osgi-11.0.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/João Marcos/OneDrive/Faculdade/2º Semestre/Modular/jars/hk2-api-2.0.3.jar"/>
-	<classpathentry kind="lib" path="C:/Users/João Marcos/OneDrive/Faculdade/2º Semestre/Modular/jars/javax.inject-1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/João Marcos/OneDrive/Faculdade/2º Semestre/Modular/jars/javax.inject-2.0.3.jar"/>
-	<classpathentry kind="lib" path="C:/Users/João Marcos/OneDrive/Faculdade/2º Semestre/Modular/jars/javax.ws.rs-api-2.0-m05.jar"/>
-	<classpathentry kind="lib" path="C:/Users/João Marcos/OneDrive/Faculdade/2º Semestre/Modular/jars/jersey-common-2.0-m04-2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/João Marcos/OneDrive/Faculdade/2º Semestre/Modular/jars/jersey-container-grizzly2-http-2.0-m04-2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/João Marcos/OneDrive/Faculdade/2º Semestre/Modular/jars/jersey-server-2.0-m04-2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/João Marcos/OneDrive/Faculdade/2º Semestre/Modular/jars/management-api-3.0.0-b012.jar"/>
-	<classpathentry kind="lib" path="C:/Users/João Marcos/OneDrive/Faculdade/2º Semestre/Modular/jars/osgi-resource-locator-1.0.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/João Marcos/OneDrive/Faculdade/2º Semestre/Modular/jars/simple-common-6.0.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/João Marcos/OneDrive/Faculdade/2º Semestre/Modular/jars/simple-http-6.0.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/João Marcos/OneDrive/Faculdade/2º Semestre/Modular/jars/simple-transport-6.0.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/João Marcos/OneDrive/Faculdade/2º Semestre/Modular/jars/tiger-types-1.4.jar"/>
+	<classpathentry kind="lib" path="C:/PUC/2 período/TIS II/DogSteps/Java - BackEnd/dogWalker - service/jars/asm-all-repackaged-2.0.3.jar"/>
+	<classpathentry kind="lib" path="C:/PUC/2 período/TIS II/DogSteps/Java - BackEnd/dogWalker - service/jars/auto-depends-2.0.3.jar"/>
+	<classpathentry kind="lib" path="C:/PUC/2 período/TIS II/DogSteps/Java - BackEnd/dogWalker - service/jars/gmbal-api-only-3.0.0-b023.jar"/>
+	<classpathentry kind="lib" path="C:/PUC/2 período/TIS II/DogSteps/Java - BackEnd/dogWalker - service/jars/grizzly-framework-2.2.9.jar"/>
+	<classpathentry kind="lib" path="C:/PUC/2 período/TIS II/DogSteps/Java - BackEnd/dogWalker - service/jars/grizzly-http-2.2.9.jar"/>
+	<classpathentry kind="lib" path="C:/PUC/2 período/TIS II/DogSteps/Java - BackEnd/dogWalker - service/jars/grizzly-http-server-2.2.9.jar"/>
+	<classpathentry kind="lib" path="C:/PUC/2 período/TIS II/DogSteps/Java - BackEnd/dogWalker - service/jars/grizzly-rcm-2.2.9.jar"/>
+	<classpathentry kind="lib" path="C:/PUC/2 período/TIS II/DogSteps/Java - BackEnd/dogWalker - service/jars/guava-osgi-11.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/PUC/2 período/TIS II/DogSteps/Java - BackEnd/dogWalker - service/jars/hk2-api-2.0.3.jar"/>
+	<classpathentry kind="lib" path="C:/PUC/2 período/TIS II/DogSteps/Java - BackEnd/dogWalker - service/jars/javax.inject-1.jar"/>
+	<classpathentry kind="lib" path="C:/PUC/2 período/TIS II/DogSteps/Java - BackEnd/dogWalker - service/jars/javax.inject-2.0.3.jar"/>
+	<classpathentry kind="lib" path="C:/PUC/2 período/TIS II/DogSteps/Java - BackEnd/dogWalker - service/jars/javax.ws.rs-api-2.0-m05.jar"/>
+	<classpathentry kind="lib" path="C:/PUC/2 período/TIS II/DogSteps/Java - BackEnd/dogWalker - service/jars/jersey-common-2.0-m04-2.jar"/>
+	<classpathentry kind="lib" path="C:/PUC/2 período/TIS II/DogSteps/Java - BackEnd/dogWalker - service/jars/jersey-container-grizzly2-http-2.0-m04-2.jar"/>
+	<classpathentry kind="lib" path="C:/PUC/2 período/TIS II/DogSteps/Java - BackEnd/dogWalker - service/jars/jersey-server-2.0-m04-2.jar"/>
+	<classpathentry kind="lib" path="C:/PUC/2 período/TIS II/DogSteps/Java - BackEnd/dogWalker - service/jars/management-api-3.0.0-b012.jar"/>
+	<classpathentry kind="lib" path="C:/PUC/2 período/TIS II/DogSteps/Java - BackEnd/dogWalker - service/jars/osgi-resource-locator-1.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/PUC/2 período/TIS II/DogSteps/Java - BackEnd/dogWalker - service/jars/simple-common-6.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/PUC/2 período/TIS II/DogSteps/Java - BackEnd/dogWalker - service/jars/simple-http-6.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/PUC/2 período/TIS II/DogSteps/Java - BackEnd/dogWalker - service/jars/simple-transport-6.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/PUC/2 período/TIS II/DogSteps/Java - BackEnd/dogWalker - service/jars/tiger-types-1.4.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
