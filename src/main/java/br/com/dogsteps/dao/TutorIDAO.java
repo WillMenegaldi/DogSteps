@@ -1,19 +1,19 @@
 package br.com.dogsteps.dao;
 
-import br.com.dogsteps.interfaces.DAO;
-import br.com.dogsteps.models.Rating;
+import br.com.dogsteps.interfaces.IDAO;
+import br.com.dogsteps.models.Tutor;
 
 import java.util.List;
 
-public class RatingDao implements DAO<Rating, Integer> {
+public class TutorIDAO implements IDAO<Tutor, Integer> {
 
     @Override
-    public Rating get(Integer integer) {
+    public Tutor get(Integer integer) {
         return null;
     }
 
     @Override
-    public boolean add(Rating rating) {
+    public boolean add(Tutor tutor) {
         return false;
     }
 
@@ -23,12 +23,12 @@ public class RatingDao implements DAO<Rating, Integer> {
     }
 
     @Override
-    public boolean update(Rating rating, Integer integer) {
+    public boolean update(Tutor tutor) {
         return false;
     }
 
     @Override
-    public List<Rating> getAll() {
+    public List<Tutor> getAll() {
         return null;
     }
 }

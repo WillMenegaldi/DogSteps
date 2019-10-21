@@ -1,7 +1,8 @@
 package br.com.dogsteps.services;
 
+import br.com.dogsteps.interfaces.IService;
 import br.com.dogsteps.models.Tour;
-import br.com.dogsteps.repositories.RepositoryTour;
+import br.com.dogsteps.repositories.TourRepository;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -15,40 +16,45 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Path("/tours")
-public class TourService {
+public class TourService implements IService<Tour, Integer> {
 
     @GET
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Tour> index() {
-        return RepositoryTour.getList();
+    @Override
+    public List<Tour> getAll() {
+        return TourRepository.getList();
     }
 
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Tour show(@PathParam("id") int id) {
-        return RepositoryTour.find(id);
+    @Override
+    public Tour get(@PathParam("id") Integer id) {
+        return TourRepository.find(id);
     }
 
     @POST
     @Path("/")
-    @Consumes(MediaType.APPLICATION_JSON) 
-    public Response store(Tour tour) {
-        return RepositoryTour.add(tour);
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Override
+    public Response insert(Tour tour) {
+        return TourRepository.add(tour);
     }
 
     @PUT
-    @Path("/{id}")
+    @Path("/")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response update(Tour tour,@PathParam("id") int id) {
-        return RepositoryTour.update(tour, id);
+    @Override
+    public Response update(Tour tour) {
+        return TourRepository.update(tour);
     }
 
     @DELETE
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response remove(@PathParam("id") int id) {
-        return RepositoryTour.remove(id);
+    @Override
+    public Response remove(@PathParam("id") Integer id) {
+        return TourRepository.remove(id);
     }
 }

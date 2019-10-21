@@ -1,13 +1,13 @@
 package br.com.dogsteps.repositories;
 
-import br.com.dogsteps.dao.PetDAO;
+import br.com.dogsteps.dao.PetIDAO;
 import br.com.dogsteps.models.Pet;
 
 import java.util.List;
 
 public class PetRepository {
 
-	private static PetDAO pet;
+	private static PetIDAO pet;
 
 	public List<Pet> getList() {
 		return pet.getAll();
@@ -24,6 +24,6 @@ public class PetRepository {
 	}
 
 	public boolean update(Pet p) {
-		return pet.update(p, p.getId());
+		return pet.update(p);
 	}
 }

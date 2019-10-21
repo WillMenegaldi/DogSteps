@@ -12,7 +12,7 @@ public class User extends LivingBeing implements Serializable {
 
 	private Adress adress;
 
-	private Dogwalker dogwalker;
+	private DogWalker dogwalker;
 
 	private TimeSchedule timeSchedule;
 
@@ -52,11 +52,11 @@ public class User extends LivingBeing implements Serializable {
 		this.adress = adress;
 	}
 
-	public Dogwalker getDogwalker() {
+	public DogWalker getDogwalker() {
 		return dogwalker;
 	}
 
-	public void setDogwalker(Dogwalker dogwalker) {
+	public void setDogwalker(DogWalker dogwalker) {
 		this.dogwalker = dogwalker;
 	}
 

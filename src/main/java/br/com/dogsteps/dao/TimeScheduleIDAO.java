@@ -1,19 +1,19 @@
 package br.com.dogsteps.dao;
 
-import br.com.dogsteps.interfaces.DAO;
-import br.com.dogsteps.models.Tutor;
+import br.com.dogsteps.interfaces.IDAO;
+import br.com.dogsteps.models.Tour;
 
 import java.util.List;
 
-public class TutorDAO implements DAO<Tutor, Integer> {
+public class TimeScheduleIDAO implements IDAO<Tour, Integer> {
 
     @Override
-    public Tutor get(Integer integer) {
+    public Tour get(Integer integer) {
         return null;
     }
 
     @Override
-    public boolean add(Tutor tutor) {
+    public boolean add(Tour tour) {
         return false;
     }
 
@@ -23,12 +23,12 @@ public class TutorDAO implements DAO<Tutor, Integer> {
     }
 
     @Override
-    public boolean update(Tutor tutor, Integer integer) {
+    public boolean update(Tour tour) {
         return false;
     }
 
     @Override
-    public List<Tutor> getAll() {
+    public List<Tour> getAll() {
         return null;
     }
 }

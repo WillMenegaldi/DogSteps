@@ -1,19 +1,19 @@
 package br.com.dogsteps.dao;
 
-import br.com.dogsteps.interfaces.DAO;
-import br.com.dogsteps.models.Tour;
+import br.com.dogsteps.interfaces.IDAO;
+import br.com.dogsteps.models.Rating;
 
 import java.util.List;
 
-public class TimeScheduleDAO implements DAO<Tour, Integer> {
+public class RatingIDAO implements IDAO<Rating, Integer> {
 
     @Override
-    public Tour get(Integer integer) {
+    public Rating get(Integer integer) {
         return null;
     }
 
     @Override
-    public boolean add(Tour tour) {
+    public boolean add(Rating rating) {
         return false;
     }
 
@@ -23,12 +23,12 @@ public class TimeScheduleDAO implements DAO<Tour, Integer> {
     }
 
     @Override
-    public boolean update(Tour tour, Integer integer) {
+    public boolean update(Rating rating) {
         return false;
     }
 
     @Override
-    public List<Tour> getAll() {
+    public List<Rating> getAll() {
         return null;
     }
 }

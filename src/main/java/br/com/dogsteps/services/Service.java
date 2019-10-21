@@ -14,7 +14,6 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import br.com.dogsteps.models.Pet;
 import br.com.dogsteps.models.TesPet;
-import br.com.dogsteps.repositories.RepositoryPet;
 
 @Path("/dogwalkers")
 public class Service {

@@ -2,7 +2,7 @@ package br.com.dogsteps.interfaces;
 
 import java.util.List;
 
-public interface DAO<T,K> {
+public interface IDAO<T,K> {
 
 	public T get(K k);
 
@@ -10,7 +10,7 @@ public interface DAO<T,K> {
 
 	public boolean remove(K k);
 
-	public boolean update(T t, K k);
+	public boolean update(T t);
 
 	public List<T> getAll();
 }

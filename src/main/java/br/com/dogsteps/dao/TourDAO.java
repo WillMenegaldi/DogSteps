@@ -1,6 +1,6 @@
 package br.com.dogsteps.dao;
 
-import br.com.dogsteps.interfaces.DAO;
+import br.com.dogsteps.interfaces.IDAO;
 import br.com.dogsteps.models.Tour;
 import java.io.File;
 import java.io.FileInputStream;
@@ -9,9 +9,10 @@ import java.io.ObjectOutputStream;
 import java.io.ObjectInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-public class TourDAO implements DAO<Tour, Integer> {
+public class TourDAO implements IDAO<Tour, Integer> {
 
     private static List<Tour> tours = new ArrayList<>();
     private File file;
@@ -43,13 +44,23 @@ public class TourDAO implements DAO<Tour, Integer> {
 
     @Override
     public boolean remove(Integer id) {
-        tours.remove(id);
+        Iterator<Tour> iterator = tours.iterator();
+        while(iterator.hasNext()){
+            if(iterator.next().getId().equals(id)){
+                tours.remove(id);
+            }
+        }
         return saveInFile();
     }
 
     @Override
-    public boolean update(Tour tour, Integer id) {
-        tours.add(id, tour);
+    public boolean update(Tour tour) {
+        Iterator<Tour> iterator = tours.iterator();
+        while(iterator.hasNext()){
+            if(iterator.next().getId().equals(tour.getId())){
+                tours.add(tours.indexOf(iterator.next()), tour);
+            }
+        }
         return saveInFile();
     }
 
@@ -64,7 +75,6 @@ public class TourDAO implements DAO<Tour, Integer> {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return null;
         }
         return tours;
     }
@@ -81,7 +91,7 @@ public class TourDAO implements DAO<Tour, Integer> {
             objectOutputStream.flush();
             return true;
         } catch (Exception e) {
-            System.out.println("ERRO ao gravar produto no disco!");
+            System.out.println("Erro ao salvar no arquivo!");
             e.printStackTrace();
         }
         return false;

@@ -1,13 +1,13 @@
 package br.com.dogsteps.dao;
 
-import br.com.dogsteps.interfaces.DAO;
+import br.com.dogsteps.interfaces.IDAO;
 import br.com.dogsteps.models.Pet;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
-public class PetDAO implements DAO<Pet,Integer> {
+public class PetIDAO implements IDAO<Pet,Integer> {
 
 	private HashMap<Integer, Pet> pets = new HashMap<>();
 
@@ -28,11 +28,7 @@ public class PetDAO implements DAO<Pet,Integer> {
 	}
 
 	@Override
-	public boolean update(Pet pet, Integer id) {
-		if(pets.containsKey(id)){
-			pets.put(id, pet);
-			return true;
-		}
+	public boolean update(Pet pet) {
 		return false;
 	}
 

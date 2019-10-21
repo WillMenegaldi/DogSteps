@@ -2,6 +2,7 @@ package br.com.dogsteps;
 
 import br.com.dogsteps.dao.TourDAO;
 import br.com.dogsteps.enums.ETourStatus;
+import br.com.dogsteps.models.Pet;
 import br.com.dogsteps.models.Tour;
 import br.com.dogsteps.utils.FilterResponse;
 import org.glassfish.grizzly.http.server.HttpServer;
@@ -19,8 +20,6 @@ public class App {
     private static ResourceConfig resourceConfig;
 
     public static void main(String[] args) throws IOException {
-        //testDao();
-
         server = startServer();
         System.out.println(String.format(
                 "Aplicação de está iniciada na porta " + PORTA + "\nPressione enter para terminar...", BASE_URI));
@@ -33,14 +32,4 @@ public class App {
         resourceConfig.register(FilterResponse.class);
         return GrizzlyHttpServerFactory.createHttpServer(URI.create(BASE_URI), resourceConfig);
     }
-
-    public static void testDao() throws IOException {
-        TourDAO dao = new TourDAO("database/tour.bin");
-        Tour t = new Tour(LocalDate.now(), ETourStatus.COMPLETED, 2);
-        //dao.add(t);
-       // dao.update(t, 1);
-
-        System.out.println(dao.getAll().get(3));
-    }
-
 }

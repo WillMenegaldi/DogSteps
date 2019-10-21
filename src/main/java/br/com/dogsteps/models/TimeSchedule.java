@@ -8,7 +8,7 @@ public class TimeSchedule {
 
 	private ArrayList<DayOfWeek> disponibleAt;
 
-	private Dogwalker dogwalker;
+	private DogWalker dogwalker;
 
 	public TimeSchedule() {
 

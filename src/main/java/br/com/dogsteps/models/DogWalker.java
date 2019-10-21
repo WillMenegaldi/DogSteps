@@ -2,7 +2,7 @@ package br.com.dogsteps.models;
 
 import java.util.ArrayList;
 
-public class Dogwalker extends User {
+public class DogWalker extends User {
 
 	private Feature prefs;
 
@@ -12,7 +12,7 @@ public class Dogwalker extends User {
 
 	private double medianScore;
 
-	public Dogwalker(Feature pref, String cpf,  String email, String pass,  String name, String photo, int age, String description, Adress adress, String photoURL) {
+	public DogWalker(Feature pref, String cpf, String email, String pass, String name, String photo, int age, String description, Adress adress, String photoURL) {
 		super(cpf,email,pass,adress,name,age,description, photoURL);
 		setPrefs(pref);
 	}
@@ -49,5 +49,5 @@ public class Dogwalker extends User {
 		this.medianScore = medianScore;
 	}
 
-	public Dogwalker(){}
+	public DogWalker(){}
 }
