@@ -2,22 +2,49 @@ package br.com.dogsteps.models;
 
 import java.io.Serializable;
 
-public class User extends LivingBeing implements Serializable {
-
+public class User implements Serializable {
+	private String name;
+	private int age;
 	private String cpf;
-
-	private String eMail;
-
+	private String photoUrl;
+	private String email;
 	private String password;
-
-	private Adress adress;
-
-	private DogWalker dogwalker;
-
+	private Address address;
 	private TimeSchedule timeSchedule;
 
-	public User(String cpf, String email, String pass, Adress address, String name, int age, String description, String photoURL) {
-		super(name, photoURL, age, description);
+	public User(String name, String photoUrl, int age, String cpf, String email, String password, Address address, TimeSchedule timeSchedule) {
+		this.name = name;
+		this.photoUrl = photoUrl;
+		this.age = age;
+		this.cpf = cpf;
+		this.email = email;
+		this.password = password;
+		this.address = address;
+		this.timeSchedule = timeSchedule;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getPhotoUrl() {
+		return photoUrl;
+	}
+
+	public void setPhotoUrl(String photoUrl) {
+		this.photoUrl = photoUrl;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
 	}
 
 	public String getCpf() {
@@ -28,12 +55,12 @@ public class User extends LivingBeing implements Serializable {
 		this.cpf = cpf;
 	}
 
-	public String geteMail() {
-		return eMail;
+	public String getEmail() {
+		return email;
 	}
 
-	public void seteMail(String eMail) {
-		this.eMail = eMail;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getPassword() {
@@ -44,20 +71,12 @@ public class User extends LivingBeing implements Serializable {
 		this.password = password;
 	}
 
-	public Adress getAdress() {
-		return adress;
+	public Address getAddress() {
+		return address;
 	}
 
-	public void setAdress(Adress adress) {
-		this.adress = adress;
-	}
-
-	public DogWalker getDogwalker() {
-		return dogwalker;
-	}
-
-	public void setDogwalker(DogWalker dogwalker) {
-		this.dogwalker = dogwalker;
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 	public TimeSchedule getTimeSchedule() {

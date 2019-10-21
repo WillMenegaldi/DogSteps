@@ -1,7 +1,6 @@
 package br.com.dogsteps.models;
 
 
-import br.com.dogsteps.enums.EFisicStatus;
 import br.com.dogsteps.enums.EMood;
 import br.com.dogsteps.enums.EPort;
 
@@ -9,11 +8,9 @@ import java.io.Serializable;
 
 public class Feature implements Serializable {
 
-    private EPort port;
-
+    private EPort port; // physical shape
     private EMood mood;
-
-    private EFisicStatus fisicStatus;
+    private EFisicStatus fisicStatus; // ???????
 
     public Feature(EPort p, EMood m, EFisicStatus f){
         setPort(p);

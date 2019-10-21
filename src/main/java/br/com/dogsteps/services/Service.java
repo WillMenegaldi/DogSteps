@@ -13,7 +13,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import br.com.dogsteps.models.Pet;
-import br.com.dogsteps.models.TesPet;
 
 @Path("/dogwalkers")
 public class Service {

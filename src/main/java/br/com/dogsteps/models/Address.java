@@ -1,6 +1,6 @@
 package br.com.dogsteps.models;
 
-public class Adress {
+public class Address {
 
 	private String street;
 
@@ -12,7 +12,7 @@ public class Adress {
 
 	private String city;
 
-	public Adress(String street, String number, String district, String zipCode, String city) {
+	public Address(String street, String number, String district, String zipCode, String city) {
 		setStreet(street);
 		setNumber(number);
 		setDistrict(district);
@@ -60,5 +60,5 @@ public class Adress {
 		this.city = city;
 	}
 
-	public Adress(){}
+	public Address(){}
 }

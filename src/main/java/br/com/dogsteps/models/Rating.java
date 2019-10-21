@@ -4,39 +4,38 @@ import java.io.Serializable;
 
 public class  Rating  implements Serializable {
 
-	private int avaliation;
-
-	private String commentary;
-
+	private int score;
+	private String comment;
 	private int id;
 
-	public Rating(int aval, String commentary){
-		setAvaliation(aval);
-		setCommentary(commentary);
-	}
-
-	public void setAvaliation(int avaliation) {
-		this.avaliation = avaliation;
-	}
-
-	public void setCommentary(String commentary) {
-		this.commentary = commentary;
-	}
-
-	private void setId(int id) {
+	public Rating(int score, String comment, int id) {
+		this.score = score;
+		this.comment = comment;
 		this.id = id;
 	}
 
-	public int getAvaliation() {
-		return avaliation;
+	public int getScore() {
+		return score;
 	}
 
-	public String getCommentary() {
-		return commentary;
+	public void setScore(int score) {
+		this.score = score;
+	}
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
 	}
 
 	public int getId() {
 		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public Rating(){}

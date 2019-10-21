@@ -5,16 +5,16 @@ import java.util.ArrayList;
 public class DogWalker extends User {
 
 	private Feature prefs;
-
 	private TimeSchedule timeSchedule;
-
 	private ArrayList<Rating> ratings;
-
 	private double medianScore;
 
-	public DogWalker(Feature pref, String cpf, String email, String pass, String name, String photo, int age, String description, Adress adress, String photoURL) {
-		super(cpf,email,pass,adress,name,age,description, photoURL);
-		setPrefs(pref);
+	public DogWalker(String name, String photoUrl, int age, String cpf, String email, String password, Address address, TimeSchedule timeSchedule, Feature prefs, TimeSchedule timeSchedule1, ArrayList<Rating> ratings, double medianScore) {
+		super(name, photoUrl, age, cpf, email, password, address, timeSchedule);
+		this.prefs = prefs;
+		this.timeSchedule = timeSchedule1;
+		this.ratings = ratings;
+		this.medianScore = medianScore;
 	}
 
 	public Feature getPrefs() {
