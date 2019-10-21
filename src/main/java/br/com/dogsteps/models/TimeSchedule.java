@@ -5,17 +5,8 @@ import java.util.ArrayList;
 public class TimeSchedule {
 
 	private ArrayList<Tour> schedules;
+	private ArrayList<DayOfWeek> available;
+	private DogWalker dogWalker;
 
-	private ArrayList<DayOfWeek> disponibleAt;
-
-	private DogWalker dogwalker;
-
-	public TimeSchedule() {
-
-	}
-
-	public void addTour(Tour t){
-		schedules.add(t);
-	}
-
+	public TimeSchedule() {}
 }

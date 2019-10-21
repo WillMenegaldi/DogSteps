@@ -5,64 +5,71 @@ import br.com.dogsteps.enums.ESex;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Pet extends LivingBeing implements Serializable {
-
+public class Pet implements Serializable {
+	private String name;
 	private Feature feature;
-
 	private ESex sex;
-
 	private EPort port;
-
 	private ArrayList<Rating> ratings;
-
-	private double medianScore;
-
+	private double averageScore;
 	private Tutor tutor;
 
-	public Pet(Tutor tutor, Feature feature, String name, String photoUrl, String description, int age, ESex sex, EPort port) {
-		super(name,photoUrl,age,description);
-		setPort(port);
-		setTutor(tutor);
-		setFeatures(feature);
-		setSex(sex);
-	}
-
-	private void setPort(EPort port) {
-		this.port = port;
-	}
-
-	private void setSex(ESex sex) {
+	public Pet(String name, Feature feature, ESex sex, EPort port, ArrayList<Rating> ratings, double averageScore, Tutor tutor) {
+		this.name = name;
+		this.feature = feature;
 		this.sex = sex;
+		this.port = port;
+		this.ratings = ratings;
+		this.averageScore = averageScore;
+		this.tutor = tutor;
 	}
 
-	public ESex getSex(){
-		return sex;
+	public String getName() {
+		return name;
 	}
 
-	public Feature getFeatures() {
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Feature getFeature() {
 		return feature;
 	}
 
-	public void setFeatures(Feature features) {
-		this.feature = features;
+	public void setFeature(Feature feature) {
+		this.feature = feature;
+	}
+
+	public ESex getSex() {
+		return sex;
+	}
+
+	public void setSex(ESex sex) {
+		this.sex = sex;
+	}
+
+	public EPort getPort() {
+		return port;
+	}
+
+	public void setPort(EPort port) {
+		this.port = port;
 	}
 
 	public ArrayList<Rating> getRatings() {
 		return ratings;
 	}
 
-	public void addRating(Rating rating) {
-		ratings.add(rating);
-		setMedianScore(rating.getAvaliation());
+	public void setRatings(ArrayList<Rating> ratings) {
+		this.ratings = ratings;
 	}
 
-	public double getMedianScore() {
-		return medianScore;
+	public double getAverageScore() {
+		return averageScore;
 	}
 
-	public void setMedianScore(double score) {
-		if(score >= 0)
-			medianScore = score;
+	public void setAverageScore(double averageScore) {
+		this.averageScore = averageScore;
 	}
 
 	public Tutor getTutor() {
@@ -71,18 +78,6 @@ public class Pet extends LivingBeing implements Serializable {
 
 	public void setTutor(Tutor tutor) {
 		this.tutor = tutor;
-	}
-
-	@Override
-	public String toString() {
-		return "Name: " + getName();
-	}
-	public void setFeature(Feature feature) {
-		this.feature = feature;
-	}
-
-	public EPort getPort() {
-		return port;
 	}
 
 	public Pet(){}

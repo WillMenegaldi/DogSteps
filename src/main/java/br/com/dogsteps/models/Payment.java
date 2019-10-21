@@ -1,19 +1,11 @@
 package br.com.dogsteps.models;
 
-import br.com.dogsteps.enums.EPayType;
 import br.com.dogsteps.enums.EPayment;
 
 public class Payment {
 
 	private EPayment status;
-
-	private EPayType type;
-
 	private double value;
-
-	public Payment(EPayType type) {
-		setType(type);
-	}
 
 	public EPayment getStatus() {
 		return status;
@@ -21,14 +13,6 @@ public class Payment {
 
 	public void setStatus(EPayment status) {
 		this.status = status;
-	}
-
-	public EPayType getType() {
-		return type;
-	}
-
-	public void setType(EPayType type) {
-		this.type = type;
 	}
 
 	public double getValue() {
