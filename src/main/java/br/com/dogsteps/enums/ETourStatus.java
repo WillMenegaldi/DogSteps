@@ -8,7 +8,7 @@ ETourStatus implements Serializable {
 	INITIALIZED(2,"Passeio inicializado!"),
 	ONGOING(3, "Passeio em andamento!"),
 	FINALY(4, "Percurso finalizado!"),
-	PAIMENT(5, "Aguardando pagamento!"),
+	PAYMENT(5, "Aguardando pagamento!"),
 	COMPLETED(7, "Passeio finalizado!"),
 	;
 

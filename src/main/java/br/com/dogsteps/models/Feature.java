@@ -15,11 +15,7 @@ public class Feature implements Serializable {
 
     private EFisicStatus fisicStatus;
 
-    private Dogwalker dogwalker;
-
-    private Pet pet;
-
-    public Feature(EPort p, EMood m, EFisicStatus f) {
+    public Feature(EPort p, EMood m, EFisicStatus f){
         setPort(p);
         setMood(m);
         setFisicStatus(f);
@@ -47,22 +43,6 @@ public class Feature implements Serializable {
 
     public void setFisicStatus(EFisicStatus fisicStatus) {
         this.fisicStatus = fisicStatus;
-    }
-
-    public Dogwalker getDogwalker() {
-        return dogwalker;
-    }
-
-    public void setDogwalker(Dogwalker dogwalker) {
-        this.dogwalker = dogwalker;
-    }
-
-    public Pet getPet() {
-        return pet;
-    }
-
-    public void setPet(Pet pet) {
-        this.pet = pet;
     }
 
     public Feature(){}

@@ -3,7 +3,6 @@ package br.com.dogsteps.dao;
 import br.com.dogsteps.interfaces.DAO;
 import br.com.dogsteps.models.Tutor;
 
-import javax.ws.rs.core.Response;
 import java.util.List;
 
 public class TutorDAO implements DAO<Tutor, Integer> {
