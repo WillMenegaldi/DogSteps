@@ -2,8 +2,7 @@ package br.com.dogsteps.enums;
 
 import java.io.Serializable;
 
-public enum
-ETourStatus implements Serializable {
+public enum ETourStatus implements Serializable {
 	PENDING(1,"Aguardando passeio ser aceito!"),
 	INITIALIZED(2,"Passeio inicializado!"),
 	ONGOING(3, "Passeio em andamento!"),
