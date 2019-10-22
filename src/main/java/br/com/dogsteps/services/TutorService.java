@@ -19,14 +19,14 @@ import java.util.List;
 @Path("/tutores")
 public class TutorService implements IService<Tutor, String>
 {
-	private static IRepository<Tutor, String> _tutorRepository = new TutorRepository();
+	private static IRepository<Tutor, String> tutorRepository = new TutorRepository();
 
 	@GET
 	@Path("/")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public List<Tutor> getAll() {
-		return _tutorRepository.getList();
+		return tutorRepository.getList();
 	}
 
 	@GET
@@ -34,7 +34,7 @@ public class TutorService implements IService<Tutor, String>
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public Tutor get(@PathParam("id") String id) {
-		return _tutorRepository.find(id);
+		return tutorRepository.find(id);
 	}
 
 	@POST
@@ -42,7 +42,7 @@ public class TutorService implements IService<Tutor, String>
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Override
 	public Response insert(Tutor Tutor) {
-		return _tutorRepository.add(Tutor);
+		return tutorRepository.add(Tutor);
 	}
 
 	@PUT
@@ -50,7 +50,7 @@ public class TutorService implements IService<Tutor, String>
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Override
 	public Response update(Tutor Tutor) {
-		return _tutorRepository.update(Tutor);
+		return tutorRepository.update(Tutor);
 	}
 
 	@DELETE
@@ -58,6 +58,6 @@ public class TutorService implements IService<Tutor, String>
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public Response remove(@PathParam("id") String id) {
-		return _tutorRepository.remove(id);
+		return tutorRepository.remove(id);
 	}
 }
