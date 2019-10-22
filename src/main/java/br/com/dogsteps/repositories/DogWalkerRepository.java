@@ -9,7 +9,6 @@ import javax.ws.rs.core.Response.Status;
 import br.com.dogsteps.dao.Dao;
 import br.com.dogsteps.interfaces.IRepository;
 import br.com.dogsteps.models.DogWalker;
-import br.com.dogsteps.models.Tour;
 
 public class DogWalkerRepository implements IRepository<DogWalker, String> {
 
