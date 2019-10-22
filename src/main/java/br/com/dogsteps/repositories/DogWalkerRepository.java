@@ -12,7 +12,7 @@ import br.com.dogsteps.models.DogWalker;
 
 public class DogWalkerRepository implements IRepository<DogWalker, String> {
 
-	private static final String FILE_NAME = "database/dogwalker";
+	private static final String FILE_NAME = "database/dogwalker.bin";
 	private final Dao DOGWALKER_DAO = inicializarDao();
 
 	public Dao inicializarDao() {
