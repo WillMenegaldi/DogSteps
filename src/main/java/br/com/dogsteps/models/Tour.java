@@ -2,6 +2,8 @@ package br.com.dogsteps.models;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.com.dogsteps.enums.ETourStatus;
 
@@ -10,15 +12,15 @@ public class Tour extends Configuracoes implements Serializable{
 	private LocalDate data;
 	private ETourStatus status;
 	private double duracao;
-	private Pet pet;
+	private List<Pet> pets =  new ArrayList<>();
 	private DogWalker dogWalker;
 
-	public Tour(LocalDate data, ETourStatus status, double duracao, Pet pet, DogWalker dogWalker) {
+	public Tour(LocalDate data, ETourStatus status, double duracao, List<Pet> pets, DogWalker dogWalker) {
 		this.data = data;
 		this.status = status;
 		this.duracao = duracao;
-		this.pet = pet;
 		this.dogWalker = dogWalker;
+		this.pets = pets;
 	}
 
 	public LocalDate getData() {
@@ -42,11 +44,11 @@ public class Tour extends Configuracoes implements Serializable{
 		this.duracao = duracao;
 	}
 
-	public Pet getPet() {
-		return pet;
+	public List<Pet> getPets() {
+		return pets;
 	}
-	public void setPet(Pet pet) {
-		this.pet = pet;
+	public void setPets(List<Pet> pets) {
+		this.pets = pets;
 	}
 
 	public DogWalker getDogWalker() {

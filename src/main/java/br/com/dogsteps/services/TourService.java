@@ -1,5 +1,6 @@
 package br.com.dogsteps.services;
 
+import br.com.dogsteps.interfaces.IRepository;
 import br.com.dogsteps.interfaces.IService;
 import br.com.dogsteps.models.Tour;
 import br.com.dogsteps.repositories.TourRepository;
@@ -17,7 +18,7 @@ import java.util.List;
 
 @Path("/tours")
 public class TourService implements IService<Tour, String> {
-    private static TourRepository tourRepository = new TourRepository();
+    private static IRepository<Tour, String> tourRepository = new TourRepository();
 
     @GET
     @Path("/")

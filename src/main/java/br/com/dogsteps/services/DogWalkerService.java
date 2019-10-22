@@ -12,13 +12,14 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import br.com.dogsteps.interfaces.IRepository;
 import br.com.dogsteps.interfaces.IService;
 import br.com.dogsteps.models.DogWalker;
 import br.com.dogsteps.repositories.DogWalkerRepository;
 
 public class DogWalkerService implements IService<DogWalker, String>{	
 	
-	private static DogWalkerRepository dogWalkerRepository = new DogWalkerRepository();
+	private static IRepository<DogWalker, String> dogWalkerRepository = new DogWalkerRepository();
 	
 	@GET
 	@Path("/")
