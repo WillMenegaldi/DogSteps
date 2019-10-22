@@ -16,22 +16,23 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Path("/tours")
-public class TourService implements IService<Tour, Integer> {
+public class TourService implements IService<Tour, String> {
+    private static TourRepository tourRepository = new TourRepository();
 
     @GET
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
     @Override
     public List<Tour> getAll() {
-        return TourRepository.getList();
+        return tourRepository.getList();
     }
 
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Override
-    public Tour get(@PathParam("id") Integer id) {
-        return TourRepository.find(id);
+    public Tour get(@PathParam("id") String id) {
+        return tourRepository.find(id);
     }
 
     @POST
@@ -39,7 +40,7 @@ public class TourService implements IService<Tour, Integer> {
     @Consumes(MediaType.APPLICATION_JSON)
     @Override
     public Response insert(Tour tour) {
-        return TourRepository.add(tour);
+        return tourRepository.add(tour);
     }
 
     @PUT
@@ -47,14 +48,14 @@ public class TourService implements IService<Tour, Integer> {
     @Consumes(MediaType.APPLICATION_JSON)
     @Override
     public Response update(Tour tour) {
-        return TourRepository.update(tour);
+        return tourRepository.update(tour);
     }
 
     @DELETE
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Override
-    public Response remove(@PathParam("id") Integer id) {
-        return TourRepository.remove(id);
+    public Response remove(@PathParam("id") String id) {
+        return tourRepository.remove(id);
     }
 }

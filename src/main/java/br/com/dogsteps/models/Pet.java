@@ -7,16 +7,14 @@ import java.util.ArrayList;
 
 public class Pet implements Serializable {
 	private String name;
-	private Feature feature;
 	private ESex sex;
 	private EPort port;
 	private ArrayList<Rating> ratings;
 	private double averageScore;
 	private Tutor tutor;
 
-	public Pet(String name, Feature feature, ESex sex, EPort port, ArrayList<Rating> ratings, double averageScore, Tutor tutor) {
+	public Pet(String name, ESex sex, EPort port, ArrayList<Rating> ratings, double averageScore, Tutor tutor) {
 		this.name = name;
-		this.feature = feature;
 		this.sex = sex;
 		this.port = port;
 		this.ratings = ratings;
@@ -30,14 +28,6 @@ public class Pet implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public Feature getFeature() {
-		return feature;
-	}
-
-	public void setFeature(Feature feature) {
-		this.feature = feature;
 	}
 
 	public ESex getSex() {

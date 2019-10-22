@@ -10,9 +10,9 @@ import java.util.List;
 
 public class TourRepository implements IRepository<Tour, String> {
 	private static final String FILE_NAME = "database/tour.bin";
-	private static final Dao TOUR_DAO = inicializarDao();
+	private final Dao TOUR_DAO = inicializarDao();
 
-	private static Dao inicializarDao(){
+	public Dao inicializarDao(){
 		try {
 			return new Dao(FILE_NAME);
 		} catch (IOException e) {

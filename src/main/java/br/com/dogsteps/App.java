@@ -1,16 +1,11 @@
 package br.com.dogsteps;
 
-import br.com.dogsteps.dao.TourDAO;
-import br.com.dogsteps.enums.ETourStatus;
-import br.com.dogsteps.models.Pet;
-import br.com.dogsteps.models.Tour;
 import br.com.dogsteps.utils.FilterResponse;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
 import java.io.IOException;
 import java.net.URI;
-import java.time.LocalDate;
 
 public class App {
     private static final String PACKAGE = "br.com.dogsteps";

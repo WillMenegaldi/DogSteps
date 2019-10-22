@@ -21,6 +21,7 @@ public class Dao<T extends Configuracoes> implements IDao<T, String> {
 
     public Dao(String filename) throws IOException {
         file = new File(filename);
+        saveInFile();
         dados = readFromFile();
     }
 

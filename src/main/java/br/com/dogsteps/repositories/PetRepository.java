@@ -20,7 +20,7 @@ public class PetRepository {
     public void savePet(Pet p) { pet.add(p);}
 
 	public boolean removePet(Pet p) {
-		return pet.remove(p.getId());
+		return false;
 	}
 
 	public boolean update(Pet p) {

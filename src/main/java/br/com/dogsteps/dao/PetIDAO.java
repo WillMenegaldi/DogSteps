@@ -18,7 +18,6 @@ public class PetIDAO implements IDao<Pet,Integer> {
 
 	@Override
 	public boolean add(Pet pet) {
-		pets.put(pet.getId(), pet);
 		return true;
 	}
 

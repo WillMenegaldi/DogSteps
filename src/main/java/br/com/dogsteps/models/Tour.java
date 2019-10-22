@@ -69,4 +69,7 @@ public class Tour extends Configuracoes implements Serializable{
 			   "Status: " + status.getDescription() + "\n" +
 			   "Duration: " + duration;
 	}
+	public Tour(){
+		super(UUID.randomUUID());
+	}
 }
