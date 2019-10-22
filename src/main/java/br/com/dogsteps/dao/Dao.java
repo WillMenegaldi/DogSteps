@@ -8,7 +8,11 @@ import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 import java.io.ObjectInputStream;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.UUID;
+
 
 public class Dao<T extends Configuracoes> implements IDao<T, String> {
 
