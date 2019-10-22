@@ -1,6 +1,5 @@
 package br.com.dogsteps.repositories;
 
-import br.com.dogsteps.dao.PetIDAO;
 import br.com.dogsteps.models.Pet;
 
 import java.util.List;

@@ -1,6 +1,5 @@
 package br.com.dogsteps.repositories;
 
-import br.com.dogsteps.dao.RatingIDAO;
 import br.com.dogsteps.models.Rating;
 import java.util.List;
 
