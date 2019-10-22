@@ -1,37 +1,63 @@
 package br.com.dogsteps.services;
 
-public class TutorService {
+import br.com.dogsteps.interfaces.IRepository;
+import br.com.dogsteps.interfaces.IService;
+import br.com.dogsteps.models.Tutor;
+import br.com.dogsteps.repositories.TutorRepository;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import java.util.List;
 
-	public void searchDogWalkers() {
+@Path("/tutores")
+public class TutorService implements IService<Tutor, String>
+{
+	private static IRepository<Tutor, String> _tutorRepository = new TutorRepository();
 
+	@GET
+	@Path("/")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Override
+	public List<Tutor> getAll() {
+		return _tutorRepository.getList();
 	}
 
-	public void rateDogwalker() {
-
+	@GET
+	@Path("/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Override
+	public Tutor get(@PathParam("id") String id) {
+		return _tutorRepository.find(id);
 	}
 
-	public void rateWalk() {
-
+	@POST
+	@Path("/")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Override
+	public Response insert(Tutor Tutor) {
+		return _tutorRepository.add(Tutor);
 	}
 
-	public void payWalk() {
-
+	@PUT
+	@Path("/")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Override
+	public Response update(Tutor Tutor) {
+		return _tutorRepository.update(Tutor);
 	}
 
-	public void schedule() {
-
+	@DELETE
+	@Path("/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Override
+	public Response remove(@PathParam("id") String id) {
+		return _tutorRepository.remove(id);
 	}
-
-	public void registerDog() {
-
-	}
-
-	public void tours() {
-
-	}
-
-	public void dogwalkerProfile() {
-
-	}
-
 }
