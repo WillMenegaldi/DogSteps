@@ -1,7 +1,7 @@
 package br.com.dogsteps.dao;
 
 import br.com.dogsteps.interfaces.IDao;
-import br.com.dogsteps.models.Tour;
+import br.com.dogsteps.models.Tutor;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -12,81 +12,81 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class TourDao implements IDao<Tour, Integer> {
+public class Dao<T> implements IDao<T, String> {
 
-    private static List<Tour> tours = new ArrayList<>();
-    private File file;
+    private static List<Tutor> tutores = new ArrayList<>();
+    private File arquivo;
     private FileOutputStream fileOutputStream;
     private FileInputStream fileInputStream;
     private ObjectOutputStream objectOutputStream;
     private ObjectInputStream inputFile;
 
-    public TourDAO(String filename) throws IOException {
-        file = new File(filename);
-        tours = readFromFile();
+    public Dao(String nomeArquivo) throws IOException {
+        arquivo = new File(nomeArquivo);
+        tutores = readFromFile();
     }
 
     @Override
-    public List<Tour> getAll() {
+    public List<T> getAll() {
         return readFromFile();
     }
 
     @Override
-    public Tour get(Integer id) {
-        return tours.get(id);
+    public T get(String id) {
+        return tutores.get(id);
     }
 
     @Override
-    public boolean add(Tour tour) {
-        tours.add(tour);
+    public boolean add(Tutor tutor) {
+        tutores.add(tutor);
         return saveInFile();
     }
 
     @Override
-    public boolean remove(Integer id) {
-        Iterator<Tour> iterator = tours.iterator();
+    public boolean remove(String id) {
+        Iterator<Tutor> iterator = tutores.iterator();
         while(iterator.hasNext()){
             if(iterator.next().getId().equals(id)){
-                tours.remove(id);
+                tutores.remove(id);
             }
         }
         return saveInFile();
     }
 
     @Override
-    public boolean update(Tour tour) {
-        Iterator<Tour> iterator = tours.iterator();
+    public boolean update(Tutor tutor) {
+        Iterator<Tutor> iterator = tutores.iterator();
         while(iterator.hasNext()){
-            if(iterator.next().getId().equals(tour.getId())){
-                tours.add(tours.indexOf(iterator.next()), tour);
+            if(iterator.next().getId().equals(tutor.getId())){
+                tutores.add(tutores.indexOf(iterator.next()), tutor);
             }
         }
         return saveInFile();
     }
 
-    private List<Tour> readFromFile() {
-        tours = new ArrayList<>();
+    private List<Tutor> readFromFile() {
+        tutores = new ArrayList<>();
         try {
-            fileInputStream = new FileInputStream(file);
+            fileInputStream = new FileInputStream(arquivo);
             inputFile = new ObjectInputStream(fileInputStream);
             while (fileInputStream.available() > 0) {
-                Tour tour = (Tour) inputFile.readObject();
-                tours.add(tour);
+                Tutor tutor = (Tutor) inputFile.readObject();
+                tutores.add(tutor);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return tours;
+        return tutores;
     }
 
     private boolean saveInFile() {
         try {
             close();
-            fileOutputStream = new FileOutputStream(file, false);
+            fileOutputStream = new FileOutputStream(arquivo, false);
             objectOutputStream = new ObjectOutputStream(fileOutputStream);
 
-            for (Tour tour : tours) {
-                objectOutputStream.writeObject(tour);
+            for (Tutor tutor : tutores) {
+                objectOutputStream.writeObject(tutor);
             }
             objectOutputStream.flush();
             return true;

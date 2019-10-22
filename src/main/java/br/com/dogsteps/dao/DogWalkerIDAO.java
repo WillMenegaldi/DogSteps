@@ -1,11 +1,11 @@
 package br.com.dogsteps.dao;
 
-import br.com.dogsteps.interfaces.IDAO;
+import br.com.dogsteps.interfaces.IDao;
 import br.com.dogsteps.models.DogWalker;
 
 import java.util.List;
 
-public class DogWalkerIDAO implements IDAO<DogWalker, Integer> {
+public class DogWalkerIDAO implements IDao<DogWalker, Integer> {
 
     @Override
     public DogWalker get(Integer integer) {
