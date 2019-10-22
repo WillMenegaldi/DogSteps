@@ -5,7 +5,7 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 public interface IRepository<T, K>{
-    Dao inicializarDao();
+    static Dao inicializarDao();
     public List<T> getList();
     public T find(K k);
     public Response add(T t);

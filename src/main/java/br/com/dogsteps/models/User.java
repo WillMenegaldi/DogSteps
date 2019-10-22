@@ -1,8 +1,9 @@
 package br.com.dogsteps.models;
 
 import java.io.Serializable;
+import java.util.UUID;
 
-public class User implements Serializable {
+public class User extends Configuracoes implements Serializable {
 	private String name;
 	private int age;
 	private String cpf;
@@ -13,6 +14,7 @@ public class User implements Serializable {
 	private TimeSchedule timeSchedule;
 
 	public User(String name, String photoUrl, int age, String cpf, String email, String password, Address address, TimeSchedule timeSchedule) {
+		super(UUID.randomUUID());
 		this.name = name;
 		this.photoUrl = photoUrl;
 		this.age = age;

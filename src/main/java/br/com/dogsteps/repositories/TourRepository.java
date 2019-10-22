@@ -1,17 +1,18 @@
 package br.com.dogsteps.repositories;
 
 import br.com.dogsteps.dao.Dao;
-import br.com.dogsteps.dao.TourDAO;
+import br.com.dogsteps.interfaces.IRepository;
 import br.com.dogsteps.models.Tour;
+
 import javax.ws.rs.core.Response;
 import java.io.IOException;
 import java.util.List;
 
-public class TourRepository {
+public class TourRepository implements IRepository<Tour, String> {
 	private static final String FILE_NAME = "database/tour.bin";
-	private static final Dao TUTOR_DAO = initTourDao();
+	private static final Dao TOUR_DAO = inicializarDao();
 
-	private static Dao initTourDao(){
+	private static Dao inicializarDao(){
 		try {
 			return new Dao(FILE_NAME);
 		} catch (IOException e) {
@@ -20,26 +21,30 @@ public class TourRepository {
 		return null;
 	}
 
-	public static List<Tutor> getList() {
-		return TUTOR_DAO.getAll();
+	@Override
+	public List<Tour> getList() {
+		return TOUR_DAO.getAll();
 	}
-	public static Tutor find(Integer id) {
-		return TUTOR_DAO.get(id);
+	@Override
+	public Tour find(String id) {
+		return (Tour) TOUR_DAO.get(id);
 	}
-	public static Response add(Tutor tutor){
-		return TUTOR_DAO.add(tutor) ?
+	@Override
+	public Response add(Tour tour){
+		return TOUR_DAO.add(tour) ?
 				Response.status(Response.Status.OK).build()
 				: Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
 	}
-	public static Response update(Tutor tutor){
-		return TUTOR_DAO.update(tutor) ?
+	@Override
+	public Response update(Tour tour){
+		return TOUR_DAO.update(tour) ?
 				Response.status(Response.Status.OK).build():
 				Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
 	}
-	public static Response remove(Integer id){
-		return TUTOR_DAO.remove(id) ?
+	@Override
+	public Response remove(String id){
+		return TOUR_DAO.remove(id) ?
 				Response.status(Response.Status.OK).build():
 				Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
 	}
-
 }

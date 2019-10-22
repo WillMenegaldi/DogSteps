@@ -6,30 +6,21 @@ import java.util.UUID;
 
 import br.com.dogsteps.enums.ETourStatus;
 
-public class Tour implements Serializable {
+public class Tour extends Configuracoes implements Serializable{
 	private static final long serialVersionUID = 1L;
-	private String id;
 	private LocalDate date;
 	private ETourStatus status;
 	private double duration;
 	private Pet pet;
 	private DogWalker dogWalker;
 
-	public Tour(UUID id, LocalDate date, ETourStatus status, double duration, Pet pet, DogWalker dogWalker) {
-		this.id = UUID.randomUUID().toString();
+	public Tour(LocalDate date, ETourStatus status, double duration, Pet pet, DogWalker dogWalker) {
+		super(UUID.randomUUID());
 		this.date = date;
 		this.status = status;
 		this.duration = duration;
 		this.pet = pet;
 		this.dogWalker = dogWalker;
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
 	}
 
 	public LocalDate getDate() {
@@ -77,8 +68,5 @@ public class Tour implements Serializable {
 		return "Data: " + date + "\n" +
 			   "Status: " + status.getDescription() + "\n" +
 			   "Duration: " + duration;
-	}
-	public Tour() {
-		this.id = UUID.randomUUID().toString();
 	}
 }

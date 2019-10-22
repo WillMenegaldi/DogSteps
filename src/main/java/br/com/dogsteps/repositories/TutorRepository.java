@@ -17,7 +17,7 @@ public class TutorRepository implements IRepository<Tutor, String>
     {
         try
         {
-            return new Dao(FILE_NAME);
+            return new Dao<>(FILE_NAME);
         }
         catch (IOException e)
         {
@@ -32,7 +32,7 @@ public class TutorRepository implements IRepository<Tutor, String>
     }
     @Override
     public Tutor find(String id) {
-        return TUTOR_DAO.get(id);
+        return (Tutor) TUTOR_DAO.get(id);
     }
     @Override
     public Response add(Tutor tutor){

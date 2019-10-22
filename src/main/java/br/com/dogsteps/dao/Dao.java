@@ -1,7 +1,7 @@
 package br.com.dogsteps.dao;
 
 import br.com.dogsteps.interfaces.IDao;
-import br.com.dogsteps.models.Tutor;
+import br.com.dogsteps.models.Configuracoes;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -12,18 +12,16 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class Dao<T> implements IDao<T, String> {
+public class Dao<T extends Configuracoes> implements IDao<T, String> {
 
-    private static List<Tutor> tutores = new ArrayList<>();
-    private File arquivo;
+    private List<T> dados;
+    private File file;
     private FileOutputStream fileOutputStream;
-    private FileInputStream fileInputStream;
     private ObjectOutputStream objectOutputStream;
-    private ObjectInputStream inputFile;
 
-    public Dao(String nomeArquivo) throws IOException {
-        arquivo = new File(nomeArquivo);
-        tutores = readFromFile();
+    public Dao(String filename) throws IOException {
+        file = new File(filename);
+        dados = readFromFile();
     }
 
     @Override
@@ -33,60 +31,69 @@ public class Dao<T> implements IDao<T, String> {
 
     @Override
     public T get(String id) {
-        return tutores.get(id);
+        Iterator<T> iterator = dados.iterator();
+        while(iterator.hasNext()){
+            if(iterator.next().getId().equals(id)){
+                return iterator.next();
+            }
+        }
+        return null;
     }
 
     @Override
-    public boolean add(Tutor tutor) {
-        tutores.add(tutor);
+    public boolean add(T t) {
+        dados.add(t);
         return saveInFile();
     }
 
     @Override
     public boolean remove(String id) {
-        Iterator<Tutor> iterator = tutores.iterator();
+        Iterator<T> iterator = dados.iterator();
+
         while(iterator.hasNext()){
             if(iterator.next().getId().equals(id)){
-                tutores.remove(id);
+                iterator.remove();
+                return saveInFile();
             }
         }
         return saveInFile();
     }
 
     @Override
-    public boolean update(Tutor tutor) {
-        Iterator<Tutor> iterator = tutores.iterator();
+    public boolean update(T t) {
+        Iterator<T> iterator = dados.iterator();
         while(iterator.hasNext()){
-            if(iterator.next().getId().equals(tutor.getId())){
-                tutores.add(tutores.indexOf(iterator.next()), tutor);
+            if(iterator.next().getId().equals(t.getId())){
+                dados.set(dados.indexOf(iterator.next()) - 1, t);
+                return saveInFile();
             }
         }
         return saveInFile();
     }
 
-    private List<Tutor> readFromFile() {
-        tutores = new ArrayList<>();
+    private List<T> readFromFile() {
+        dados = new ArrayList<T>();
         try {
-            fileInputStream = new FileInputStream(arquivo);
-            inputFile = new ObjectInputStream(fileInputStream);
+            FileInputStream fileInputStream = new FileInputStream(file);
+            ObjectInputStream inputFile = new ObjectInputStream(fileInputStream);
             while (fileInputStream.available() > 0) {
-                Tutor tutor = (Tutor) inputFile.readObject();
-                tutores.add(tutor);
+                T t = (T) inputFile.readObject();
+                dados.add(t);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return tutores;
+        return dados;
     }
 
     private boolean saveInFile() {
         try {
             close();
-            fileOutputStream = new FileOutputStream(arquivo, false);
+            fileOutputStream = new FileOutputStream(file, false);
             objectOutputStream = new ObjectOutputStream(fileOutputStream);
 
-            for (Tutor tutor : tutores) {
-                objectOutputStream.writeObject(tutor);
+            for (T t : dados) {
+                objectOutputStream.writeObject(t);
             }
             objectOutputStream.flush();
             return true;
