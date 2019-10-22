@@ -29,10 +29,8 @@ public class Dao<T extends Configuracoes> implements IDao<T, String> {
 
     @Override
     public T get(String id) {
-        ListIterator<T> iterator = dados.listIterator();
-        while(iterator.hasNext()){
-            T t = iterator.next();
-            if(t.getId().equals(id)){
+        for (T t : dados) {
+            if (t.getId().equals(id)) {
                 return t;
             }
         }

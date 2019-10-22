@@ -2,10 +2,8 @@ package br.com.dogsteps.repositories;
 
 import java.io.IOException;
 import java.util.List;
-
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
-
 import br.com.dogsteps.dao.Dao;
 import br.com.dogsteps.interfaces.IRepository;
 import br.com.dogsteps.models.DogWalker;

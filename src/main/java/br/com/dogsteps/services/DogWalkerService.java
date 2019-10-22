@@ -12,20 +12,19 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-
 import br.com.dogsteps.interfaces.IService;
 import br.com.dogsteps.models.DogWalker;
 import br.com.dogsteps.repositories.DogWalkerRepository;
 
 public class DogWalkerService implements IService<DogWalker, String>{	
 	
-	private static DogWalkerRepository dwRepository = new DogWalkerRepository();
+	private static DogWalkerRepository dogWalkerRepository = new DogWalkerRepository();
 	
 	@GET
 	@Path("/")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<DogWalker> getAll(){
-		return dwRepository.getList();
+		return dogWalkerRepository.getList();
 	}
 	
 	
@@ -33,28 +32,28 @@ public class DogWalkerService implements IService<DogWalker, String>{
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public DogWalker get(@PathParam("id") String id) {
-		return dwRepository.find(id);
+		return dogWalkerRepository.find(id);
 	}
 	
 	@POST
 	@Path("/")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response insert(DogWalker dogWalker) {		
-		return dwRepository.add(dogWalker);
+		return dogWalkerRepository.add(dogWalker);
 	}
 	
 	@PUT
 	@Path("/")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response update(DogWalker d) {
-		return dwRepository.update(d);
+	public Response update(DogWalker dogWalker) {
+		return dogWalkerRepository.update(dogWalker);
 	}
 	
 	@DELETE
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response remove(@PathParam("id")String id) {
-		return dwRepository.remove(id);
+	public Response remove(@PathParam("id") String id) {
+		return dogWalkerRepository.remove(id);
 	}
 	
 }
