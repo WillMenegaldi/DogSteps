@@ -1,11 +1,11 @@
 package br.com.dogsteps.dao;
 
-import br.com.dogsteps.interfaces.IDAO;
+import br.com.dogsteps.interfaces.IDao;
 import br.com.dogsteps.models.Tour;
 
 import java.util.List;
 
-public class TimeScheduleIDAO implements IDAO<Tour, Integer> {
+public class TimeScheduleIDAO implements IDao<Tour, Integer> {
 
     @Override
     public Tour get(Integer integer) {

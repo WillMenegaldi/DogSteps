@@ -1,7 +1,7 @@
 package br.com.dogsteps.dao;
 
 import br.com.dogsteps.interfaces.IDao;
-import br.com.dogsteps.models.Tour;
+import br.com.dogsteps.models.Configuracoes;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -12,71 +12,78 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class TourDao implements IDao<Tour, Integer> {
+public class Dao<T extends Configuracoes> implements IDao<T, String> {
 
-    private static List<Tour> tours = new ArrayList<>();
+    private List<T> dados;
     private File file;
     private FileOutputStream fileOutputStream;
-    private FileInputStream fileInputStream;
     private ObjectOutputStream objectOutputStream;
-    private ObjectInputStream inputFile;
 
-    public TourDAO(String filename) throws IOException {
+    public Dao(String filename) throws IOException {
         file = new File(filename);
-        tours = readFromFile();
+        dados = readFromFile();
     }
 
     @Override
-    public List<Tour> getAll() {
+    public List<T> getAll() {
         return readFromFile();
     }
 
     @Override
-    public Tour get(Integer id) {
-        return tours.get(id);
-    }
-
-    @Override
-    public boolean add(Tour tour) {
-        tours.add(tour);
-        return saveInFile();
-    }
-
-    @Override
-    public boolean remove(Integer id) {
-        Iterator<Tour> iterator = tours.iterator();
+    public T get(String id) {
+        Iterator<T> iterator = dados.iterator();
         while(iterator.hasNext()){
             if(iterator.next().getId().equals(id)){
-                tours.remove(id);
+                return iterator.next();
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public boolean add(T t) {
+        dados.add(t);
+        return saveInFile();
+    }
+
+    @Override
+    public boolean remove(String id) {
+        Iterator<T> iterator = dados.iterator();
+
+        while(iterator.hasNext()){
+            if(iterator.next().getId().equals(id)){
+                iterator.remove();
+                return saveInFile();
             }
         }
         return saveInFile();
     }
 
     @Override
-    public boolean update(Tour tour) {
-        Iterator<Tour> iterator = tours.iterator();
+    public boolean update(T t) {
+        Iterator<T> iterator = dados.iterator();
         while(iterator.hasNext()){
-            if(iterator.next().getId().equals(tour.getId())){
-                tours.add(tours.indexOf(iterator.next()), tour);
+            if(iterator.next().getId().equals(t.getId())){
+                dados.set(dados.indexOf(iterator.next()) - 1, t);
+                return saveInFile();
             }
         }
         return saveInFile();
     }
 
-    private List<Tour> readFromFile() {
-        tours = new ArrayList<>();
+    private List<T> readFromFile() {
+        dados = new ArrayList<T>();
         try {
-            fileInputStream = new FileInputStream(file);
-            inputFile = new ObjectInputStream(fileInputStream);
+            FileInputStream fileInputStream = new FileInputStream(file);
+            ObjectInputStream inputFile = new ObjectInputStream(fileInputStream);
             while (fileInputStream.available() > 0) {
-                Tour tour = (Tour) inputFile.readObject();
-                tours.add(tour);
+                T t = (T) inputFile.readObject();
+                dados.add(t);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return tours;
+        return dados;
     }
 
     private boolean saveInFile() {
@@ -85,8 +92,8 @@ public class TourDao implements IDao<Tour, Integer> {
             fileOutputStream = new FileOutputStream(file, false);
             objectOutputStream = new ObjectOutputStream(fileOutputStream);
 
-            for (Tour tour : tours) {
-                objectOutputStream.writeObject(tour);
+            for (T t : dados) {
+                objectOutputStream.writeObject(t);
             }
             objectOutputStream.flush();
             return true;

@@ -9,7 +9,7 @@ public class Tutor extends User
 
 	public Tutor(){}
 
-	public Tutor(String name, String photoUrl, int age, String cpf, String email, String password, Address address, TimeSchedule timeSchedule, ArrayList<Pet> pets, ArrayList<Tour> tours) {
+	public Tutor( String name, String photoUrl, int age, String cpf, String email, String password, Address address, TimeSchedule timeSchedule, ArrayList<Pet> pets, ArrayList<Tour> tours) {
 		super(name, photoUrl, age, cpf, email, password, address, timeSchedule);
 		this.pets = pets;
 		this.tours = tours;
