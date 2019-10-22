@@ -14,7 +14,6 @@ public class User extends Configuracoes implements Serializable {
 	private TimeSchedule timeSchedule;
 
 	public User(String name, String photoUrl, int age, String cpf, String email, String password, Address address, TimeSchedule timeSchedule) {
-		super(UUID.randomUUID());
 		this.name = name;
 		this.photoUrl = photoUrl;
 		this.age = age;
@@ -89,5 +88,6 @@ public class User extends Configuracoes implements Serializable {
 		this.timeSchedule = timeSchedule;
 	}
 
-	public User(){}
+	public User(){
+	}
 }

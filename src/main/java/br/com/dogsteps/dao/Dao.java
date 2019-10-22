@@ -8,9 +8,7 @@ import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 import java.io.ObjectInputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class Dao<T extends Configuracoes> implements IDao<T, String> {
 
@@ -21,7 +19,6 @@ public class Dao<T extends Configuracoes> implements IDao<T, String> {
 
     public Dao(String filename) throws IOException {
         file = new File(filename);
-        saveInFile();
         dados = readFromFile();
     }
 
@@ -32,10 +29,11 @@ public class Dao<T extends Configuracoes> implements IDao<T, String> {
 
     @Override
     public T get(String id) {
-        Iterator<T> iterator = dados.iterator();
+        ListIterator<T> iterator = dados.listIterator();
         while(iterator.hasNext()){
-            if(iterator.next().getId().equals(id)){
-                return iterator.next();
+            T t = iterator.next();
+            if(t.getId().equals(id)){
+                return t;
             }
         }
         return null;
@@ -43,14 +41,14 @@ public class Dao<T extends Configuracoes> implements IDao<T, String> {
 
     @Override
     public boolean add(T t) {
+        t.setId(UUID.randomUUID().toString());
         dados.add(t);
         return saveInFile();
     }
 
     @Override
     public boolean remove(String id) {
-        Iterator<T> iterator = dados.iterator();
-
+        ListIterator<T> iterator = dados.listIterator();
         while(iterator.hasNext()){
             if(iterator.next().getId().equals(id)){
                 iterator.remove();
@@ -62,10 +60,10 @@ public class Dao<T extends Configuracoes> implements IDao<T, String> {
 
     @Override
     public boolean update(T t) {
-        Iterator<T> iterator = dados.iterator();
+        ListIterator<T> iterator = dados.listIterator();
         while(iterator.hasNext()){
             if(iterator.next().getId().equals(t.getId())){
-                dados.set(dados.indexOf(iterator.next()) - 1, t);
+                dados.set(iterator.nextIndex() - 1, t);
                 return saveInFile();
             }
         }
