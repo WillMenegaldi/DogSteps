@@ -5,63 +5,63 @@ import br.com.dogsteps.enums.ESex;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Pet implements Serializable {
+public class Pet extends Configuracoes implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private String name;
-	private ESex sex;
-	private EPort port;
-	private ArrayList<Rating> ratings;
-	private double averageScore;
+	private String nome;
+	private ESex sexo;
+	private EPort porte;
+	private ArrayList<Rating> avaliacoes;
+	private double notaMedia;
 	private Tutor tutor;
 
-	public Pet(String name, ESex sex, EPort port, ArrayList<Rating> ratings, double averageScore, Tutor tutor) {
-		this.name = name;
-		this.sex = sex;
-		this.port = port;
-		this.ratings = ratings;
-		this.averageScore = averageScore;
-		this.tutor = tutor;
+	public Pet(String nome, ESex sexo, EPort porte, ArrayList<Rating> avaliacoes, double notaMedia, Tutor tutor) {
+		setName(nome);
+		setSex(sexo);
+		setPorte(porte);
+		setAvaliacoes(avaliacoes);
+		setNotaMedia(notaMedia);
+		setTutor(tutor);
 	}
 
 	public String getName() {
-		return name;
+		return nome;
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		this.nome = name;
 	}
 
 	public ESex getSex() {
-		return sex;
+		return sexo;
 	}
 
-	public void setSex(ESex sex) {
-		this.sex = sex;
+	public void setSex(ESex sexo) {
+		this.sexo = sexo;
 	}
 
-	public EPort getPort() {
-		return port;
+	public EPort getPorte() {
+		return porte;
 	}
 
-	public void setPort(EPort port) {
-		this.port = port;
+	public void setPorte(EPort porte) {
+		this.porte = porte;
 	}
 
-	public ArrayList<Rating> getRatings() {
-		return ratings;
+	public ArrayList<Rating> getAvaliacoes() {
+		return avaliacoes;
 	}
 
-	public void setRatings(ArrayList<Rating> ratings) {
-		this.ratings = ratings;
+	public void setAvaliacoes(ArrayList<Rating> avaliacoes) {
+		this.avaliacoes = avaliacoes;
 	}
 
-	public double getAverageScore() {
-		return averageScore;
+	public double getNotaMedia() {
+		return notaMedia;
 	}
 
-	public void setAverageScore(double averageScore) {
-		this.averageScore = averageScore;
+	public void setNotaMedia(double notaMedia) {
+		this.notaMedia = notaMedia;
 	}
 
 	public Tutor getTutor() {
