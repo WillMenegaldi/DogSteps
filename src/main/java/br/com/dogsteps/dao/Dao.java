@@ -22,7 +22,6 @@ public class Dao<T extends Configuracoes> implements IDao<T, String> {
     private ObjectOutputStream objectOutputStream;
 
     public Dao(String filename) throws IOException {
-
         file = new File(filename);
         dados = readFromFile();
     }

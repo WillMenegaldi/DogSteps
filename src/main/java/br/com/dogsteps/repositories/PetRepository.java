@@ -1,19 +1,17 @@
 package br.com.dogsteps.repositories;
 
 import br.com.dogsteps.dao.Dao;
+import br.com.dogsteps.interfaces.IDao;
 import br.com.dogsteps.interfaces.IRepository;
 import br.com.dogsteps.models.Pet;
-
-import javax.validation.constraints.NotNull;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
-import java.util.Dictionary;
 import java.util.List;
 
 public class PetRepository implements IRepository<Pet, String> {
 
     private static final String DIRETORIO = "database/pets.bin";
-    private final Dao PET_DAO = inicializarDao();
+    private final IDao<Pet, String> PET_DAO = inicializarDao();
 
     @Override
     public Dao inicializarDao() {

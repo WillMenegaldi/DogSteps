@@ -5,13 +5,14 @@ import java.util.List;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import br.com.dogsteps.dao.Dao;
+import br.com.dogsteps.interfaces.IDao;
 import br.com.dogsteps.interfaces.IRepository;
 import br.com.dogsteps.models.DogWalker;
 
 public class DogWalkerRepository implements IRepository<DogWalker, String> {
 
 	private static final String FILE_NAME = "database/dogwalker.bin";
-	private final Dao DOGWALKER_DAO = inicializarDao();
+	private final IDao<DogWalker, String> DOGWALKER_DAO = inicializarDao();
 
 	public Dao inicializarDao() {
 		try {

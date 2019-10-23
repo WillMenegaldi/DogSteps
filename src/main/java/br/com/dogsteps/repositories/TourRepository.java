@@ -1,6 +1,7 @@
  package br.com.dogsteps.repositories;
 
 import br.com.dogsteps.dao.Dao;
+import br.com.dogsteps.interfaces.IDao;
 import br.com.dogsteps.interfaces.IRepository;
 import br.com.dogsteps.models.Tour;
 import javax.ws.rs.core.Response;
@@ -9,7 +10,7 @@ import java.util.List;
 
 public class TourRepository implements IRepository<Tour, String> {
 	private static final String FILE_NAME = "database/tour.bin";
-	private final Dao TOUR_DAO = inicializarDao();
+	private final IDao<Tour, String> TOUR_DAO = inicializarDao();
 
 	public Dao inicializarDao(){
 		try {
