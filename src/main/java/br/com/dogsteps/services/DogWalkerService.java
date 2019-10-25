@@ -40,7 +40,7 @@ public class DogWalkerService implements IService<DogWalker, String>{
 	@POST
 	@Path("/")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response insert(DogWalker dogWalker) {		
+	public Response insert(DogWalker dogWalker) {
 		return dogWalkerRepository.add(dogWalker);
 	}
 	

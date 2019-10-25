@@ -1,18 +1,21 @@
 package br.com.dogsteps.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class DogWalker extends User {
+public class DogWalker extends User implements Serializable {
+	private static final long serialVersionUID = 1L;
+
 	private ArrayList<Avaliacao> avaliacoes;
 	private double mediaAvaliacao;
-	private String descriçao;
+	private String descricao;
 
 	public DogWalker(String nome, String photoUrl, int idade, String cpf, String email, String senha, Endereco endereco,
-			Agenda agenda, ArrayList<Avaliacao> avaliacoes, double mediaAvaliacao, String descriçao) {
+			Agenda agenda, ArrayList<Avaliacao> avaliacoes, double mediaAvaliacao, String descricao) {
 		super(nome, photoUrl, idade, cpf, email, senha, endereco, agenda);
 		this.avaliacoes = avaliacoes;
 		this.mediaAvaliacao = mediaAvaliacao;
-		this.descriçao = descriçao;
+		this.descricao = descricao;
 	}
 
 	public ArrayList<Avaliacao> getAvaliacoes() {
@@ -29,12 +32,17 @@ public class DogWalker extends User {
 		this.mediaAvaliacao = mediaAvaliacao;
 	}
 
-	public String getDescriçao() {
-		return descriçao;
+	public String getDescricao() {
+		return descricao;
 	}
-	public void setDescriçao(String descriçao) {
-		this.descriçao = descriçao;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
-	
+
 	public DogWalker(){}
+
+	@Override
+	public String toString() {
+		return this.getNome();
+	}
 }

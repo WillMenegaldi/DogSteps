@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.UUID;
 
-
 public class Dao<T extends Configuracoes> implements IDao<T, String> {
 
     private List<T> dados;
