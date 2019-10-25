@@ -17,6 +17,7 @@ import br.com.dogsteps.interfaces.IService;
 import br.com.dogsteps.models.DogWalker;
 import br.com.dogsteps.repositories.DogWalkerRepository;
 
+@Path("/dogwalkers")
 public class DogWalkerService implements IService<DogWalker, String>{	
 	
 	private static IRepository<DogWalker, String> dogWalkerRepository = new DogWalkerRepository();
