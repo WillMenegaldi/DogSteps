@@ -4,32 +4,32 @@ import java.io.Serializable;
 import java.util.UUID;
 
 public class User extends Configuracoes implements Serializable {
-	private String name;
-	private int age;
+	private String nome;
+	private int idade;
 	private String cpf;
 	private String photoUrl;
 	private String email;
-	private String password;
-	private Address address;
-	private TimeSchedule timeSchedule;
+	private String senha;
+	private Endereco endereço;
+	private Agenda agenda;
 
-	public User(String name, String photoUrl, int age, String cpf, String email, String password, Address address, TimeSchedule timeSchedule) {
-		this.name = name;
+	public User(String nome, String photoUrl, int idade, String cpf, String email, String senha, Endereco endereco, Agenda agenda) {
+		this.nome = nome;
 		this.photoUrl = photoUrl;
-		this.age = age;
+		this.idade = idade;
 		this.cpf = cpf;
 		this.email = email;
-		this.password = password;
-		this.address = address;
-		this.timeSchedule = timeSchedule;
+		this.senha = senha;
+		this.endereço = endereco;
+		this.agenda = agenda;
 	}
 
-	public String getName() {
-		return name;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public String getPhotoUrl() {
@@ -40,12 +40,12 @@ public class User extends Configuracoes implements Serializable {
 		this.photoUrl = photoUrl;
 	}
 
-	public int getAge() {
-		return age;
+	public int getIdade() {
+		return idade;
 	}
 
-	public void setAge(int age) {
-		this.age = age;
+	public void setIdade(int age) {
+		this.idade = age;
 	}
 
 	public String getCpf() {
@@ -64,28 +64,28 @@ public class User extends Configuracoes implements Serializable {
 		this.email = email;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getSenha() {
+		return senha;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
-	public Address getAddress() {
-		return address;
+	public Endereco getEndereco() {
+		return endereço;
 	}
 
-	public void setAddress(Address address) {
-		this.address = address;
+	public void setEndereco(Endereco endereco) {
+		this.endereço = endereco;
 	}
 
-	public TimeSchedule getTimeSchedule() {
-		return timeSchedule;
+	public Agenda getAgenda() {
+		return agenda;
 	}
 
-	public void setTimeSchedule(TimeSchedule timeSchedule) {
-		this.timeSchedule = timeSchedule;
+	public void setAgenda(Agenda agenda) {
+		this.agenda = agenda;
 	}
 
 	public User(){

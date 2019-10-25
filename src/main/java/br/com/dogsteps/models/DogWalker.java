@@ -4,40 +4,49 @@ import java.util.ArrayList;
 
 public class DogWalker extends User {
 
-	private TimeSchedule timeSchedule;
-	private ArrayList<Rating> ratings;
-	private double medianScore;
+	
+	private ArrayList<Avaliacao> avaliacoes;
+	private double mediaAvaliacao;
+	private String descriçao;
 
-	public DogWalker(String name, String photoUrl, int age, String cpf, String email, String password, Address address, TimeSchedule timeSchedule, TimeSchedule timeSchedule1, ArrayList<Rating> ratings, double medianScore) {
-		super(name, photoUrl, age, cpf, email, password, address, timeSchedule);
-		this.timeSchedule = timeSchedule1;
-		this.ratings = ratings;
-		this.medianScore = medianScore;
+
+	public DogWalker(String nome, String photoUrl, int idade, String cpf, String email, String senha, Endereco endereco,
+			Agenda agenda, ArrayList<Avaliacao> avaliacoes, double mediaAvaliacao, String descriçao) {
+		super(nome, photoUrl, idade, cpf, email, senha, endereco, agenda);
+		this.avaliacoes = avaliacoes;
+		this.mediaAvaliacao = mediaAvaliacao;
+		this.descriçao = descriçao;
+	}	
+
+	public ArrayList<Avaliacao> getAvaliacoes() {
+		return avaliacoes;
 	}
 
-	public TimeSchedule getTimeSchedule() {
-		return timeSchedule;
+
+	public void setAvaliacoes(ArrayList<Avaliacao> avaliacoes) {
+		this.avaliacoes = avaliacoes;
 	}
 
-	public void setTimeSchedule(TimeSchedule timeSchedule) {
-		this.timeSchedule = timeSchedule;
+
+	public double getMediaAvaliacao() {
+		return mediaAvaliacao;
 	}
 
-	public ArrayList<Rating> getRatings() {
-		return ratings;
+
+	public void setMediaAvaliacao(double mediaAvaliacao) {
+		this.mediaAvaliacao = mediaAvaliacao;
 	}
 
-	public void setRatings(ArrayList<Rating> ratings) {
-		this.ratings = ratings;
+
+	public String getDescriçao() {
+		return descriçao;
 	}
 
-	public double getMedianScore() {
-		return medianScore;
+
+	public void setDescriçao(String descriçao) {
+		this.descriçao = descriçao;
 	}
 
-	public void setMedianScore(double medianScore) {
-		this.medianScore = medianScore;
-	}
 
 	public DogWalker(){}
 }

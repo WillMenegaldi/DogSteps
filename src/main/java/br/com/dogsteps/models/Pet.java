@@ -11,11 +11,11 @@ public class Pet extends Configuracoes implements Serializable {
 	private String nome;
 	private ESex sexo;
 	private EPort porte;
-	private ArrayList<Rating> avaliacoes;
+	private ArrayList<Avaliacao> avaliacoes;
 	private double notaMedia;
 	private Tutor tutor;
 
-	public Pet(String nome, ESex sexo, EPort porte, ArrayList<Rating> avaliacoes, double notaMedia, Tutor tutor) {
+	public Pet(String nome, ESex sexo, EPort porte, ArrayList<Avaliacao> avaliacoes, double notaMedia, Tutor tutor) {
 		setName(nome);
 		setSex(sexo);
 		setPorte(porte);
@@ -48,11 +48,11 @@ public class Pet extends Configuracoes implements Serializable {
 		this.porte = porte;
 	}
 
-	public ArrayList<Rating> getAvaliacoes() {
+	public ArrayList<Avaliacao> getAvaliacoes() {
 		return avaliacoes;
 	}
 
-	public void setAvaliacoes(ArrayList<Rating> avaliacoes) {
+	public void setAvaliacoes(ArrayList<Avaliacao> avaliacoes) {
 		this.avaliacoes = avaliacoes;
 	}
 
