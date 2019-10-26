@@ -1,10 +1,7 @@
 package br.com.dogsteps.repositories;
 
 import br.com.dogsteps.dao.Dao;
-import br.com.dogsteps.excecoes.AgendaNullException;
-import br.com.dogsteps.excecoes.MenorIdadeException;
-import br.com.dogsteps.excecoes.StringVaziaException;
-import br.com.dogsteps.excecoes.ValorNegativoException;
+import br.com.dogsteps.excecoes.*;
 import br.com.dogsteps.interfaces.IDao;
 import br.com.dogsteps.interfaces.IRepository;
 import br.com.dogsteps.models.DogWalker;
@@ -38,12 +35,13 @@ public class DogWalkerRepository implements IRepository<DogWalker, String> {
 
 	public Response add(DogWalker dogWalker) {
 		try {
+			validarRequisicao(dogWalker);
 			if (DOGWALKER_DAO.add(dogWalker))
 				return Response.status(Status.OK).build();
 			else
 				return Response.status(Status.INTERNAL_SERVER_ERROR).build();
 		}catch (ValorNegativoException | StringVaziaException | MenorIdadeException |
-				AgendaNullException e){
+				AgendaNullException | EmailInvalidoException e){
 			return Response.status(Status.BAD_REQUEST).build();
 		}
 
@@ -57,7 +55,7 @@ public class DogWalkerRepository implements IRepository<DogWalker, String> {
 			else
 				return Response.status(Status.INTERNAL_SERVER_ERROR).build();
 		}catch (ValorNegativoException | StringVaziaException
-				| MenorIdadeException | AgendaNullException e ){
+				| MenorIdadeException | AgendaNullException | EmailInvalidoException e ){
 			return Response.status(Status.BAD_REQUEST).build();
 		}
 	}
@@ -70,7 +68,9 @@ public class DogWalkerRepository implements IRepository<DogWalker, String> {
 	}
 
 	public void validarRequisicao(DogWalker dogWalker)
-			throws ValorNegativoException, StringVaziaException,MenorIdadeException,AgendaNullException{
+			throws ValorNegativoException, StringVaziaException,
+					MenorIdadeException,AgendaNullException,
+					EmailInvalidoException	{
 
 		if(dogWalker.getIdade() > 0){}
 		else{
@@ -85,6 +85,13 @@ public class DogWalkerRepository implements IRepository<DogWalker, String> {
 				|| dogWalker.getSenha().isEmpty() 	|| dogWalker.getEmail().isEmpty() )){}
 		else{
 			throw new StringVaziaException();
+		}
+
+		String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+
+		if(dogWalker.getEmail().matches(regex)){}
+		else{
+			throw new EmailInvalidoException();
 		}
 
 		if (dogWalker.getAgenda() != null){}

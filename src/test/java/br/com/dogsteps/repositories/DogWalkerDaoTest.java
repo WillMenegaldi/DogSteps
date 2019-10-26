@@ -11,7 +11,7 @@ import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 import java.util.Random;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class DogWalkerDaoTest {
 
@@ -23,6 +23,14 @@ public class DogWalkerDaoTest {
     @Before
     public void setUp(){
         dogWalkers = new DogWalkerRepository();
+    }
+
+    @Test
+    public void find(){
+        String idAleatoria = populaRepositorio(20);
+        assertEquals("dogwalker com id inválido deve ser null",null,
+                dogWalkers.find("dsdjoaddsd32123"));
+        assertEquals(idAleatoria ,dogWalkers.find(idAleatoria).getId());
     }
 
     @Test
@@ -45,6 +53,11 @@ public class DogWalkerDaoTest {
         testHelper(dogWalkerASerAlterado,"qualquer string vazia deve ser responder com BAD_REQUEST",
                 statusBADREQUEST, dogWalkers.update(dogWalkerASerAlterado));
 
+        dogWalkerASerAlterado.setEmail("dsasad232332");
+        System.out.println(dogWalkerASerAlterado.getEmail());
+        testHelper(dogWalkerASerAlterado, "email invalido deve ser responder com BAD_REQUEST",
+                statusBADREQUEST, dogWalkers.update(dogWalkerASerAlterado));
+
         dogWalkerASerAlterado.setIdade(-20);
         testHelper(dogWalkerASerAlterado,"idade negativa deve ser responder com BAD_REQUEST",
                 statusBADREQUEST, dogWalkers.update(dogWalkerASerAlterado));
@@ -58,7 +71,7 @@ public class DogWalkerDaoTest {
                 statusBADREQUEST, dogWalkers.update(dogWalkerASerAlterado));
 
         //Teste com Valor válido
-        dogWalkerASerAlterado.setEmail("asdweqweew");
+        dogWalkerASerAlterado.setEmail("teste@gmail.com");
         assertEquals(statusOK, dogWalkers.update(dogWalkerASerAlterado).toString());
     }
 
@@ -107,6 +120,7 @@ public class DogWalkerDaoTest {
     private void dogwalkerDefault(DogWalker dogWalker){
         dogWalker.setNome("Bob");
         dogWalker.setIdade(26);
+        dogWalker.setEmail("email@email.com");
         dogWalker.setAgenda(new Agenda());
     }
 

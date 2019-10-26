@@ -5,7 +5,6 @@ import br.com.dogsteps.enums.ESex;
 import br.com.dogsteps.models.Avaliacao;
 import br.com.dogsteps.models.Pet;
 import br.com.dogsteps.models.Tutor;
-import br.com.dogsteps.repositories.PetRepository;
 
 import org.junit.Before;
 import org.junit.Test;

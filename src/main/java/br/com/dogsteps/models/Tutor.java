@@ -5,14 +5,14 @@ import java.util.ArrayList;
 public class Tutor extends User
 {
 	private ArrayList<Pet> pets;
-	private ArrayList<Tour> tours;
+	private ArrayList<Passeio> passeios;
 
 	public Tutor(){}
 
-	public Tutor( String name, String photoUrl, int age, String cpf, String email, String password, Endereco address, Agenda timeSchedule, ArrayList<Pet> pets, ArrayList<Tour> tours) {
+	public Tutor( String name, String photoUrl, int age, String cpf, String email, String password, Endereco address, Agenda timeSchedule, ArrayList<Pet> pets, ArrayList<Passeio> passeios) {
 		super(name, photoUrl, age, cpf, email, password, address, timeSchedule);
 		this.pets = pets;
-		this.tours = tours;
+		this.passeios = passeios;
 	}
 
 	public ArrayList<Pet> getPets() {
@@ -23,11 +23,11 @@ public class Tutor extends User
 		this.pets = pets;
 	}
 
-	public ArrayList<Tour> getTours() {
-		return tours;
+	public ArrayList<Passeio> getPasseios() {
+		return passeios;
 	}
 
-	public void setTours(ArrayList<Tour> tours) {
-		this.tours = tours;
+	public void setPasseios(ArrayList<Passeio> passeios) {
+		this.passeios = passeios;
 	}
 }

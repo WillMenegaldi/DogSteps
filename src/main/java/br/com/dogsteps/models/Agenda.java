@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Agenda implements Serializable{
 
-	private ArrayList<Tour> horarios;
+	private ArrayList<Passeio> horarios;
 	private ArrayList<DayOfWeek> diasDisponivieis;
 	private DogWalker dogWalker;
 
