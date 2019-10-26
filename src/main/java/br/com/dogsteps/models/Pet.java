@@ -9,14 +9,21 @@ public class Pet extends Configuracoes implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private String nome;
+	private int idade;
+	private String foto;
+	private String raca;
 	private ESex sexo;
 	private EPort porte;
 	private ArrayList<Avaliacao> avaliacoes;
 	private double notaMedia;
 	private Tutor tutor;
 
-	public Pet(String nome, ESex sexo, EPort porte, ArrayList<Avaliacao> avaliacoes, double notaMedia, Tutor tutor) {
+	public Pet(String nome, int idade, String foto, String raca, ESex sexo, EPort porte, ArrayList<Avaliacao> avaliacoes,
+			   	double notaMedia, Tutor tutor) {
 		setName(nome);
+		setIdade(idade);
+		setFoto(foto);
+		setRaca(raca);
 		setSex(sexo);
 		setPorte(porte);
 		setAvaliacoes(avaliacoes);
@@ -30,6 +37,30 @@ public class Pet extends Configuracoes implements Serializable {
 
 	public void setName(String name) {
 		this.nome = name;
+	}
+
+	private void setIdade(int idade) {
+		this.idade = idade;
+	}
+
+	public int getIdade(){
+		return idade;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+
+	public String getFoto(){
+		return foto;
+	}
+
+	public void setRaca(String raca){
+		this.raca = raca;
+	}
+
+	public String getRaca(){
+		return raca;
 	}
 
 	public ESex getSex() {
