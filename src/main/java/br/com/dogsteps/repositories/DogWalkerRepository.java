@@ -1,9 +1,5 @@
 package br.com.dogsteps.repositories;
 
-import java.io.IOException;
-import java.util.List;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
 import br.com.dogsteps.dao.Dao;
 import br.com.dogsteps.excecoes.AgendaNullException;
 import br.com.dogsteps.excecoes.MenorIdadeException;
@@ -12,7 +8,11 @@ import br.com.dogsteps.excecoes.ValorNegativoException;
 import br.com.dogsteps.interfaces.IDao;
 import br.com.dogsteps.interfaces.IRepository;
 import br.com.dogsteps.models.DogWalker;
-import org.jetbrains.annotations.NotNull;
+
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
+import java.io.IOException;
+import java.util.List;
 
 public class DogWalkerRepository implements IRepository<DogWalker, String> {
 

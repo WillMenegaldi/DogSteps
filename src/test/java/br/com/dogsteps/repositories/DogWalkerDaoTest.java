@@ -16,6 +16,9 @@ import static org.junit.Assert.*;
 public class DogWalkerDaoTest {
 
     private static DogWalkerRepository dogWalkers;
+    static String statusBADREQUEST = Response.status(Response.Status.BAD_REQUEST).build().toString();
+    static String statusOK = Response.status(Response.Status.OK).build().toString();
+    static String statusNOTFOUND = Response.status(Response.Status.NOT_FOUND).build().toString();
 
     @Before
     public void setUp(){
@@ -25,10 +28,8 @@ public class DogWalkerDaoTest {
     @Test
     public void add() {
         DogWalker dogWalker = dogwalkerAleatorio();
-        String respostaEsperada = Response.status(Response.Status.OK).build().toString();
 
-        assertEquals(respostaEsperada, dogWalkers.add(dogWalker).toString());
-
+        assertEquals(statusOK, dogWalkers.add(dogWalker).toString());
         String id = dogWalker.getId();
         assertEquals(id, dogWalkers.find(id).getId());
 
@@ -37,8 +38,6 @@ public class DogWalkerDaoTest {
     @Test
     public void update() {
         String idAleatorio = populaRepositorio(20);
-        String statusBADREQUEST = Response.status(Response.Status.BAD_REQUEST).build().toString();
-        String statusOK = Response.status(Response.Status.OK).build().toString();
 
         DogWalker dogWalkerASerAlterado = dogWalkers.find(idAleatorio);
 
@@ -65,13 +64,14 @@ public class DogWalkerDaoTest {
 
     @Test
     public void remove() {
-        String statusBADREQUEST = Response.status(Response.Status.BAD_REQUEST).build().toString();
-        String statusOK = Response.status(Response.Status.OK).build().toString();
-        String statusNOTFOUND = Response.status(Response.Status.NOT_FOUND).build().toString();
 
         String id = populaRepositorio(20);
-        assertEquals("dogwalkers não encontrado recebe NOTFOUND",
+        assertEquals("dogwalker não encontrado recebe NOTFOUND",
                 statusNOTFOUND, dogWalkers.remove("3232323dsad").toString());
+
+        assertEquals("dogwalker encontrado recebe OK",
+                statusOK,dogWalkers.remove(id).toString());
+
     }
 
     private String populaRepositorio(int elementosACriar){
