@@ -37,20 +37,41 @@ public class DogWalkerDaoTest {
     @Test
     public void update() {
         String idAleatorio = populaRepositorio(20);
-        int novaIdade = -20;
+        String statusBADREQUEST = Response.status(Response.Status.BAD_REQUEST).build().toString();
+        String statusOK = Response.status(Response.Status.OK).build().toString();
+
         DogWalker dogWalkerASerAlterado = dogWalkers.find(idAleatorio);
-        dogWalkerASerAlterado.setIdade(novaIdade);
 
-        String respostaEsperada = Response.status(Response.Status.BAD_REQUEST).build().toString();
+        dogWalkerASerAlterado.setNome("");
+        testHelper(dogWalkerASerAlterado,"qualquer string vazia deve ser responder com BAD_REQUEST",
+                statusBADREQUEST, dogWalkers.update(dogWalkerASerAlterado));
 
-        assertEquals("não deverá alterar pois idade não é negativa",
-                respostaEsperada, dogWalkers.update(dogWalkerASerAlterado).toString());
+        dogWalkerASerAlterado.setIdade(-20);
+        testHelper(dogWalkerASerAlterado,"idade negativa deve ser responder com BAD_REQUEST",
+                statusBADREQUEST, dogWalkers.update(dogWalkerASerAlterado));
 
+        dogWalkerASerAlterado.setAgenda(null);
+        testHelper(dogWalkerASerAlterado,"referencia null deve ser rejeitada com BAD_REQUEST ",
+                statusBADREQUEST, dogWalkers.update(dogWalkerASerAlterado));
 
+        dogWalkerASerAlterado.setIdade(17);
+        testHelper(dogWalkerASerAlterado,"dogwalkers menores de idade são rejeitados com BAD_REQUEST ",
+                statusBADREQUEST, dogWalkers.update(dogWalkerASerAlterado));
+
+        //Teste com Valor válido
+        dogWalkerASerAlterado.setEmail("asdweqweew");
+        assertEquals(statusOK, dogWalkers.update(dogWalkerASerAlterado).toString());
     }
 
     @Test
     public void remove() {
+        String statusBADREQUEST = Response.status(Response.Status.BAD_REQUEST).build().toString();
+        String statusOK = Response.status(Response.Status.OK).build().toString();
+        String statusNOTFOUND = Response.status(Response.Status.NOT_FOUND).build().toString();
+
+        String id = populaRepositorio(20);
+        assertEquals("dogwalkers não encontrado recebe NOTFOUND",
+                statusNOTFOUND, dogWalkers.remove("3232323dsad").toString());
     }
 
     private String populaRepositorio(int elementosACriar){
@@ -81,5 +102,16 @@ public class DogWalkerDaoTest {
         return new DogWalker(nomes[indiceGerado], "photo", idade,
                 "12345678910", "email@email.com", "asd123456", new Endereco()
                 , new Agenda(), new ArrayList<Avaliacao>(), 0, "Gosto de cães");
+    }
+
+    private void dogwalkerDefault(DogWalker dogWalker){
+        dogWalker.setNome("Bob");
+        dogWalker.setIdade(26);
+        dogWalker.setAgenda(new Agenda());
+    }
+
+    private void testHelper(DogWalker dogWalker, String mensagem, String esperado, Response response){
+        assertEquals(mensagem, esperado,response.toString());
+        dogwalkerDefault(dogWalker);
     }
 }

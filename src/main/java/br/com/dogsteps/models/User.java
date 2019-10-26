@@ -1,7 +1,8 @@
 package br.com.dogsteps.models;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.Serializable;
-import java.util.UUID;
 
 public class User extends Configuracoes implements Serializable {
 	private String nome;

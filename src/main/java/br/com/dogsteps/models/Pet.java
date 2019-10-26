@@ -2,9 +2,9 @@ package br.com.dogsteps.models;
 
 import br.com.dogsteps.enums.EPort;
 import br.com.dogsteps.enums.ESex;
+
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.UUID;
 
 public class Pet extends Configuracoes implements Serializable {
 	private static final long serialVersionUID = 1L;

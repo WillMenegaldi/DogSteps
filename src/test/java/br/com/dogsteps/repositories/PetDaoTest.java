@@ -55,6 +55,7 @@ public class PetDaoTest {
         assertEquals("idade negativa deve ser responder com BAD_REQUEST",
                 statusBADREQUEST, pets.update(petASerAlterado).toString());
 
+        // teste com valor válido
         String statusOK = Response.status((Response.Status.OK)).build().toString();
         petASerAlterado.setIdade(10);
         petASerAlterado.setName("Bob");
