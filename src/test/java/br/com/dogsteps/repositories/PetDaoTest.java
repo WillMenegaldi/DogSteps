@@ -1,4 +1,4 @@
-package br.com.dogsteps.dao;
+package br.com.dogsteps.repositories;
 
 import br.com.dogsteps.enums.EPort;
 import br.com.dogsteps.enums.ESex;
