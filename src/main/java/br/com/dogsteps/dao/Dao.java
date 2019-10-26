@@ -2,12 +2,8 @@ package br.com.dogsteps.dao;
 
 import br.com.dogsteps.interfaces.IDao;
 import br.com.dogsteps.models.Configuracoes;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
-import java.io.ObjectInputStream;
-import java.io.IOException;
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
@@ -80,9 +76,12 @@ public class Dao<T extends Configuracoes> implements IDao<T, String> {
                 T t = (T) inputFile.readObject();
                 dados.add(t);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            saveInFile();
+        } catch (IOException | ClassNotFoundException e1){
+            e1.printStackTrace();
         }
+
         return dados;
     }
 

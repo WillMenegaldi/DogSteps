@@ -4,6 +4,7 @@ import br.com.dogsteps.enums.EPort;
 import br.com.dogsteps.enums.ESex;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class Pet extends Configuracoes implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -31,6 +32,8 @@ public class Pet extends Configuracoes implements Serializable {
 		setTutor(tutor);
 	}
 
+	public Pet(){}
+
 	public String getName() {
 		return nome;
 	}
@@ -39,28 +42,28 @@ public class Pet extends Configuracoes implements Serializable {
 		this.nome = name;
 	}
 
-	private void setIdade(int idade) {
-		this.idade = idade;
-	}
-
 	public int getIdade(){
 		return idade;
 	}
 
-	public void setFoto(String foto) {
-		this.foto = foto;
+	private void setIdade(int idade) {
+		this.idade = idade;
 	}
 
 	public String getFoto(){
 		return foto;
 	}
 
-	public void setRaca(String raca){
-		this.raca = raca;
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 
 	public String getRaca(){
 		return raca;
+	}
+
+	public void setRaca(String raca){
+		this.raca = raca;
 	}
 
 	public ESex getSex() {
@@ -103,5 +106,4 @@ public class Pet extends Configuracoes implements Serializable {
 		this.tutor = tutor;
 	}
 
-	public Pet(){}
 }
