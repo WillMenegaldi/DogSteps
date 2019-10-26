@@ -36,6 +36,17 @@ public class DogWalkerDaoTest {
 
     @Test
     public void update() {
+        String idAleatorio = populaRepositorio(20);
+        int novaIdade = -20;
+        DogWalker dogWalkerASerAlterado = dogWalkers.find(idAleatorio);
+        dogWalkerASerAlterado.setIdade(novaIdade);
+
+        String respostaEsperada = Response.status(Response.Status.BAD_REQUEST).build().toString();
+
+        assertEquals("não deverá alterar pois idade não é negativa",
+                respostaEsperada, dogWalkers.update(dogWalkerASerAlterado).toString());
+
+
     }
 
     @Test

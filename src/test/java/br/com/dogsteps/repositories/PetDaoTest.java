@@ -42,14 +42,24 @@ public class PetDaoTest {
 
     @Test
     public void update() {
+
         String idPetAleatorio = populaDao(20);
-        String novoNome = "Bob";
-        String respostaEsperada = Response.status((Response.Status.OK)).build().toString();
+
+        String statusBADREQUEST = Response.status((Response.Status.BAD_REQUEST)).build().toString();
         Pet petASerAlterado = pets.find(idPetAleatorio);
 
-        petASerAlterado.setName(novoNome);
-        assertEquals(respostaEsperada, pets.update(petASerAlterado).toString());
-        assertEquals(novoNome, pets.find(idPetAleatorio).getName());
+        petASerAlterado.setName("");
+        assertEquals("qualquer string vazia deve ser responder com BAD_REQUEST",
+                statusBADREQUEST, pets.update(petASerAlterado).toString());
+        petASerAlterado.setIdade(-32);
+        assertEquals("idade negativa deve ser responder com BAD_REQUEST",
+                statusBADREQUEST, pets.update(petASerAlterado).toString());
+
+        String statusOK = Response.status((Response.Status.OK)).build().toString();
+        petASerAlterado.setIdade(10);
+        petASerAlterado.setName("Bob");
+        assertEquals(statusOK, pets.add(petASerAlterado).toString());
+
     }
 
     private String populaDao(int elementosACriar) {

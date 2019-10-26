@@ -58,7 +58,7 @@ public class PetRepository implements IRepository<Pet, String> {
                 return Response.status(Response.Status.OK).build();
             else
                 return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
-        }catch ( ValorNegativoException | IllegalArgumentException e) {
+        }catch ( ValorNegativoException | StringVaziaException e) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
     }

@@ -46,7 +46,7 @@ public class Pet extends Configuracoes implements Serializable {
 		return idade;
 	}
 
-	private void setIdade(int idade) {
+	public void setIdade(int idade) {
 		this.idade = idade;
 	}
 
