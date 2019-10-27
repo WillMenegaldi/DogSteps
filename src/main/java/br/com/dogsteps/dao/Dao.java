@@ -70,7 +70,7 @@ public class Dao<T extends Configuracoes> implements IDao<T, String> {
                 return saveInFile();
             }
         }
-        return saveInFile();
+        return false;
     }
 
     private List<T> readFromFile() {

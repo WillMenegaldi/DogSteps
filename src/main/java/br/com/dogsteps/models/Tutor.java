@@ -9,7 +9,8 @@ public class Tutor extends User
 
 	public Tutor(){}
 
-	public Tutor( String name, String photoUrl, int age, String cpf, String email, String password, Endereco address, Agenda timeSchedule, ArrayList<Pet> pets, ArrayList<Passeio> passeios) {
+	public Tutor( String name, String photoUrl, int age, String cpf, String email, String password, Endereco address,
+				  Agenda timeSchedule, ArrayList<Pet> pets, ArrayList<Passeio> passeios) {
 		super(name, photoUrl, age, cpf, email, password, address, timeSchedule);
 		this.pets = pets;
 		this.passeios = passeios;
@@ -29,5 +30,13 @@ public class Tutor extends User
 
 	public void setPasseios(ArrayList<Passeio> passeios) {
 		this.passeios = passeios;
+	}
+
+	public void addPasseios(Passeio passeio){
+		passeios.add(passeio);
+	}
+
+	public void addPets(Pet pet){
+		pets.add(pet);
 	}
 }
