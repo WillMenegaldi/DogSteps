@@ -100,9 +100,20 @@ public class DogWalkerRepository implements IRepository<DogWalker, String> {
 
 
     public List<DogWalker> getListByFilter(DogWalkerDTO dto) {
+        if (dto.getEndereco() == null && dto.getPorte() == null)
+            return getList();
+
+        if (!dto.getEndereco().isEmpty() && dto.getPorte() != null)
+                return getList().stream()
+                .filter( dogWalker -> {
+                    return dogWalker.getPreferencias().getPorte().equals(dto.getPorte()) &&
+                    dogWalker.getEndereco().getRua().equals(dto.getEndereco());
+                }
+            ).collect(Collectors.toList());
+
         return getList().stream()
                 .filter( dogWalker -> {
-                            return dogWalker.getPreferencias().getPorte().equals(dto.getPorte()) &&
+                            return dogWalker.getPreferencias().getPorte().equals(dto.getPorte()) ||
                                     dogWalker.getEndereco().getRua().equals(dto.getEndereco());
                         }
                 ).collect(Collectors.toList());

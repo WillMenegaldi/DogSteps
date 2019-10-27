@@ -34,12 +34,10 @@ public class DogWalkerService implements IService<DogWalker, String>{
 
 	@POST
 	@Path("/filter")
-	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<DogWalker> getByFilter(DogWalkerDTO dto){
 		return dogWalkerRepository.getListByFilter(dto);
 	}
-	
 	
 	@GET
 	@Path("/{id}")

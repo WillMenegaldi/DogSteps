@@ -8,7 +8,7 @@ public class DogWalker extends User implements Serializable {
 
 	private ArrayList<Avaliacao> avaliacoes;
 	private double mediaAvaliacao;
-	private String descricao;
+		private String descricao;
 	private Preferencias preferencias;
 
 	public DogWalker(String nome, String photoUrl, int idade, String cpf, String email, String senha, Endereco endereco,
