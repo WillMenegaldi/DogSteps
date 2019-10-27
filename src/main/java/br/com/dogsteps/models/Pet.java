@@ -21,7 +21,7 @@ public class Pet extends Configuracoes implements Serializable {
 
     public Pet(String nome, int idade, String foto, String raca, ESex sexo, EPort porte, ArrayList<Avaliacao> avaliacoes,
                double notaMedia, Tutor tutor) {
-        setName(nome);
+        setNome(nome);
         setIdade(idade);
         setFoto(foto);
         setRaca(raca);
@@ -35,11 +35,11 @@ public class Pet extends Configuracoes implements Serializable {
     public Pet() {
     }
 
-    public String getName() {
+    public String getNome() {
         return nome;
     }
 
-    public void setName(String name) {
+    public void setNome(String name) {
         this.nome = name;
     }
 

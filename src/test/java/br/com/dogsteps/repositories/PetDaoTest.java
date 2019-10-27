@@ -61,7 +61,7 @@ public class PetDaoTest {
         String statusBADREQUEST = Response.status((Response.Status.BAD_REQUEST)).build().toString();
         Pet petASerAlterado = pets.find(idPetAleatorio);
 
-        petASerAlterado.setName("");
+        petASerAlterado.setNome("");
         assertEquals("qualquer string vazia deve ser responder com BAD_REQUEST",
                 statusBADREQUEST, pets.update(petASerAlterado).toString());
         petASerAlterado.setIdade(-32);
@@ -71,7 +71,7 @@ public class PetDaoTest {
         // teste com valor válido
         String statusOK = Response.status((Response.Status.OK)).build().toString();
         petASerAlterado.setIdade(10);
-        petASerAlterado.setName("Bob");
+        petASerAlterado.setNome("Bob");
         assertEquals(statusOK, pets.add(petASerAlterado).toString());
 
     }

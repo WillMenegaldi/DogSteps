@@ -83,7 +83,7 @@ public class PetRepository implements IRepository<Pet, String> {
         if (pet.getIdade() <= 0)
             throw new ValorNegativoException();
 
-        if (pet.getName().isEmpty() || pet.getFoto().isEmpty() || pet.getRaca().isEmpty())
+        if (pet.getNome().isEmpty() || pet.getFoto().isEmpty() || pet.getRaca().isEmpty())
             throw new StringVaziaException();
 
     }
