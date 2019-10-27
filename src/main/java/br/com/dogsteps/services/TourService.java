@@ -2,8 +2,8 @@ package br.com.dogsteps.services;
 
 import br.com.dogsteps.interfaces.IRepository;
 import br.com.dogsteps.interfaces.IService;
-import br.com.dogsteps.models.Tour;
-import br.com.dogsteps.repositories.TourRepository;
+import br.com.dogsteps.models.Passeio;
+import br.com.dogsteps.repositories.PasseioRepository;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -17,14 +17,14 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Path("/tours")
-public class TourService implements IService<Tour, String> {
-    private static IRepository<Tour, String> tourRepository = new TourRepository();
+public class TourService implements IService<Passeio, String> {
+    private static IRepository<Passeio, String> tourRepository = new PasseioRepository();
 
     @GET
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
     @Override
-    public List<Tour> getAll() {
+    public List<Passeio> getAll() {
         return tourRepository.getList();
     }
 
@@ -32,7 +32,7 @@ public class TourService implements IService<Tour, String> {
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Override
-    public Tour get(@PathParam("id") String id) {
+    public Passeio get(@PathParam("id") String id) {
         return tourRepository.find(id);
     }
 
@@ -40,16 +40,16 @@ public class TourService implements IService<Tour, String> {
     @Path("/")
     @Consumes(MediaType.APPLICATION_JSON)
     @Override
-    public Response insert(Tour tour) {
-        return tourRepository.add(tour);
+    public Response insert(Passeio passeio) {
+        return tourRepository.add(passeio);
     }
 
     @PUT
     @Path("/")
     @Consumes(MediaType.APPLICATION_JSON)
     @Override
-    public Response update(Tour tour) {
-        return tourRepository.update(tour);
+    public Response update(Passeio passeio) {
+        return tourRepository.update(passeio);
     }
 
     @DELETE

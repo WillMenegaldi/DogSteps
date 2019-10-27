@@ -2,75 +2,109 @@ package br.com.dogsteps.models;
 
 import br.com.dogsteps.enums.EPort;
 import br.com.dogsteps.enums.ESex;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Pet extends Configuracoes implements Serializable {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	private String nome;
-	private ESex sexo;
-	private EPort porte;
-	private ArrayList<Avaliacao> avaliacoes;
-	private double notaMedia;
-	private Tutor tutor;
+    private String nome;
+    private int idade;
+    private String foto;
+    private String raca;
+    private ESex sexo;
+    private EPort porte;
+    private ArrayList<Avaliacao> avaliacoes;
+    private double notaMedia;
+    private Tutor tutor;
 
-	public Pet(String nome, ESex sexo, EPort porte, ArrayList<Avaliacao> avaliacoes, double notaMedia, Tutor tutor) {
-		setName(nome);
-		setSex(sexo);
-		setPorte(porte);
-		setAvaliacoes(avaliacoes);
-		setNotaMedia(notaMedia);
-		setTutor(tutor);
-	}
+    public Pet(String nome, int idade, String foto, String raca, ESex sexo, EPort porte, ArrayList<Avaliacao> avaliacoes,
+               double notaMedia, Tutor tutor) {
+        setName(nome);
+        setIdade(idade);
+        setFoto(foto);
+        setRaca(raca);
+        setSex(sexo);
+        setPorte(porte);
+        setAvaliacoes(avaliacoes);
+        setNotaMedia(notaMedia);
+        setTutor(tutor);
+    }
 
-	public String getName() {
-		return nome;
-	}
+    public Pet() {
+    }
 
-	public void setName(String name) {
-		this.nome = name;
-	}
+    public String getName() {
+        return nome;
+    }
 
-	public ESex getSex() {
-		return sexo;
-	}
+    public void setName(String name) {
+        this.nome = name;
+    }
 
-	public void setSex(ESex sexo) {
-		this.sexo = sexo;
-	}
+    public int getIdade() {
+        return idade;
+    }
 
-	public EPort getPorte() {
-		return porte;
-	}
+    public void setIdade(int idade) {
+        this.idade = idade;
+    }
 
-	public void setPorte(EPort porte) {
-		this.porte = porte;
-	}
+    public String getFoto() {
+        return foto;
+    }
 
-	public ArrayList<Avaliacao> getAvaliacoes() {
-		return avaliacoes;
-	}
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
 
-	public void setAvaliacoes(ArrayList<Avaliacao> avaliacoes) {
-		this.avaliacoes = avaliacoes;
-	}
+    public String getRaca() {
+        return raca;
+    }
 
-	public double getNotaMedia() {
-		return notaMedia;
-	}
+    public void setRaca(String raca) {
+        this.raca = raca;
+    }
 
-	public void setNotaMedia(double notaMedia) {
-		this.notaMedia = notaMedia;
-	}
+    public ESex getSex() {
+        return sexo;
+    }
 
-	public Tutor getTutor() {
-		return tutor;
-	}
+    public void setSex(ESex sexo) {
+        this.sexo = sexo;
+    }
 
-	public void setTutor(Tutor tutor) {
-		this.tutor = tutor;
-	}
+    public EPort getPorte() {
+        return porte;
+    }
 
-	public Pet(){}
+    public void setPorte(EPort porte) {
+        this.porte = porte;
+    }
+
+    public ArrayList<Avaliacao> getAvaliacoes() {
+        return avaliacoes;
+    }
+
+    public void setAvaliacoes(ArrayList<Avaliacao> avaliacoes) {
+        this.avaliacoes = avaliacoes;
+    }
+
+    public double getNotaMedia() {
+        return notaMedia;
+    }
+
+    public void setNotaMedia(double notaMedia) {
+        this.notaMedia = notaMedia;
+    }
+
+    public Tutor getTutor() {
+        return tutor;
+    }
+
+    public void setTutor(Tutor tutor) {
+        this.tutor = tutor;
+    }
+
 }

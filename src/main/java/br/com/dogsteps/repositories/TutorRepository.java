@@ -1,6 +1,9 @@
 package br.com.dogsteps.repositories;
 
 import br.com.dogsteps.dao.Dao;
+import br.com.dogsteps.excecoes.EmailInvalidoException;
+import br.com.dogsteps.excecoes.StringVaziaException;
+import br.com.dogsteps.excecoes.ValorNegativoException;
 import br.com.dogsteps.interfaces.IDao;
 import br.com.dogsteps.interfaces.IRepository;
 import br.com.dogsteps.models.Tutor;
@@ -36,20 +39,55 @@ public class TutorRepository implements IRepository<Tutor, String>
     }
     @Override
     public Response add(Tutor tutor){
-        return TUTOR_DAO.add(tutor) ?
-            Response.status(Response.Status.OK).build()
-            : Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+        try {
+            validarRequisicao(tutor);
+            return TUTOR_DAO.add(tutor) ?
+                    Response.status(Response.Status.OK).build()
+                    : Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+        }catch (ValorNegativoException | StringVaziaException |
+                    EmailInvalidoException | NullPointerException e){
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        }
     }
     @Override
     public Response update(Tutor tutor){
-        return TUTOR_DAO.update(tutor) ?
-            Response.status(Response.Status.OK).build():
-            Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+        try {
+            return TUTOR_DAO.update(tutor) ?
+                    Response.status(Response.Status.OK).build() :
+                    Response.status(Response.Status.NOT_FOUND).build();
+        }catch (ValorNegativoException | StringVaziaException |
+                    EmailInvalidoException | NullPointerException e){
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        }
     }
     @Override
     public Response remove(String id){
-        return TUTOR_DAO.remove(id) ?
-            Response.status(Response.Status.OK).build():
-            Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+        if(id != null) {
+            if (!(id.isEmpty())) {
+                return TUTOR_DAO.remove(id) ?
+                        Response.status(Response.Status.OK).build() :
+                        Response.status(Response.Status.NOT_FOUND).build();
+            }
+        }return
+                Response.status(Response.Status.BAD_REQUEST).build();
+    }
+
+    private void validarRequisicao(Tutor tutor) throws ValorNegativoException, StringVaziaException,
+                    EmailInvalidoException{
+
+        if(tutor.getIdade() <= 0)
+            throw new ValorNegativoException();
+
+        if( tutor.getNome().isEmpty() || tutor.getEmail().isEmpty()
+                || tutor.getCpf().isEmpty() || tutor.getSenha().isEmpty() )
+            throw new StringVaziaException();
+
+        String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+        if(!( tutor.getEmail().matches(regex) ))
+            throw new EmailInvalidoException();
+
+        if(tutor.getAgenda() == null || tutor.getPasseios()  == null ||
+                tutor.getEndereco() == null)
+            throw new NullPointerException();
     }
 }

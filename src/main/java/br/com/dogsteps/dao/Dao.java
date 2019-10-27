@@ -2,12 +2,14 @@ package br.com.dogsteps.dao;
 
 import br.com.dogsteps.interfaces.IDao;
 import br.com.dogsteps.models.Configuracoes;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 import java.io.ObjectInputStream;
 import java.io.IOException;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
@@ -50,25 +52,25 @@ public class Dao<T extends Configuracoes> implements IDao<T, String> {
     @Override
     public boolean remove(String id) {
         ListIterator<T> iterator = dados.listIterator();
-        while(iterator.hasNext()){
-            if(iterator.next().getId().equals(id)){
+        while (iterator.hasNext()) {
+            if (iterator.next().getId().equals(id)) {
                 iterator.remove();
                 return saveInFile();
             }
         }
-        return saveInFile();
+        return false;
     }
 
     @Override
     public boolean update(T t) {
         ListIterator<T> iterator = dados.listIterator();
-        while(iterator.hasNext()){
-            if(iterator.next().getId().equals(t.getId())){
+        while (iterator.hasNext()) {
+            if (iterator.next().getId().equals(t.getId())) {
                 dados.set(iterator.nextIndex() - 1, t);
                 return saveInFile();
             }
         }
-        return saveInFile();
+        return false;
     }
 
     private List<T> readFromFile() {
@@ -80,9 +82,12 @@ public class Dao<T extends Configuracoes> implements IDao<T, String> {
                 T t = (T) inputFile.readObject();
                 dados.add(t);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            saveInFile();
+        } catch (IOException | ClassNotFoundException e1) {
+            e1.printStackTrace();
         }
+
         return dados;
     }
 
