@@ -1,6 +1,7 @@
 package br.com.dogsteps.repositories;
 
 import br.com.dogsteps.dao.Dao;
+import br.com.dogsteps.dtos.DogWalkerDTO;
 import br.com.dogsteps.excecoes.*;
 import br.com.dogsteps.interfaces.IDao;
 import br.com.dogsteps.interfaces.IRepository;
@@ -10,6 +11,9 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class DogWalkerRepository implements IRepository<DogWalker, String> {
 
@@ -92,6 +96,16 @@ public class DogWalkerRepository implements IRepository<DogWalker, String> {
 
         if (! (dogWalker.getEmail().matches(regex) ))
             throw new EmailInvalidoException();
+    }
+
+
+    public List<DogWalker> getListByFilter(DogWalkerDTO dto) {
+        return getList().stream()
+                .filter( dogWalker -> {
+                            return dogWalker.getPreferencias().getPorte().equals(dto.getPorte()) &&
+                                    dogWalker.getEndereco().getRua().equals(dto.getEndereco());
+                        }
+                ).collect(Collectors.toList());
     }
 
 }

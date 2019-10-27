@@ -12,6 +12,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+
+import br.com.dogsteps.dtos.DogWalkerDTO;
 import br.com.dogsteps.interfaces.IRepository;
 import br.com.dogsteps.interfaces.IService;
 import br.com.dogsteps.models.DogWalker;
@@ -20,13 +22,22 @@ import br.com.dogsteps.repositories.DogWalkerRepository;
 @Path("/dogwalkers")
 public class DogWalkerService implements IService<DogWalker, String>{	
 	
-	private static IRepository<DogWalker, String> dogWalkerRepository = new DogWalkerRepository();
-	
+	private static DogWalkerRepository dogWalkerRepository = new DogWalkerRepository();
+
+
 	@GET
 	@Path("/")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<DogWalker> getAll(){
 		return dogWalkerRepository.getList();
+	}
+
+	@POST
+	@Path("/filter")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<DogWalker> getByFilter(DogWalkerDTO dto){
+		return dogWalkerRepository.getListByFilter(dto);
 	}
 	
 	
