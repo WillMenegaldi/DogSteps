@@ -11,6 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
 import java.util.List;
+import java.util.Random;
 
 public class PetRepository implements IRepository<Pet, String> {
 
@@ -29,7 +30,7 @@ public class PetRepository implements IRepository<Pet, String> {
 
     @Override
     public List getList() {
-        return  PET_DAO.getAll();
+        return PET_DAO.getAll();
     }
 
     @Override
@@ -45,45 +46,45 @@ public class PetRepository implements IRepository<Pet, String> {
                 return Response.status(Response.Status.OK).build();
             else
                 return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
-        }catch (ValorNegativoException | StringVaziaException e){
+        } catch (ValorNegativoException | StringVaziaException e) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
     }
 
     @Override
     public Response update(Pet pet) {
-        try{
+        try {
             validarRequisicao(pet);
             if (PET_DAO.update(pet))
                 return Response.status(Response.Status.OK).build();
             else
                 return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
-        }catch ( ValorNegativoException | StringVaziaException e) {
+        } catch (ValorNegativoException | StringVaziaException e) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
     }
 
     @Override
     public Response remove(String id) {
-        if (PET_DAO.remove(id))
-            return Response.status(Response.Status.OK).build();
-        else
-            return Response.status((Response.Status.NOT_FOUND)).build();
+        if (id != null) {
+            if (!(id.isEmpty())) {
+                if (PET_DAO.remove(id))
+                    return Response.status(Response.Status.OK).build();
+                else
+                    return Response.status(Response.Status.NOT_FOUND).build();
+            }
+        }
+        return Response.status(Response.Status.BAD_REQUEST).build();
+
     }
 
     private void validarRequisicao(Pet pet) throws ValorNegativoException, StringVaziaException {
 
-        if (pet.getIdade() > 0){}
-
-        else {
+        if (pet.getIdade() <= 0)
             throw new ValorNegativoException();
-        }
 
-        if ( ! ( pet.getName().isEmpty() || pet.getFoto().isEmpty() || pet.getRaca().isEmpty() ) ){}
-
-        else {
+        if (pet.getName().isEmpty() || pet.getFoto().isEmpty() || pet.getRaca().isEmpty())
             throw new StringVaziaException();
-        }
 
     }
 }

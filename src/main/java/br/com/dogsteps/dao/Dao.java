@@ -52,8 +52,8 @@ public class Dao<T extends Configuracoes> implements IDao<T, String> {
     @Override
     public boolean remove(String id) {
         ListIterator<T> iterator = dados.listIterator();
-        while(iterator.hasNext()){
-            if(iterator.next().getId().equals(id)){
+        while (iterator.hasNext()) {
+            if (iterator.next().getId().equals(id)) {
                 iterator.remove();
                 return saveInFile();
             }
@@ -64,8 +64,8 @@ public class Dao<T extends Configuracoes> implements IDao<T, String> {
     @Override
     public boolean update(T t) {
         ListIterator<T> iterator = dados.listIterator();
-        while(iterator.hasNext()){
-            if(iterator.next().getId().equals(t.getId())){
+        while (iterator.hasNext()) {
+            if (iterator.next().getId().equals(t.getId())) {
                 dados.set(iterator.nextIndex() - 1, t);
                 return saveInFile();
             }
@@ -84,7 +84,7 @@ public class Dao<T extends Configuracoes> implements IDao<T, String> {
             }
         } catch (FileNotFoundException e) {
             saveInFile();
-        } catch (IOException | ClassNotFoundException e1){
+        } catch (IOException | ClassNotFoundException e1) {
             e1.printStackTrace();
         }
 

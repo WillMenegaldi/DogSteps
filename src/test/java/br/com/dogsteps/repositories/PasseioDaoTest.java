@@ -23,7 +23,7 @@ public class PasseioDaoTest {
     static String statusNOTFOUND = Response.status(Response.Status.NOT_FOUND).build().toString();
 
     @Before
-    public void setUp(){
+    public void setUp() {
         passeios = new PasseioRepository();
     }
 
@@ -40,7 +40,7 @@ public class PasseioDaoTest {
     public void add() {
         Passeio passeio = geraPasseio(0);
         assertEquals("deve ser negada referencia nula", statusBADREQUEST,
-                    passeios.add(null).toString());
+                passeios.add(null).toString());
 
         passeio.setDuracao(-3232);
         assertEquals("deve ser negado passeio com duracao negativa", statusBADREQUEST,
@@ -76,15 +76,15 @@ public class PasseioDaoTest {
     public void remove() {
     }
 
-    private String populaPasseio(int tamanho){
+    private String populaPasseio(int tamanho) {
         Random random = new Random();
         int indiceGerado = random.nextInt(tamanho);
         String idAleatorio = "";
 
-        for(int i = 0; i < tamanho; i++){
-            Passeio passeio = geraPasseio( random.nextInt(50) );
+        for (int i = 0; i < tamanho; i++) {
+            Passeio passeio = geraPasseio(random.nextInt(50));
             passeios.add(passeio);
-            if(i == indiceGerado){
+            if (i == indiceGerado) {
                 idAleatorio = passeio.getId();
             }
         }
@@ -92,8 +92,8 @@ public class PasseioDaoTest {
         return idAleatorio;
     }
 
-    private Passeio geraPasseio(int diaAFrente){
-        return new Passeio(LocalDate.now().plusDays(diaAFrente), ETourStatus.PENDING,1,
+    private Passeio geraPasseio(int diaAFrente) {
+        return new Passeio(LocalDate.now().plusDays(diaAFrente), ETourStatus.PENDING, 1,
                 new ArrayList<Pet>(), new DogWalker());
     }
 }

@@ -52,13 +52,32 @@ public class TutorRepositoryTest {
     @Test
     public void update() {
         String idAleatorio = populaTutores(20);
+
+        assertEquals("deve se recusar a busca com BAD_REQUEST ao enviar referencia null",
+                statusBADREQUEST, tutores.update(null).toString());
+
+        Tutor tutorASerAlterado = tutores.find(idAleatorio);
+        assertEquals("deve encontrar o tutor e retornar StatusOK",
+                statusOK, tutores.update(tutorASerAlterado).toString() );
         Tutor tutor = geraTutor();
         assertEquals("deve se recusar a exclusão com NOT_FOUND",
                 statusNOTFOUND, tutores.update(tutor).toString() );
+
     }
 
     @Test
     public void remove() {
+        String idAleatorio = populaTutores(20);
+
+        assertEquals("deve se recusar a busca com BAD_REQUEST ao enviar referencia null",
+                statusBADREQUEST, tutores.remove(null).toString());
+
+        assertEquals("deve se recusar a exclusão com NOT_FOUND",
+                statusNOTFOUND, tutores.remove("98789787u8hkok09").toString() );
+
+        Tutor tutorASerAlterado = tutores.find(idAleatorio);
+        assertEquals("deve encontrar o tutor e retornar StatusOK",
+                statusOK, tutores.remove(idAleatorio).toString() );
     }
 
     private String populaTutores(int tamanho){

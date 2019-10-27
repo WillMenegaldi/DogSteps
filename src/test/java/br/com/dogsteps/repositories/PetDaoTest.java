@@ -8,14 +8,19 @@ import br.com.dogsteps.models.Tutor;
 
 import org.junit.Before;
 import org.junit.Test;
+
 import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 import java.util.Random;
+
 import static org.junit.Assert.assertEquals;
 
 public class PetDaoTest {
 
     private static PetRepository pets;
+    static String statusBADREQUEST = Response.status(Response.Status.BAD_REQUEST).build().toString();
+    static String statusOK = Response.status(Response.Status.OK).build().toString();
+    static String statusNOTFOUND = Response.status(Response.Status.NOT_FOUND).build().toString();
 
     @Before
     public void setUp() {
@@ -35,8 +40,17 @@ public class PetDaoTest {
     @Test
     public void remove() {
         String id = populaDao(20);
-        String respostaEsperada = Response.status((Response.Status.OK)).build().toString();
-        assertEquals(respostaEsperada, pets.remove(id).toString());
+
+        assertEquals("Espera se que recuse a busca com BAD_REQUEST ao enviar String vazia",
+                statusBADREQUEST, pets.remove("").toString());
+
+        assertEquals("Espera se que recuse a busca com BAD_REQUEST ao enviar referencia nula",
+                statusBADREQUEST, pets.remove(null).toString());
+
+        assertEquals("Espera se que ao não encontrar, retorne NOT_FOUND",
+                statusNOTFOUND, pets.remove("32323dadsad4").toString());
+
+        assertEquals(statusOK, pets.remove(id).toString());
     }
 
     @Test
@@ -73,7 +87,6 @@ public class PetDaoTest {
             if (indiceGerado == i)
                 idAleatorioLista = pet.getId();
         }
-
         return idAleatorioLista;
     }
 

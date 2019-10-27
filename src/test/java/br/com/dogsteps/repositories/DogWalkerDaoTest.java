@@ -21,16 +21,8 @@ public class DogWalkerDaoTest {
     static String statusNOTFOUND = Response.status(Response.Status.NOT_FOUND).build().toString();
 
     @Before
-    public void setUp(){
+    public void setUp() {
         dogWalkers = new DogWalkerRepository();
-    }
-
-    @Test
-    public void find(){
-        String idAleatoria = populaRepositorio(20);
-        assertEquals("dogwalker com id inválido deve ser null",null,
-                dogWalkers.find("dsdjoaddsd32123"));
-        assertEquals(idAleatoria ,dogWalkers.find(idAleatoria).getId());
     }
 
     @Test
@@ -41,35 +33,38 @@ public class DogWalkerDaoTest {
         String id = dogWalker.getId();
         assertEquals(id, dogWalkers.find(id).getId());
 
+        dogWalker.setNome("");
+        testHelper(dogWalker, "qualquer string vazia deve ser responder com BAD_REQUEST",
+                statusBADREQUEST, dogWalkers.update(dogWalker));
+
+        dogWalker.setEmail("dsasad232332");
+        testHelper(dogWalker, "email invalido deve ser responder com BAD_REQUEST",
+                statusBADREQUEST, dogWalkers.update(dogWalker));
+
+        dogWalker.setIdade(-20);
+        testHelper(dogWalker, "idade negativa deve ser responder com BAD_REQUEST",
+                statusBADREQUEST, dogWalkers.update(dogWalker));
+
+        dogWalker.setAgenda(null);
+        testHelper(dogWalker, "referencia null deve ser rejeitada com BAD_REQUEST ",
+                statusBADREQUEST, dogWalkers.update(dogWalker));
+
+        dogWalker.setIdade(17);
+        testHelper(dogWalker, "dogwalkers menores de idade são rejeitados com BAD_REQUEST ",
+                statusBADREQUEST, dogWalkers.update(dogWalker));
+
     }
 
     @Test
     public void update() {
         String idAleatorio = populaRepositorio(20);
 
+        assertEquals("espera recusar referencia null com BAD_REQUEST",
+                statusBADREQUEST, dogWalkers.update(null).toString());
+        assertEquals("espera recusar update em dogwalker que não está inserido com NOT_FOUND",
+                statusNOTFOUND, dogWalkers.update(dogwalkerAleatorio()).toString());
+
         DogWalker dogWalkerASerAlterado = dogWalkers.find(idAleatorio);
-
-        dogWalkerASerAlterado.setNome("");
-        testHelper(dogWalkerASerAlterado,"qualquer string vazia deve ser responder com BAD_REQUEST",
-                statusBADREQUEST, dogWalkers.update(dogWalkerASerAlterado));
-
-        dogWalkerASerAlterado.setEmail("dsasad232332");
-        System.out.println(dogWalkerASerAlterado.getEmail());
-        testHelper(dogWalkerASerAlterado, "email invalido deve ser responder com BAD_REQUEST",
-                statusBADREQUEST, dogWalkers.update(dogWalkerASerAlterado));
-
-        dogWalkerASerAlterado.setIdade(-20);
-        testHelper(dogWalkerASerAlterado,"idade negativa deve ser responder com BAD_REQUEST",
-                statusBADREQUEST, dogWalkers.update(dogWalkerASerAlterado));
-
-        dogWalkerASerAlterado.setAgenda(null);
-        testHelper(dogWalkerASerAlterado,"referencia null deve ser rejeitada com BAD_REQUEST ",
-                statusBADREQUEST, dogWalkers.update(dogWalkerASerAlterado));
-
-        dogWalkerASerAlterado.setIdade(17);
-        testHelper(dogWalkerASerAlterado,"dogwalkers menores de idade são rejeitados com BAD_REQUEST ",
-                statusBADREQUEST, dogWalkers.update(dogWalkerASerAlterado));
-
         //Teste com Valor válido
         dogWalkerASerAlterado.setEmail("teste@gmail.com");
         assertEquals(statusOK, dogWalkers.update(dogWalkerASerAlterado).toString());
@@ -83,31 +78,31 @@ public class DogWalkerDaoTest {
                 statusNOTFOUND, dogWalkers.remove("3232323dsad").toString());
 
         assertEquals("dogwalker encontrado recebe OK",
-                statusOK,dogWalkers.remove(id).toString());
+                statusOK, dogWalkers.remove(id).toString());
 
     }
 
-    private String populaRepositorio(int elementosACriar){
+    private String populaRepositorio(int elementosACriar) {
 
         Random random = new Random();
         String idAleatorioLista = "";
         int indiceGerado = random.nextInt(elementosACriar);
 
-        for(int i = 0 ; i < elementosACriar; i++){
+        for (int i = 0; i < elementosACriar; i++) {
             DogWalker dogWalker = dogwalkerAleatorio();
             dogWalkers.add(dogWalker);
-            if(indiceGerado == i)
+            if (indiceGerado == i) {
                 idAleatorioLista = dogWalker.getId();
+            }
         }
-
         return idAleatorioLista;
     }
 
-    private DogWalker dogwalkerAleatorio(){
+    private DogWalker dogwalkerAleatorio() {
         Random random = new Random();
 
         String[] nomes = {"Pedro", "Carla", "Maria", "Mercedes", "Tatiana", "Cintia", "Gustavo", "Flávia",
-                            "Juliana", "Mateus"};
+                "Juliana", "Mateus"};
 
         int indiceGerado = random.nextInt(nomes.length);
         int idade = 18 + random.nextInt(100);
@@ -117,15 +112,15 @@ public class DogWalkerDaoTest {
                 , new Agenda(), new ArrayList<Avaliacao>(), 0, "Gosto de cães");
     }
 
-    private void dogwalkerDefault(DogWalker dogWalker){
+    private void dogwalkerDefault(DogWalker dogWalker) {
         dogWalker.setNome("Bob");
         dogWalker.setIdade(26);
         dogWalker.setEmail("email@email.com");
         dogWalker.setAgenda(new Agenda());
     }
 
-    private void testHelper(DogWalker dogWalker, String mensagem, String esperado, Response response){
-        assertEquals(mensagem, esperado,response.toString());
+    private void testHelper(DogWalker dogWalker, String mensagem, String esperado, Response response) {
+        assertEquals(mensagem, esperado, response.toString());
         dogwalkerDefault(dogWalker);
     }
 }
