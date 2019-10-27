@@ -92,9 +92,6 @@ public class DogWalkerRepository implements IRepository<DogWalker, String> {
 
         if (! (dogWalker.getEmail().matches(regex) ))
             throw new EmailInvalidoException();
-
-        if (dogWalker.getAgenda() == null)
-            throw new AgendaNullException();
     }
 
 }
