@@ -8,7 +8,8 @@ public class DogWalker extends User implements Serializable {
 
 	private ArrayList<Avaliacao> avaliacoes;
 	private double mediaAvaliacao;
-	private String descricao;
+		private String descricao;
+	private Preferencias preferencias;
 
 	public DogWalker(String nome, String photoUrl, int idade, String cpf, String email, String senha, Endereco endereco,
 			Agenda agenda, ArrayList<Avaliacao> avaliacoes, double mediaAvaliacao, String descricao) {
@@ -37,6 +38,13 @@ public class DogWalker extends User implements Serializable {
 	}
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+
+	public Preferencias getPreferencias() {
+		return preferencias;
+	}
+	public void setPreferencias(Preferencias preferencias) {
+		this.preferencias = preferencias;
 	}
 
 	public DogWalker(){}

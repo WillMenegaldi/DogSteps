@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Random;
 
-public class PetRepository implements IRepository<Pet, String> {
+public class PetRepository implements IRepository<Pet, String, null> {
 
     private static final String DIRETORIO = "database/pets.bin";
     private final IDao<Pet, String> PET_DAO = inicializarDao();
@@ -77,6 +77,12 @@ public class PetRepository implements IRepository<Pet, String> {
         return Response.status(Response.Status.BAD_REQUEST).build();
 
     }
+
+    @Override
+    public List<Pet> getListByFilter(Object o) {
+        return null;
+    }
+
 
     private void validarRequisicao(Pet pet) throws ValorNegativoException, StringVaziaException {
 

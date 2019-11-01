@@ -19,7 +19,7 @@ import java.util.List;
 @Path("/pets")
 public class PetService implements IService<Pet, String> {
 
-    private static IRepository<Pet, String> petRepository = new PetRepository();
+    private static IRepository<Pet, String, null> petRepository = new PetRepository();
 
     @GET
     @Path("/")
@@ -54,5 +54,10 @@ public class PetService implements IService<Pet, String> {
     @Produces(MediaType.APPLICATION_JSON)
     public Response remove(@PathParam("id") String id) {
         return petRepository.remove(id);
+    }
+
+    @Override
+    public List<Pet> getListByFilter(Object o) {
+        return null;
     }
 }
