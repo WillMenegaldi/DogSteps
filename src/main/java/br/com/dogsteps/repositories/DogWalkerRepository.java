@@ -1,7 +1,7 @@
 package br.com.dogsteps.repositories;
 
 import br.com.dogsteps.dao.Dao;
-import br.com.dogsteps.dtos.DogWalkerDTO;
+import br.com.dogsteps.models.dto.DogWalkerDTO;
 import br.com.dogsteps.excecoes.*;
 import br.com.dogsteps.interfaces.IDao;
 import br.com.dogsteps.interfaces.IRepository;
@@ -11,11 +11,10 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import java.io.IOException;
 import java.util.List;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public class DogWalkerRepository implements IRepository<DogWalker, String> {
+import static java.util.stream.Collectors.toList;
+
+public class DogWalkerRepository implements IRepository<DogWalker, String, DogWalkerDTO> {
 
     private static final String FILE_NAME = "database/dogwalker.bin";
     private final IDao<DogWalker, String> DOGWALKER_DAO = inicializarDao();
@@ -68,14 +67,34 @@ public class DogWalkerRepository implements IRepository<DogWalker, String> {
     public Response remove(String id) {
         if (id != null) {
             if (!(id.isEmpty())) {
-                if (DOGWALKER_DAO.remove(id))
-                    return Response.status(Status.OK).build();
-                else
-                    return Response.status(Status.NOT_FOUND).build();
+                System.out.println("io");
+//                if (DOGWALKER_DAO.remove(id))
+//                    return Response.status(Status.OK).build();
+//                else
+//                    return Response.status(Status.NOT_FOUND).build();
             }
         }
         return Response.status(Status.BAD_REQUEST).build();
 
+    }
+
+    @Override
+    public List<DogWalker> getListByFilter(DogWalkerDTO dogWalkerDTO ) {
+        if (dogWalkerDTO.getPorte() == null && dogWalkerDTO.getEndereco() == null)
+            return getList();
+
+        if (dogWalkerDTO.getPorte() != null && !dogWalkerDTO.getEndereco().isEmpty())
+            return getList().stream()
+                    .filter( dogWalker ->
+                            dogWalker.getPreferencias().getPorte().equals(dogWalkerDTO.getPorte()) &&
+                                    dogWalker.getEndereco().getRua().equals(dogWalkerDTO.getEndereco())
+                    ).collect(toList());
+
+        return getList().stream().
+                filter( dogWalker ->
+                        dogWalker.getEndereco().getRua().equals(dogWalkerDTO.getEndereco()) ||
+                                dogWalker.getPreferencias().getPorte().equals(dogWalkerDTO.getPorte())
+                ).collect(toList());
     }
 
     public void validarRequisicao(DogWalker dogWalker)
@@ -97,26 +116,4 @@ public class DogWalkerRepository implements IRepository<DogWalker, String> {
         if (! (dogWalker.getEmail().matches(regex) ))
             throw new EmailInvalidoException();
     }
-
-
-    public List<DogWalker> getListByFilter(DogWalkerDTO dto) {
-        if (dto.getEndereco() == null && dto.getPorte() == null)
-            return getList();
-
-        if (!dto.getEndereco().isEmpty() && dto.getPorte() != null)
-                return getList().stream()
-                .filter( dogWalker -> {
-                    return dogWalker.getPreferencias().getPorte().equals(dto.getPorte()) &&
-                    dogWalker.getEndereco().getRua().equals(dto.getEndereco());
-                }
-            ).collect(Collectors.toList());
-
-        return getList().stream()
-                .filter( dogWalker -> {
-                            return dogWalker.getPreferencias().getPorte().equals(dto.getPorte()) ||
-                                    dogWalker.getEndereco().getRua().equals(dto.getEndereco());
-                        }
-                ).collect(Collectors.toList());
-    }
-
 }

@@ -13,17 +13,16 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import br.com.dogsteps.dtos.DogWalkerDTO;
 import br.com.dogsteps.interfaces.IRepository;
+import br.com.dogsteps.models.dto.DogWalkerDTO;
 import br.com.dogsteps.interfaces.IService;
 import br.com.dogsteps.models.DogWalker;
 import br.com.dogsteps.repositories.DogWalkerRepository;
 
 @Path("/dogwalkers")
-public class DogWalkerService implements IService<DogWalker, String>{	
-	
-	private static DogWalkerRepository dogWalkerRepository = new DogWalkerRepository();
+public class DogWalkerService implements IService<DogWalker, String, DogWalkerDTO>{
 
+	private static IRepository<DogWalker, String, DogWalkerDTO> dogWalkerRepository = new DogWalkerRepository();
 
 	@GET
 	@Path("/")
@@ -34,11 +33,12 @@ public class DogWalkerService implements IService<DogWalker, String>{
 
 	@POST
 	@Path("/filter")
-	@Produces(MediaType.APPLICATION_JSON)
-	public List<DogWalker> getByFilter(DogWalkerDTO dto){
-		return dogWalkerRepository.getListByFilter(dto);
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Override
+	public List<DogWalker> getListByFilter(DogWalkerDTO dogWalkerDTO) {
+		return dogWalkerRepository.getListByFilter(dogWalkerDTO);
 	}
-	
+
 	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -66,5 +66,4 @@ public class DogWalkerService implements IService<DogWalker, String>{
 	public Response remove(@PathParam("id") String id) {
 		return dogWalkerRepository.remove(id);
 	}
-	
 }
