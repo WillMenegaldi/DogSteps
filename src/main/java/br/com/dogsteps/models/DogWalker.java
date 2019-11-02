@@ -6,9 +6,9 @@ import java.util.ArrayList;
 public class DogWalker extends User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private ArrayList<Avaliacao> avaliacoes;
 	private double mediaAvaliacao;
-		private String descricao;
+	private String descricao;
+	private ArrayList<Avaliacao> avaliacoes;
 	private Preferencias preferencias;
 
 	public DogWalker(String nome, String photoUrl, int idade, String cpf, String email, String senha, Endereco endereco,
