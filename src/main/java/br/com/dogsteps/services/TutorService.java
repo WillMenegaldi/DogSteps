@@ -3,6 +3,7 @@ package br.com.dogsteps.services;
 import br.com.dogsteps.interfaces.IRepository;
 import br.com.dogsteps.interfaces.IService;
 import br.com.dogsteps.models.Tutor;
+import br.com.dogsteps.models.dto.TutorDTO;
 import br.com.dogsteps.repositories.TutorRepository;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -17,9 +18,9 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Path("/tutores")
-public class TutorService implements IService<Tutor, String>
+public class TutorService implements IService<Tutor, String, TutorDTO>
 {
-	private static IRepository<Tutor, String> tutorRepository = new TutorRepository();
+	private static IRepository<Tutor, String, TutorDTO> tutorRepository = new TutorRepository();
 
 	@GET
 	@Path("/")
@@ -59,5 +60,10 @@ public class TutorService implements IService<Tutor, String>
 	@Override
 	public Response remove(@PathParam("id") String id) {
 		return tutorRepository.remove(id);
+	}
+
+	@Override
+	public List<Tutor> getListByFilter(TutorDTO tutorDTO) {
+		return null;
 	}
 }

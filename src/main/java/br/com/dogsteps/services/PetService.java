@@ -3,6 +3,7 @@ package br.com.dogsteps.services;
 import br.com.dogsteps.interfaces.IRepository;
 import br.com.dogsteps.interfaces.IService;
 import br.com.dogsteps.models.Pet;
+import br.com.dogsteps.models.dto.PetDTO;
 import br.com.dogsteps.repositories.PetRepository;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -17,9 +18,9 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Path("/pets")
-public class PetService implements IService<Pet, String> {
+public class PetService implements IService<Pet, String, PetDTO> {
 
-    private static IRepository<Pet, String, null> petRepository = new PetRepository();
+    private static IRepository<Pet, String, PetDTO> petRepository = new PetRepository();
 
     @GET
     @Path("/")
@@ -57,7 +58,7 @@ public class PetService implements IService<Pet, String> {
     }
 
     @Override
-    public List<Pet> getListByFilter(Object o) {
+    public List<Pet> getListByFilter(PetDTO petDTO) {
         return null;
     }
 }
