@@ -1,4 +1,4 @@
- package br.com.dogsteps.repositories;
+package br.com.dogsteps.repositories;
 
 import br.com.dogsteps.dao.Dao;
 import br.com.dogsteps.excecoes.DataInvalidaException;

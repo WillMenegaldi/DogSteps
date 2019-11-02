@@ -8,7 +8,6 @@ import br.com.dogsteps.interfaces.IDao;
 import br.com.dogsteps.interfaces.IRepository;
 import br.com.dogsteps.models.Tutor;
 import br.com.dogsteps.models.dto.TutorDTO;
-
 import javax.ws.rs.core.Response;
 import java.io.IOException;
 import java.util.List;

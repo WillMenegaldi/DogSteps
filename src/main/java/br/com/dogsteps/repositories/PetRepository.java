@@ -8,11 +8,9 @@ import br.com.dogsteps.interfaces.IRepository;
 import br.com.dogsteps.models.Pet;
 import br.com.dogsteps.models.dto.PetDTO;
 import org.jetbrains.annotations.NotNull;
-
 import javax.ws.rs.core.Response;
 import java.io.IOException;
 import java.util.List;
-import java.util.Random;
 
 public class PetRepository implements IRepository<Pet, String, PetDTO> {
 
