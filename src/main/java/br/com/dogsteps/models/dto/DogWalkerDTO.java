@@ -1,14 +1,17 @@
 package br.com.dogsteps.models.dto;
 
 import br.com.dogsteps.enums.EPort;
+import br.com.dogsteps.models.Agenda;
 
 public class DogWalkerDTO {
     String endereco;
     EPort porte;
+    Agenda agenda;
 
-    public DogWalkerDTO(String endereco, EPort porte) {
+    public DogWalkerDTO(String endereco, EPort porte, Agenda agenda) {
         this.endereco = endereco;
         this.porte = porte;
+        this.agenda = agenda;
     }
 
     public String getEndereco() {
@@ -23,6 +26,13 @@ public class DogWalkerDTO {
     }
     public void setPorte(EPort porte) {
         this.porte = porte;
+    }
+
+    public Agenda getAgenda() {
+        return agenda;
+    }
+    public void setAgenda(Agenda agenda) {
+        this.agenda = agenda;
     }
 
     DogWalkerDTO(){}

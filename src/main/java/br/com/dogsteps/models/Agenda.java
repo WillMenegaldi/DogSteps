@@ -5,18 +5,18 @@ import java.io.Serializable;
 import java.util.List;
 
 public class Agenda implements Serializable{
-	private ESchedule horario;
+	private List<ESchedule> horario;
 	private List<EDay> dias;
 
-	public Agenda(ESchedule horario, List<EDay> dias) {
+	public Agenda(List<ESchedule> horario, List<EDay> dias) {
 		this.horario = horario;
 		this.dias = dias;
 	}
 
-	public ESchedule getHorario() {
+	public List<ESchedule> getHorario() {
 		return horario;
 	}
-	public void setHorario(ESchedule horario) {
+	public void setHorario(List<ESchedule> horario) {
 		this.horario = horario;
 	}
 
