@@ -1,8 +1,0 @@
-/target
-/jars
-/.classpath
-/.idea
-/.settings
-.project
-dogsteps.iml
-pom.xml
