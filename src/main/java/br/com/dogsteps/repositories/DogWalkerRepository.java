@@ -6,7 +6,6 @@ import br.com.dogsteps.excecoes.*;
 import br.com.dogsteps.interfaces.IDao;
 import br.com.dogsteps.interfaces.IRepository;
 import br.com.dogsteps.models.DogWalker;
-
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import java.io.IOException;
@@ -83,11 +82,13 @@ public class DogWalkerRepository implements IRepository<DogWalker, String, DogWa
         if (dogWalkerDTO.getPorte() == null && dogWalkerDTO.getEndereco() == null)
             return getList();
 
-        if (dogWalkerDTO.getPorte() != null && !dogWalkerDTO.getEndereco().isEmpty())
+        if (dogWalkerDTO.getPorte() != null && !dogWalkerDTO.getEndereco().isEmpty() && dogWalkerDTO.getAgenda().getHorario() != null && dogWalkerDTO.getAgenda().getDias() != null)
             return getList().stream()
                     .filter( dogWalker ->
                             dogWalker.getPreferencias().getPorte().equals(dogWalkerDTO.getPorte()) &&
-                                    dogWalker.getEndereco().getRua().equals(dogWalkerDTO.getEndereco())
+                            dogWalker.getEndereco().getRua().equals(dogWalkerDTO.getEndereco()) &&
+                            dogWalker.getAgenda().getDias().equals(dogWalkerDTO.getAgenda().getDias()) &&
+                            dogWalker.getAgenda().getHorario().equals(dogWalkerDTO.getAgenda().getHorario())
                     ).collect(toList());
 
         return getList().stream().

@@ -3,6 +3,7 @@ package br.com.dogsteps.services;
 import br.com.dogsteps.interfaces.IRepository;
 import br.com.dogsteps.interfaces.IService;
 import br.com.dogsteps.models.Passeio;
+import br.com.dogsteps.models.dto.TourDTO;
 import br.com.dogsteps.repositories.PasseioRepository;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -17,8 +18,8 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Path("/tours")
-public class TourService implements IService<Passeio, String> {
-    private static IRepository<Passeio, String> tourRepository = new PasseioRepository();
+public class TourService implements IService<Passeio, String, TourDTO> {
+    private static IRepository<Passeio, String, TourDTO> tourRepository = new PasseioRepository();
 
     @GET
     @Path("/")
@@ -58,5 +59,10 @@ public class TourService implements IService<Passeio, String> {
     @Override
     public Response remove(@PathParam("id") String id) {
         return tourRepository.remove(id);
+    }
+
+    @Override
+    public List<Passeio> getListByFilter(TourDTO tourDTO) {
+        return null;
     }
 }

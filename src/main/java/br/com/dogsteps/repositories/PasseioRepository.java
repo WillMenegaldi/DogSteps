@@ -1,4 +1,4 @@
- package br.com.dogsteps.repositories;
+package br.com.dogsteps.repositories;
 
 import br.com.dogsteps.dao.Dao;
 import br.com.dogsteps.excecoes.DataInvalidaException;
@@ -6,12 +6,13 @@ import br.com.dogsteps.excecoes.ValorNegativoException;
 import br.com.dogsteps.interfaces.IDao;
 import br.com.dogsteps.interfaces.IRepository;
 import br.com.dogsteps.models.Passeio;
+import br.com.dogsteps.models.dto.TourDTO;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
-public class PasseioRepository implements IRepository<Passeio, String> {
+public class PasseioRepository implements IRepository<Passeio, String, TourDTO> {
 	private static final String FILE_NAME = "database/tour.bin";
 	private final IDao<Passeio, String> TOUR_DAO = inicializarDao();
 
@@ -71,6 +72,11 @@ public class PasseioRepository implements IRepository<Passeio, String> {
 		}else
 			return Response.status(Response.Status.BAD_REQUEST).build();
 
+	}
+
+	@Override
+	public List<Passeio> getListByFilter(TourDTO tourDTO) {
+		return null;
 	}
 
 	private void validarRequisicao(Passeio passeio)

@@ -7,11 +7,12 @@ import br.com.dogsteps.excecoes.ValorNegativoException;
 import br.com.dogsteps.interfaces.IDao;
 import br.com.dogsteps.interfaces.IRepository;
 import br.com.dogsteps.models.Tutor;
+import br.com.dogsteps.models.dto.TutorDTO;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
 import java.util.List;
 
-public class TutorRepository implements IRepository<Tutor, String>
+public class TutorRepository implements IRepository<Tutor, String, TutorDTO>
 {
     private static final String FILE_NAME = "database/tutor.bin";
     private final IDao<Tutor, String> TUTOR_DAO = inicializarDao();
@@ -70,6 +71,11 @@ public class TutorRepository implements IRepository<Tutor, String>
             }
         }return
                 Response.status(Response.Status.BAD_REQUEST).build();
+    }
+
+    @Override
+    public List<Tutor> getListByFilter(TutorDTO tutorDTO) {
+        return null;
     }
 
     private void validarRequisicao(Tutor tutor) throws ValorNegativoException, StringVaziaException,

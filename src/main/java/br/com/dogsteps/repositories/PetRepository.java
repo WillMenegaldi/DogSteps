@@ -6,14 +6,13 @@ import br.com.dogsteps.excecoes.ValorNegativoException;
 import br.com.dogsteps.interfaces.IDao;
 import br.com.dogsteps.interfaces.IRepository;
 import br.com.dogsteps.models.Pet;
+import br.com.dogsteps.models.dto.PetDTO;
 import org.jetbrains.annotations.NotNull;
-
 import javax.ws.rs.core.Response;
 import java.io.IOException;
 import java.util.List;
-import java.util.Random;
 
-public class PetRepository implements IRepository<Pet, String, null> {
+public class PetRepository implements IRepository<Pet, String, PetDTO> {
 
     private static final String DIRETORIO = "database/pets.bin";
     private final IDao<Pet, String> PET_DAO = inicializarDao();
@@ -79,7 +78,7 @@ public class PetRepository implements IRepository<Pet, String, null> {
     }
 
     @Override
-    public List<Pet> getListByFilter(Object o) {
+    public List<Pet> getListByFilter(PetDTO petDTO) {
         return null;
     }
 
