@@ -2,7 +2,6 @@ package br.com.dogsteps.models.dto;
 
 import br.com.dogsteps.enums.EPort;
 import br.com.dogsteps.models.Agenda;
-
 import java.util.List;
 
 public class DogWalkerDTO {
