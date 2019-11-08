@@ -87,14 +87,6 @@ public class PasseioRepository implements IRepository<Passeio, String, TourDTO> 
 			throw new NullPointerException();
 		}
 
-		if(passeio.getData().isAfter(LocalDate.now())){}
-		else{
-			throw new DataInvalidaException();
-		}
 
-		if(passeio.getDuracao() > 0){}
-		else{
-			throw new ValorNegativoException();
-		}
 	}
 }
