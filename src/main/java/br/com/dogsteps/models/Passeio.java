@@ -6,30 +6,31 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import br.com.dogsteps.enums.EDuracao;
 import br.com.dogsteps.enums.ETourStatus;
 
 public class Passeio extends Configuracoes implements Serializable{
 	private static final long serialVersionUID = 1L;
-	private LocalDate data;
+	private Agenda agenda;
 	private ETourStatus status;
-	private double duracao;
+	private EDuracao duracao;
 	private List<Pet> pets =  new ArrayList<>();
 	private DogWalker dogWalker;
 
-	public Passeio(LocalDate data, ETourStatus status, double duracao, List<Pet> pets, DogWalker dogWalker) {
+	public Passeio(Agenda agenda, ETourStatus status, EDuracao duracao, List<Pet> pets, DogWalker dogWalker) {
 		setId(UUID.randomUUID().toString());
-		this.data = data;
+		this.agenda = agenda;
 		this.status = status;
 		this.duracao = duracao;
 		this.dogWalker = dogWalker;
 		this.pets = pets;
 	}
 
-	public LocalDate getData() {
-		return data;
+	public Agenda getAgenda() {
+		return agenda;
 	}
-	public void setData(LocalDate data) {
-		this.data = data;
+	public void setAgenda(Agenda agenda) {
+		this.agenda = agenda;
 	}
 
 	public ETourStatus getStatus() {
@@ -39,10 +40,10 @@ public class Passeio extends Configuracoes implements Serializable{
 		this.status = status;
 	}
 
-	public double getDuracao() {
+	public EDuracao getDuracao() {
 		return duracao;
 	}
-	public void setDuracao(double duracao) {
+	public void setDuracao(EDuracao duracao) {
 		this.duracao = duracao;
 	}
 

@@ -9,7 +9,6 @@ import br.com.dogsteps.models.Passeio;
 import br.com.dogsteps.models.dto.TourDto;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.List;
 
 public class PasseioRepository implements IRepositoryDao<Passeio, String, TourDto> {
@@ -85,16 +84,6 @@ public class PasseioRepository implements IRepositoryDao<Passeio, String, TourDt
 		if(passeio != null){}
 		else{
 			throw new NullPointerException();
-		}
-
-		if(passeio.getData().isAfter(LocalDate.now())){}
-		else{
-			throw new DataInvalidaException();
-		}
-
-		if(passeio.getDuracao() > 0){}
-		else{
-			throw new ValorNegativoException();
 		}
 	}
 }
