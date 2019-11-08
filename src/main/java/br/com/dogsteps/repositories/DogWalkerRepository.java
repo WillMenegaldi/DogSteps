@@ -4,12 +4,12 @@ import br.com.dogsteps.dao.Dao;
 import br.com.dogsteps.interfaces.IFilterLogin;
 import br.com.dogsteps.interfaces.IRepositoryDao;
 import br.com.dogsteps.models.User;
-import br.com.dogsteps.models.dto.DogWalkerDTO;
+import br.com.dogsteps.models.dto.DogWalkerDto;
 import br.com.dogsteps.excecoes.*;
 import br.com.dogsteps.interfaces.IDao;
-import br.com.dogsteps.interfaces.IRepository;
 import br.com.dogsteps.models.DogWalker;
 import br.com.dogsteps.models.dto.UserDto;
+import br.com.dogsteps.utils.Login;
 
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
@@ -18,10 +18,16 @@ import java.util.List;
 
 import static java.util.stream.Collectors.toList;
 
-public class DogWalkerRepository implements IRepositoryDao<DogWalker, String, DogWalkerDTO>, IFilterLogin {
+public class DogWalkerRepository implements IRepositoryDao<DogWalker, String, DogWalkerDto> {
 
     private static final String FILE_NAME = "database/dogwalker.bin";
     private final IDao<DogWalker, String> DOGWALKER_DAO = inicializarDao();
+    private static final IFilterLogin filterLogin = new Login();
+
+    public User filtrarDogWalker(UserDto userDto)
+    {
+        return filterLogin.filtrarUsuario(userDto);
+    }
 
     public Dao inicializarDao() {
         try {
@@ -83,7 +89,7 @@ public class DogWalkerRepository implements IRepositoryDao<DogWalker, String, Do
     }
 
     @Override
-    public List<DogWalker> getListByFilter(DogWalkerDTO dogWalkerDTO ) {
+    public List<DogWalker> getListByFilter(DogWalkerDto dogWalkerDTO ) {
         if (dogWalkerDTO.getPorte() == null && dogWalkerDTO.getEndereco() == null)
             return getList();
 
@@ -121,10 +127,5 @@ public class DogWalkerRepository implements IRepositoryDao<DogWalker, String, Do
 
         if (! (dogWalker.getEmail().matches(regex) ))
             throw new EmailInvalidoException();
-    }
-
-    @Override
-    public List<User> logarUsuario(UserDto userDto) {
-        return null;
     }
 }

@@ -4,13 +4,13 @@ import br.com.dogsteps.enums.EPort;
 import br.com.dogsteps.models.Agenda;
 import java.util.List;
 
-public class DogWalkerDTO {
+public class DogWalkerDto {
     private String endereco;
     private List<Integer[]> coordenadas;
     private EPort porte;
     private Agenda agenda;
 
-    public DogWalkerDTO(String endereco, List<Integer[]> coordenadas, EPort porte, Agenda agenda) {
+    public DogWalkerDto(String endereco, List<Integer[]> coordenadas, EPort porte, Agenda agenda) {
         this.endereco = endereco;
         this.coordenadas = coordenadas;
         this.porte = porte;
@@ -45,5 +45,5 @@ public class DogWalkerDTO {
         this.agenda = agenda;
     }
 
-    DogWalkerDTO(){}
+    DogWalkerDto(){}
 }

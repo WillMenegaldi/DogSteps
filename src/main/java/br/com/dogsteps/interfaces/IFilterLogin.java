@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface IFilterLogin
 {
-    public List<User> logarUsuario(UserDto userDto );
+    public User filtrarUsuario(UserDto userDto );
 }

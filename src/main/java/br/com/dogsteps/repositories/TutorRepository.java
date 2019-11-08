@@ -5,17 +5,28 @@ import br.com.dogsteps.excecoes.EmailInvalidoException;
 import br.com.dogsteps.excecoes.StringVaziaException;
 import br.com.dogsteps.excecoes.ValorNegativoException;
 import br.com.dogsteps.interfaces.IDao;
-import br.com.dogsteps.interfaces.IRepository;
+import br.com.dogsteps.interfaces.IFilterLogin;
+import br.com.dogsteps.interfaces.IRepositoryDao;
 import br.com.dogsteps.models.Tutor;
-import br.com.dogsteps.models.dto.TutorDTO;
+import br.com.dogsteps.models.User;
+import br.com.dogsteps.models.dto.TutorDto;
+import br.com.dogsteps.models.dto.UserDto;
+import br.com.dogsteps.utils.Login;
+
 import javax.ws.rs.core.Response;
 import java.io.IOException;
 import java.util.List;
 
-public class TutorRepository implements IRepository<Tutor, String, TutorDTO>
+public class TutorRepository implements IRepositoryDao<Tutor, String, TutorDto>
 {
     private static final String FILE_NAME = "database/tutor.bin";
     private final IDao<Tutor, String> TUTOR_DAO = inicializarDao();
+    private static final IFilterLogin filterLogin = new Login();
+
+    public User filtrarTutor(UserDto userDto)
+    {
+        return filterLogin.filtrarUsuario(userDto);
+    }
 
     public Dao inicializarDao()
     {
@@ -74,7 +85,7 @@ public class TutorRepository implements IRepository<Tutor, String, TutorDTO>
     }
 
     @Override
-    public List<Tutor> getListByFilter(TutorDTO tutorDTO) {
+    public List<Tutor> getListByFilter(TutorDto tutorDTO) {
         return null;
     }
 
