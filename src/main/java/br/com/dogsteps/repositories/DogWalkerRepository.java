@@ -1,11 +1,16 @@
 package br.com.dogsteps.repositories;
 
 import br.com.dogsteps.dao.Dao;
+import br.com.dogsteps.interfaces.IFilterLogin;
+import br.com.dogsteps.interfaces.IRepositoryDao;
+import br.com.dogsteps.models.User;
 import br.com.dogsteps.models.dto.DogWalkerDTO;
 import br.com.dogsteps.excecoes.*;
 import br.com.dogsteps.interfaces.IDao;
 import br.com.dogsteps.interfaces.IRepository;
 import br.com.dogsteps.models.DogWalker;
+import br.com.dogsteps.models.dto.UserDto;
+
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import java.io.IOException;
@@ -13,7 +18,7 @@ import java.util.List;
 
 import static java.util.stream.Collectors.toList;
 
-public class DogWalkerRepository implements IRepository<DogWalker, String, DogWalkerDTO> {
+public class DogWalkerRepository implements IRepositoryDao<DogWalker, String, DogWalkerDTO>, IFilterLogin {
 
     private static final String FILE_NAME = "database/dogwalker.bin";
     private final IDao<DogWalker, String> DOGWALKER_DAO = inicializarDao();
@@ -116,5 +121,10 @@ public class DogWalkerRepository implements IRepository<DogWalker, String, DogWa
 
         if (! (dogWalker.getEmail().matches(regex) ))
             throw new EmailInvalidoException();
+    }
+
+    @Override
+    public List<User> logarUsuario(UserDto userDto) {
+        return null;
     }
 }
