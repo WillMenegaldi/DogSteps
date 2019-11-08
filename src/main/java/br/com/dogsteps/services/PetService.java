@@ -2,6 +2,7 @@ package br.com.dogsteps.services;
 
 import br.com.dogsteps.interfaces.IRepository;
 import br.com.dogsteps.interfaces.IService;
+import br.com.dogsteps.interfaces.IServiceDao;
 import br.com.dogsteps.models.Pet;
 import br.com.dogsteps.models.dto.PetDTO;
 import br.com.dogsteps.repositories.PetRepository;
@@ -18,7 +19,7 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Path("/pets")
-public class PetService implements IService<Pet, String, PetDTO> {
+public class PetService implements IServiceDao<Pet, String, PetDTO> {
 
     private static IRepository<Pet, String, PetDTO> petRepository = new PetRepository();
 
@@ -39,7 +40,7 @@ public class PetService implements IService<Pet, String, PetDTO> {
     @POST
     @Path("/")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response insert(Pet pet) {
+    public Response post(Pet pet) {
         return petRepository.add(pet);
     }
 
