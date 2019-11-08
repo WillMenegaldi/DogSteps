@@ -79,6 +79,7 @@ public class DogWalkerRepository implements IRepository<DogWalker, String, DogWa
 
     @Override
     public List<DogWalker> getListByFilter(DogWalkerDTO dogWalkerDTO ) {
+
         if (dogWalkerDTO.getPorte() == null && dogWalkerDTO.getEndereco() == null)
             return getList();
 
