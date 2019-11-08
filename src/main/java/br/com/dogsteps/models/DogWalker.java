@@ -2,8 +2,10 @@ package br.com.dogsteps.models;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
-public class DogWalker extends User implements Serializable {
+public class 	DogWalker extends User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private double mediaAvaliacao;
@@ -48,6 +50,18 @@ public class DogWalker extends User implements Serializable {
 	}
 
 	public DogWalker(){}
+
+	public boolean estaDentroDoPoligono(List<Coordenada> coordenadas){
+		Coordenada localizacao = this.getEndereco().getCoordenada();
+		List<Double> latitudes = coordenadas.stream().map(x -> x.getLatitude()).collect(Collectors.toList());
+		List<Double> longitudes = coordenadas.stream().map(y -> y.getLongitude()).collect(Collectors.toList());
+		if(localizacao.getLatitude() > latitudes.get(0) && localizacao.getLatitude() < latitudes.get(1) && localizacao.getLongitude() > longitudes.get(0) && localizacao.getLongitude() < longitudes.get(1)){
+			System.out.println(true);
+			return true;
+		}
+		return false;
+	}
+
 
 	@Override
 	public String toString() {

@@ -3,7 +3,6 @@ package br.com.dogsteps.models.dto;
 import br.com.dogsteps.enums.EPort;
 import br.com.dogsteps.models.Agenda;
 import br.com.dogsteps.models.Coordenada;
-
 import java.util.List;
 
 public class DogWalkerDTO {

@@ -66,11 +66,10 @@ public class DogWalkerRepository implements IRepository<DogWalker, String, DogWa
     public Response remove(String id) {
         if (id != null) {
             if (!(id.isEmpty())) {
-                System.out.println("io");
-//                if (DOGWALKER_DAO.remove(id))
-//                    return Response.status(Status.OK).build();
-//                else
-//                    return Response.status(Status.NOT_FOUND).build();
+                if (DOGWALKER_DAO.remove(id))
+                    return Response.status(Status.OK).build();
+                else
+                    return Response.status(Status.NOT_FOUND).build();
             }
         }
         return Response.status(Status.BAD_REQUEST).build();
@@ -80,17 +79,27 @@ public class DogWalkerRepository implements IRepository<DogWalker, String, DogWa
     @Override
     public List<DogWalker> getListByFilter(DogWalkerDTO dogWalkerDTO ) {
 
-        if (dogWalkerDTO.getPorte() == null && dogWalkerDTO.getEndereco() == null)
+        if (dogWalkerDTO.getPorte() == null && dogWalkerDTO.getEndereco() == null){
             return getList();
-
-        if (dogWalkerDTO.getPorte() != null && !dogWalkerDTO.getEndereco().isEmpty() && dogWalkerDTO.getAgenda().getHorario() != null && dogWalkerDTO.getAgenda().getDias() != null)
+        }
+        if(dogWalkerDTO.getCoordenadas() != null){
             return getList().stream()
                     .filter( dogWalker ->
-                            dogWalker.getPreferencias().getPorte().equals(dogWalkerDTO.getPorte()) &&
-                            dogWalker.getEndereco().getRua().equals(dogWalkerDTO.getEndereco()) &&
-                            dogWalker.getAgenda().getDias().equals(dogWalkerDTO.getAgenda().getDias()) &&
-                            dogWalker.getAgenda().getHorario().equals(dogWalkerDTO.getAgenda().getHorario())
+                                    dogWalker.estaDentroDoPoligono(dogWalkerDTO.getCoordenadas())
                     ).collect(toList());
+
+        }
+
+//        if (dogWalkerDTO.getPorte() != null && !dogWalkerDTO.getEndereco().isEmpty() &&
+//                dogWalkerDTO.getAgenda().getHorario() != null && dogWalkerDTO.getAgenda().getDias() != null && dogWalkerDTO.getCoordenadas() != null)
+//            return getList().stream()
+//                    .filter( dogWalker ->
+//                            dogWalker.getPreferencias().getPorte().equals(dogWalkerDTO.getPorte()) &&
+//                            dogWalker.getEndereco().getRua().equals(dogWalkerDTO.getEndereco()) &&
+//                            dogWalker.getAgenda().getDias().equals(dogWalkerDTO.getAgenda().getDias()) &&
+//                            dogWalker.getAgenda().getHorario().equals(dogWalkerDTO.getAgenda().getHorario()) &&
+//                            dogWalker.estaDentroDoPoligono(dogWalkerDTO.getCoordenadas())
+//                    ).collect(toList());
 
         return getList().stream().
                 filter( dogWalker ->
@@ -102,6 +111,8 @@ public class DogWalkerRepository implements IRepository<DogWalker, String, DogWa
     public void validarRequisicao(DogWalker dogWalker)
             throws ValorNegativoException, StringVaziaException,
             MenorIdadeException, EmailInvalidoException {
+
+        System.out.println(dogWalker);
 
         if ( dogWalker.getIdade() <= 0 )
 			throw new ValorNegativoException();
