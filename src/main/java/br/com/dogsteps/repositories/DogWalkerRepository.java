@@ -10,7 +10,6 @@ import br.com.dogsteps.interfaces.IDao;
 import br.com.dogsteps.models.DogWalker;
 import br.com.dogsteps.models.dto.UserDto;
 import br.com.dogsteps.utils.Login;
-
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import java.io.IOException;

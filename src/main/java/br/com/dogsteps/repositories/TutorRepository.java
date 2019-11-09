@@ -23,8 +23,7 @@ public class TutorRepository implements IRepositoryDao<Tutor, String, TutorDto>
     private final IDao<Tutor, String> TUTOR_DAO = inicializarDao();
     private static final IFilterLogin filterLogin = new Login();
 
-    public User filtrarTutor(UserDto userDto)
-    {
+    public User filtrarTutor(UserDto userDto) throws Exception {
         return filterLogin.filtrarUsuario(userDto);
     }
 
