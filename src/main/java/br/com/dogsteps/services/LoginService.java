@@ -16,8 +16,7 @@ public class LoginService
     @POST
     @Path("/")
     @Consumes(MediaType.APPLICATION_JSON)
-    public User logarUsuario(UserDto userDto)
-    {
+    public User logarUsuario(UserDto userDto) throws Exception {
         return userRepository.filtrarUsuario(userDto);
     }
 }
