@@ -23,8 +23,7 @@ public class DogWalkerRepository implements IRepositoryDao<DogWalker, String, Do
     private final IDao<DogWalker, String> DOGWALKER_DAO = inicializarDao();
     private static final IFilterLogin filterLogin = new Login();
 
-    public User filtrarDogWalker(UserDto userDto)
-    {
+    public User filtrarDogWalker(UserDto userDto) throws Exception {
         return filterLogin.filtrarUsuario(userDto);
     }
 
