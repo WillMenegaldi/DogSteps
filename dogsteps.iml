@@ -1,5 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" version="4">
+  <component name="EclipseModuleManager">
+    <libelement value="file://C:/Users/João Marcos/OneDrive/Faculdade/2º Semestre/Modular/jars/asm-all-repackaged-2.0.3.jar" />
+    <libelement value="file://C:/Users/João Marcos/OneDrive/Faculdade/2º Semestre/Modular/jars/auto-depends-2.0.3.jar" />
+    <libelement value="file://C:/Users/João Marcos/OneDrive/Faculdade/2º Semestre/Modular/jars/gmbal-api-only-3.0.0-b023.jar" />
+    <libelement value="file://C:/Users/João Marcos/OneDrive/Faculdade/2º Semestre/Modular/jars/grizzly-framework-2.2.9.jar" />
+    <libelement value="file://C:/Users/João Marcos/OneDrive/Faculdade/2º Semestre/Modular/jars/grizzly-http-2.2.9.jar" />
+    <libelement value="file://C:/Users/João Marcos/OneDrive/Faculdade/2º Semestre/Modular/jars/grizzly-http-server-2.2.9.jar" />
+    <libelement value="file://C:/Users/João Marcos/OneDrive/Faculdade/2º Semestre/Modular/jars/grizzly-rcm-2.2.9.jar" />
+    <libelement value="file://C:/Users/João Marcos/OneDrive/Faculdade/2º Semestre/Modular/jars/guava-osgi-11.0.1.jar" />
+    <libelement value="file://C:/Users/João Marcos/OneDrive/Faculdade/2º Semestre/Modular/jars/hk2-api-2.0.3.jar" />
+    <libelement value="file://C:/Users/João Marcos/OneDrive/Faculdade/2º Semestre/Modular/jars/javax.inject-1.jar" />
+    <libelement value="file://C:/Users/João Marcos/OneDrive/Faculdade/2º Semestre/Modular/jars/javax.inject-2.0.3.jar" />
+    <libelement value="file://C:/Users/João Marcos/OneDrive/Faculdade/2º Semestre/Modular/jars/javax.ws.rs-api-2.0-m05.jar" />
+    <libelement value="file://C:/Users/João Marcos/OneDrive/Faculdade/2º Semestre/Modular/jars/jersey-common-2.0-m04-2.jar" />
+    <libelement value="file://C:/Users/João Marcos/OneDrive/Faculdade/2º Semestre/Modular/jars/jersey-container-grizzly2-http-2.0-m04-2.jar" />
+    <libelement value="file://C:/Users/João Marcos/OneDrive/Faculdade/2º Semestre/Modular/jars/jersey-server-2.0-m04-2.jar" />
+    <libelement value="file://C:/Users/João Marcos/OneDrive/Faculdade/2º Semestre/Modular/jars/management-api-3.0.0-b012.jar" />
+    <libelement value="file://C:/Users/João Marcos/OneDrive/Faculdade/2º Semestre/Modular/jars/osgi-resource-locator-1.0.1.jar" />
+    <libelement value="file://C:/Users/João Marcos/OneDrive/Faculdade/2º Semestre/Modular/jars/simple-common-6.0.1.jar" />
+    <libelement value="file://C:/Users/João Marcos/OneDrive/Faculdade/2º Semestre/Modular/jars/simple-http-6.0.1.jar" />
+    <libelement value="file://C:/Users/João Marcos/OneDrive/Faculdade/2º Semestre/Modular/jars/simple-transport-6.0.1.jar" />
+    <libelement value="file://C:/Users/João Marcos/OneDrive/Faculdade/2º Semestre/Modular/jars/tiger-types-1.4.jar" />
+    <conelement value="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER" />
+    <src_description expected_position="0">
+      <src_folder value="file://$MODULE_DIR$/src/main/java" expected_position="0" />
+      <src_folder value="file://$MODULE_DIR$/src/test/java" expected_position="1" />
+    </src_description>
+  </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />

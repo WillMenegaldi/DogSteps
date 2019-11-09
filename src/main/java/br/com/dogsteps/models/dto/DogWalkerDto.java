@@ -5,13 +5,13 @@ import br.com.dogsteps.models.Agenda;
 import br.com.dogsteps.models.Coordenada;
 import java.util.List;
 
-public class DogWalkerDTO {
+public class DogWalkerDto {
     private String endereco;
     private List<Coordenada> coordenadas;
     private EPort porte;
     private Agenda agenda;
 
-    public DogWalkerDTO(String endereco, List<Coordenada> coordenadas, EPort porte, Agenda agenda) {
+    public DogWalkerDto(String endereco, List<Coordenada> coordenadas, EPort porte, Agenda agenda) {
         this.endereco = endereco;
         this.coordenadas = coordenadas;
         this.porte = porte;
@@ -46,5 +46,5 @@ public class DogWalkerDTO {
         this.agenda = agenda;
     }
 
-    DogWalkerDTO(){}
+    DogWalkerDto(){}
 }

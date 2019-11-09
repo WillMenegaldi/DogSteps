@@ -1,9 +1,8 @@
 package br.com.dogsteps.services;
 
-import br.com.dogsteps.interfaces.IRepository;
-import br.com.dogsteps.interfaces.IService;
+import br.com.dogsteps.interfaces.*;
 import br.com.dogsteps.models.Tutor;
-import br.com.dogsteps.models.dto.TutorDTO;
+import br.com.dogsteps.models.dto.TutorDto;
 import br.com.dogsteps.repositories.TutorRepository;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -18,9 +17,9 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Path("/tutores")
-public class TutorService implements IService<Tutor, String, TutorDTO>
+public class TutorService implements IServiceDao<Tutor, String, TutorDto>
 {
-	private static IRepository<Tutor, String, TutorDTO> tutorRepository = new TutorRepository();
+	private static IRepositoryDao<Tutor, String, TutorDto> tutorRepository = new TutorRepository();
 
 	@GET
 	@Path("/")
@@ -42,7 +41,7 @@ public class TutorService implements IService<Tutor, String, TutorDTO>
 	@Path("/")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Override
-	public Response insert(Tutor Tutor) {
+	public Response post(Tutor Tutor) {
 		return tutorRepository.add(Tutor);
 	}
 
@@ -63,7 +62,7 @@ public class TutorService implements IService<Tutor, String, TutorDTO>
 	}
 
 	@Override
-	public List<Tutor> getListByFilter(TutorDTO tutorDTO) {
+	public List<Tutor> getListByFilter(TutorDto tutorDTO) {
 		return null;
 	}
 }

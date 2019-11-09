@@ -1,4 +1,4 @@
 package br.com.dogsteps.models.dto;
 
-public class TourDTO {
+public class PetDto {
 }

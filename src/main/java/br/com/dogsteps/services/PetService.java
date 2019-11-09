@@ -1,9 +1,9 @@
 package br.com.dogsteps.services;
 
-import br.com.dogsteps.interfaces.IRepository;
-import br.com.dogsteps.interfaces.IService;
+import br.com.dogsteps.interfaces.IRepositoryDao;
+import br.com.dogsteps.interfaces.IServiceDao;
 import br.com.dogsteps.models.Pet;
-import br.com.dogsteps.models.dto.PetDTO;
+import br.com.dogsteps.models.dto.PetDto;
 import br.com.dogsteps.repositories.PetRepository;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -18,9 +18,9 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Path("/pets")
-public class PetService implements IService<Pet, String, PetDTO> {
+public class PetService implements IServiceDao<Pet, String, PetDto> {
 
-    private static IRepository<Pet, String, PetDTO> petRepository = new PetRepository();
+    private static IRepositoryDao<Pet, String, PetDto> petRepository = new PetRepository();
 
     @GET
     @Path("/")
@@ -39,7 +39,7 @@ public class PetService implements IService<Pet, String, PetDTO> {
     @POST
     @Path("/")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response insert(Pet pet) {
+    public Response post(Pet pet) {
         return petRepository.add(pet);
     }
 
@@ -58,7 +58,7 @@ public class PetService implements IService<Pet, String, PetDTO> {
     }
 
     @Override
-    public List<Pet> getListByFilter(PetDTO petDTO) {
+    public List<Pet> getListByFilter(PetDto petDTO) {
         return null;
     }
 }

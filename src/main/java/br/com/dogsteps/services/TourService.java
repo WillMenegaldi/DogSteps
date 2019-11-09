@@ -1,9 +1,11 @@
 package br.com.dogsteps.services;
 
 import br.com.dogsteps.interfaces.IRepository;
+import br.com.dogsteps.interfaces.IRepositoryDao;
 import br.com.dogsteps.interfaces.IService;
+import br.com.dogsteps.interfaces.IServiceDao;
 import br.com.dogsteps.models.Passeio;
-import br.com.dogsteps.models.dto.TourDTO;
+import br.com.dogsteps.models.dto.TourDto;
 import br.com.dogsteps.repositories.PasseioRepository;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -18,8 +20,8 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Path("/tours")
-public class TourService implements IService<Passeio, String, TourDTO> {
-    private static IRepository<Passeio, String, TourDTO> tourRepository = new PasseioRepository();
+public class TourService implements IServiceDao<Passeio, String, TourDto> {
+    private static IRepositoryDao<Passeio, String, TourDto> tourRepository = new PasseioRepository();
 
     @GET
     @Path("/")
@@ -41,7 +43,7 @@ public class TourService implements IService<Passeio, String, TourDTO> {
     @Path("/")
     @Consumes(MediaType.APPLICATION_JSON)
     @Override
-    public Response insert(Passeio passeio) {
+    public Response post(Passeio passeio) {
         return tourRepository.add(passeio);
     }
 
@@ -62,7 +64,7 @@ public class TourService implements IService<Passeio, String, TourDTO> {
     }
 
     @Override
-    public List<Passeio> getListByFilter(TourDTO tourDTO) {
+    public List<Passeio> getListByFilter(TourDto tourDTO) {
         return null;
     }
 }

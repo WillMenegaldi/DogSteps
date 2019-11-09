@@ -1,4 +1,4 @@
 package br.com.dogsteps.models.dto;
 
-public class TutorDTO {
+public class TutorDto {
 }
