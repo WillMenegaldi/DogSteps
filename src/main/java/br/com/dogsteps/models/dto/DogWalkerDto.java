@@ -2,25 +2,26 @@ package br.com.dogsteps.models.dto;
 
 import br.com.dogsteps.enums.EPort;
 import br.com.dogsteps.models.Agenda;
+import br.com.dogsteps.models.Coordenada;
 import java.util.List;
 
 public class DogWalkerDto {
     private String endereco;
-    private List<Integer[]> coordenadas;
+    private List<Coordenada> coordenadas;
     private EPort porte;
     private Agenda agenda;
 
-    public DogWalkerDto(String endereco, List<Integer[]> coordenadas, EPort porte, Agenda agenda) {
+    public DogWalkerDto(String endereco, List<Coordenada> coordenadas, EPort porte, Agenda agenda) {
         this.endereco = endereco;
         this.coordenadas = coordenadas;
         this.porte = porte;
         this.agenda = agenda;
     }
 
-    public List<Integer[]> getCoordenadas() {
+    public List<Coordenada> getCoordenadas() {
         return coordenadas;
     }
-    public void setCoordenadas(List<Integer[]> coordenadas) {
+    public void setCoordenadas(List<Coordenada> coordenadas) {
         this.coordenadas = coordenadas;
     }
 

@@ -10,14 +10,23 @@ public class Endereco implements Serializable {
 	private String CEP;
 	private String cidade;
 	private String estado;
+	private Coordenada coordenada;
 
-	public Endereco(String rua, String numero, String bairro, String CEP, String cidade,String estado) {
+	public Endereco(String rua, String numero, String bairro, String CEP, String cidade,String estado, Coordenada coordenada) {
 		setRua(rua);
 		setNumero(numero);
 		setBairro(bairro);
 		setCidade(cidade);
 		setCEP(CEP);
 		setEstado(estado);
+		setCoordenada(coordenada);
+	}
+
+	public Coordenada getCoordenada() {
+		return coordenada;
+	}
+	public void setCoordenada(Coordenada coordenada) {
+		this.coordenada = coordenada;
 	}
 
 	public String getRua() {

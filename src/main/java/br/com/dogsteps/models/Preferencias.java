@@ -3,28 +3,29 @@ package br.com.dogsteps.models;
 import br.com.dogsteps.enums.EMood;
 import br.com.dogsteps.enums.EPort;
 import java.io.Serializable;
+import java.util.List;
 
 public class Preferencias implements Serializable {
 
-    EPort porte;
-    EMood temperamento;
+    List<EPort> porte;
+    List<EMood> temperamento;
 
-    public Preferencias(EPort porte, EMood temperamento) {
+    public Preferencias(List<EPort> porte, List<EMood> temperamento) {
         this.porte = porte;
         this.temperamento = temperamento;
     }
 
-    public EPort getPorte() {
+    public List<EPort> getPorte() {
         return porte;
     }
-    public void setPorte(EPort porte) {
+    public void setPorte(List<EPort> porte) {
         this.porte = porte;
     }
 
-    public EMood getTemperamento() {
+    public List<EMood> getTemperamento() {
         return temperamento;
     }
-    public void setTemperamento(EMood temperamento) {
+    public void setTemperamento(List<EMood> temperamento) {
         this.temperamento = temperamento;
     }
 
