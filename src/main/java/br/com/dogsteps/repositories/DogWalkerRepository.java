@@ -1,11 +1,15 @@
 package br.com.dogsteps.repositories;
 
 import br.com.dogsteps.dao.Dao;
+import br.com.dogsteps.excecoes.AgendaNullException;
+import br.com.dogsteps.excecoes.MenorIdadeException;
+import br.com.dogsteps.excecoes.EmailInvalidoException;
+import br.com.dogsteps.excecoes.StringVaziaException;
+import br.com.dogsteps.excecoes.ValorNegativoException;
 import br.com.dogsteps.interfaces.IFilterLogin;
 import br.com.dogsteps.interfaces.IRepositoryDao;
 import br.com.dogsteps.models.User;
 import br.com.dogsteps.models.dto.DogWalkerDto;
-import br.com.dogsteps.excecoes.*;
 import br.com.dogsteps.interfaces.IDao;
 import br.com.dogsteps.models.DogWalker;
 import br.com.dogsteps.models.dto.UserDto;
