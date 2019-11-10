@@ -91,43 +91,63 @@ public class DogWalkerRepository implements IRepositoryDao<DogWalker, String, Do
 
     @Override
     public List<DogWalker> getListByFilter(DogWalkerDto dogWalkerDTO ) {
-        if (dogWalkerDTO.getPorte() == null && dogWalkerDTO.getEndereco() == null)
+        if (dogWalkerDTO.getAgenda() == null && dogWalkerDTO.getCoordenadas() == null && dogWalkerDTO.getPorte() == null )
             return getList();
 
-        if (dogWalkerDTO.getPorte() == null && dogWalkerDTO.getEndereco() == null){
-            return getList();
-        }
-        if(dogWalkerDTO.getCoordenadas() != null){
+        if (dogWalkerDTO.getPorte() == null && dogWalkerDTO.getCoordenadas() == null)
             return getList().stream()
                     .filter( dogWalker ->
-                                    dogWalker.estaDentroDoPoligono(dogWalkerDTO.getCoordenadas())
+                            dogWalker.getAgenda().getDias().containsAll(dogWalkerDTO.getAgenda().getDias()) &&
+                            dogWalker.getAgenda().getHorario().containsAll(dogWalkerDTO.getAgenda().getHorario())
                     ).collect(toList());
 
-        }
+        if (dogWalkerDTO.getPorte() == null && dogWalkerDTO.getAgenda() == null)
+            return getList().stream()
+                    .filter( dogWalker ->
+                            dogWalker.estaDentroDoPoligono(dogWalkerDTO.getCoordenadas())
+                    ).collect(toList());
 
-//        if (dogWalkerDTO.getPorte() != null && !dogWalkerDTO.getEndereco().isEmpty() &&
-//                dogWalkerDTO.getAgenda().getHorario() != null && dogWalkerDTO.getAgenda().getDias() != null && dogWalkerDTO.getCoordenadas() != null)
-//            return getList().stream()
-//                    .filter( dogWalker ->
-//                            dogWalker.getPreferencias().getPorte().equals(dogWalkerDTO.getPorte()) &&
-//                            dogWalker.getEndereco().getRua().equals(dogWalkerDTO.getEndereco()) &&
-//                            dogWalker.getAgenda().getDias().equals(dogWalkerDTO.getAgenda().getDias()) &&
-//                            dogWalker.getAgenda().getHorario().equals(dogWalkerDTO.getAgenda().getHorario()) &&
-//                            dogWalker.estaDentroDoPoligono(dogWalkerDTO.getCoordenadas())
-//                    ).collect(toList());
+        if (dogWalkerDTO.getCoordenadas() == null && dogWalkerDTO.getAgenda() == null)
+            return getList().stream()
+                    .filter( dogWalker ->
+                            dogWalker.getPreferencias().getPorte().contains(dogWalkerDTO.getPorte())
+                    ).collect(toList());
+
+        if (dogWalkerDTO.getAgenda() == null)
+            return getList().stream()
+                    .filter( dogWalker ->
+                            dogWalker.getPreferencias().getPorte().contains(dogWalkerDTO.getPorte()) &&
+                            dogWalker.estaDentroDoPoligono(dogWalkerDTO.getCoordenadas())
+                    ).collect(toList());
+
+        if (dogWalkerDTO.getCoordenadas() == null)
+            return getList().stream()
+                    .filter( dogWalker ->
+                            dogWalker.getPreferencias().getPorte().contains(dogWalkerDTO.getPorte()) &&
+                            dogWalker.getAgenda().getDias().containsAll(dogWalkerDTO.getAgenda().getDias()) &&
+                            dogWalker.getAgenda().getHorario().containsAll(dogWalkerDTO.getAgenda().getHorario())
+                    ).collect(toList());
+
+        if (dogWalkerDTO.getPorte() == null)
+            return getList().stream()
+                    .filter( dogWalker ->
+                            dogWalker.getPreferencias().getPorte().contains(dogWalkerDTO.getPorte()) &&
+                            dogWalker.getAgenda().getDias().containsAll(dogWalkerDTO.getAgenda().getDias()) &&
+                            dogWalker.estaDentroDoPoligono(dogWalkerDTO.getCoordenadas())
+                    ).collect(toList());
 
         return getList().stream().
                 filter( dogWalker ->
-                        dogWalker.getEndereco().getRua().equals(dogWalkerDTO.getEndereco()) ||
-                                dogWalker.getPreferencias().getPorte().equals(dogWalkerDTO.getPorte())
+                        dogWalker.getPreferencias().getPorte().contains(dogWalkerDTO.getPorte()) &&
+                        dogWalker.getAgenda().getDias().containsAll(dogWalkerDTO.getAgenda().getDias()) &&
+                        dogWalker.getAgenda().getHorario().containsAll(dogWalkerDTO.getAgenda().getHorario()) &&
+                        dogWalker.estaDentroDoPoligono(dogWalkerDTO.getCoordenadas())
                 ).collect(toList());
     }
 
     public void validarRequisicao(DogWalker dogWalker)
             throws ValorNegativoException, StringVaziaException,
             MenorIdadeException, EmailInvalidoException {
-
-        System.out.println(dogWalker);
 
         if ( dogWalker.getIdade() <= 0 )
 			throw new ValorNegativoException();
