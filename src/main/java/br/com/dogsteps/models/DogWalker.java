@@ -55,13 +55,9 @@ public class 	DogWalker extends User implements Serializable {
 		Coordenada localizacao = this.getEndereco().getCoordenada();
 		List<Double> latitudes = coordenadas.stream().map(x -> x.getLatitude()).collect(Collectors.toList());
 		List<Double> longitudes = coordenadas.stream().map(y -> y.getLongitude()).collect(Collectors.toList());
-		if(localizacao.getLatitude() > latitudes.get(0) && localizacao.getLatitude() < latitudes.get(1) && localizacao.getLongitude() > longitudes.get(0) && localizacao.getLongitude() < longitudes.get(1)){
-			System.out.println(true);
-			return true;
-		}
-		return false;
+		return localizacao.getLatitude() > latitudes.get(0) && localizacao.getLatitude() < latitudes.get(1) &&
+				localizacao.getLongitude() > longitudes.get(0) && localizacao.getLongitude() < longitudes.get(1);
 	}
-
 
 	@Override
 	public String toString() {

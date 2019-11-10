@@ -6,13 +6,11 @@ import br.com.dogsteps.models.Coordenada;
 import java.util.List;
 
 public class DogWalkerDto {
-    private String endereco;
     private List<Coordenada> coordenadas;
     private EPort porte;
     private Agenda agenda;
 
-    public DogWalkerDto(String endereco, List<Coordenada> coordenadas, EPort porte, Agenda agenda) {
-        this.endereco = endereco;
+    public DogWalkerDto(List<Coordenada> coordenadas, EPort porte, Agenda agenda) {
         this.coordenadas = coordenadas;
         this.porte = porte;
         this.agenda = agenda;
@@ -23,13 +21,6 @@ public class DogWalkerDto {
     }
     public void setCoordenadas(List<Coordenada> coordenadas) {
         this.coordenadas = coordenadas;
-    }
-
-    public String getEndereco() {
-        return endereco;
-    }
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
     }
 
     public EPort getPorte() {
