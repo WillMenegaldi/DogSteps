@@ -102,8 +102,6 @@ public class TutorRepository implements IRepositoryDao<Tutor, String, TutorDto>
         if(!( tutor.getEmail().matches(regex) ))
             throw new EmailInvalidoException();
 
-        if(tutor.getAgenda() == null || tutor.getPasseios()  == null ||
-                tutor.getEndereco() == null)
-            throw new NullPointerException();
+
     }
 }
