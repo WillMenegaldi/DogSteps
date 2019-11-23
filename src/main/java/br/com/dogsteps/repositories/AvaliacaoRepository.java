@@ -5,11 +5,14 @@ import br.com.dogsteps.interfaces.IBaseRepository;
 import br.com.dogsteps.interfaces.IDao;
 import br.com.dogsteps.interfaces.IRepositoryFilter;
 import br.com.dogsteps.models.Avaliacao;
+import br.com.dogsteps.models.dto.AvaliacaoDto;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
 import java.util.List;
 
-public class AvaliacaoRepository implements IBaseRepository<Avaliacao>, IRepositoryFilter<Avaliacao, String> {
+import static java.util.stream.Collectors.toList;
+
+public class AvaliacaoRepository implements IBaseRepository<Avaliacao>, IRepositoryFilter<Avaliacao, AvaliacaoDto> {
     private static final String FILE_NAME = "database/avaliacao.bin";
     private final IDao<Avaliacao, String> AVALIACAO_DAO = inicializarDao();
 
@@ -41,7 +44,9 @@ public class AvaliacaoRepository implements IBaseRepository<Avaliacao>, IReposit
     }
 
     @Override
-    public List<Avaliacao> getListByFilter(String s) {
-        return AVALIACAO_DAO.getAll();
+    public List<Avaliacao> getListByFilter(AvaliacaoDto avaliacaoDto) {
+        return getList().stream().filter(avaliacao ->
+                avaliacao.getIdDogWalker().equals(avaliacaoDto.getIdDogWalker())).collect(toList()
+        );
     }
 }
