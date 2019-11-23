@@ -3,35 +3,17 @@ package br.com.dogsteps.models;
 import java.io.Serializable;
 
 public class  Avaliacao extends Configuracoes implements Serializable {
-	private int avaliacao;
-	private String idDogWalker;
-	private String idTutor;
+	private int nota;
 
-	public Avaliacao(int avaliacao, String idDogWalker, String idTutor) {
-		this.avaliacao = avaliacao;
-		this.idDogWalker = idDogWalker;
-		this.idTutor = idTutor;
+	public Avaliacao(int nota) {
+		this.nota = nota;
 	}
 
-	public int getAvaliacao() {
-		return avaliacao;
+	public int getNota() {
+		return nota;
 	}
-	public void setAvaliacao(int avaliacao) {
-		this.avaliacao = avaliacao;
-	}
-
-	public String getIdDogWalker() {
-		return idDogWalker;
-	}
-	public void setIdDogWalker(String idDogWalker) {
-		this.idDogWalker = idDogWalker;
-	}
-
-	public String getIdTutor() {
-		return idTutor;
-	}
-	public void setIdTutor(String idTutor) {
-		this.idTutor = idTutor;
+	public void setNota(int nota) {
+		this.nota = nota;
 	}
 
 	public Avaliacao(){}

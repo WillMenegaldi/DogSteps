@@ -6,6 +6,7 @@ public enum ETourStatus implements Serializable {
 	PENDING(1,"Aguardando passeio ser aceito!"),
 	INITIALIZED(2,"Passeio inicializado!"),
 	ONGOING(3, "Passeio em andamento!"),
+	TO_FINISH(4, "Passeio a ser avaliado!"),
 	COMPLETED(4, "Passeio finalizado!"),
 	;
 
