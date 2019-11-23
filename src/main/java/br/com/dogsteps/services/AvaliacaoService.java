@@ -11,15 +11,15 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Path("/avaliacoes")
-public class AvaliacaoBaseService implements IServiceFilter<Avaliacao, String>, IBaseService<Avaliacao> {
-    private IBaseRepository avaliacaoRepository = new AvaliacaoRepository();
+public class AvaliacaoService implements IServiceFilter<Avaliacao, String>, IBaseService<Avaliacao> {
+    private IBaseRepository<Avaliacao> avaliacaoRepository = new AvaliacaoRepository();
 
     @POST
     @Path("/filter")
     @Consumes(MediaType.APPLICATION_JSON)
     @Override
-    public List<Avaliacao> getListByFilter(String s) {
-        return avaliacaoRepository.getList();
+    public List<Avaliacao> getListByFilter(String id) {
+        return null;
     }
 
     @POST
@@ -27,6 +27,7 @@ public class AvaliacaoBaseService implements IServiceFilter<Avaliacao, String>, 
     @Consumes(MediaType.APPLICATION_JSON)
     @Override
     public Response post(Avaliacao avaliacao) {
+        System.out.println(avaliacaoRepository);
         return avaliacaoRepository.add(avaliacao);
     }
 

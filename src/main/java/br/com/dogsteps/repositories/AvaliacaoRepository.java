@@ -34,9 +34,9 @@ public class AvaliacaoRepository implements IBaseRepository<Avaliacao>, IReposit
             if (AVALIACAO_DAO.add(avaliacao))
                 return Response.status(Response.Status.OK).build();
             else
-                return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+                return Response.status(Response.Status.BAD_REQUEST).build();
         } catch (Exception e) {
-            return Response.status(Response.Status.BAD_REQUEST).build();
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
     }
 
