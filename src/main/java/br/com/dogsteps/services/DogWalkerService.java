@@ -12,7 +12,6 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-
 import br.com.dogsteps.interfaces.IRepositoryDao;
 import br.com.dogsteps.interfaces.IServiceDao;
 import br.com.dogsteps.models.dto.DogWalkerDto;
