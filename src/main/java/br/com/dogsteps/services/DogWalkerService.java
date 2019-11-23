@@ -20,49 +20,50 @@ import br.com.dogsteps.models.DogWalker;
 import br.com.dogsteps.repositories.DogWalkerRepository;
 
 @Path("/dogwalkers")
-public class DogWalkerService implements IServiceDao<DogWalker, String, DogWalkerDto>
-{
-	private static IRepositoryDao<DogWalker, String, DogWalkerDto> dogWalkerRepository = new DogWalkerRepository();
-	@GET
-	@Path("/")
-	@Produces(MediaType.APPLICATION_JSON)
-	public List<DogWalker> getAll(){
-		return dogWalkerRepository.getList();
-	}
+public class DogWalkerService implements IServiceDao<DogWalker, String, DogWalkerDto> {
+    private static IRepositoryDao<DogWalker, String, DogWalkerDto> dogWalkerRepository = new DogWalkerRepository();
 
-	@POST
-	@Path("/filter")
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Override
-	public List<DogWalker> getListByFilter(DogWalkerDto dogWalkerDTO) {
-		return dogWalkerRepository.getListByFilter(dogWalkerDTO);
-	}
+    @GET
+    @Path("/")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<DogWalker> getAll() {
+        return dogWalkerRepository.getList();
 
-	@GET
-	@Path("/{id}")
-	@Produces(MediaType.APPLICATION_JSON)
-	public DogWalker get(@PathParam("id") String id) {
-		return dogWalkerRepository.find(id);
-	}
-	
-	@POST
-	@Path("/")
-	@Consumes(MediaType.APPLICATION_JSON)
-	public Response post(DogWalker dogWalker) {
-		return dogWalkerRepository.add(dogWalker);
-	}
-	
-	@PUT
-	@Path("/")
-	@Consumes(MediaType.APPLICATION_JSON)
-	public Response update(DogWalker dogWalker) {
-		return dogWalkerRepository.update(dogWalker);
-	}
-	
-	@DELETE
-	@Path("/{id}")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response remove(@PathParam("id") String id) {
-		return dogWalkerRepository.remove(id);
-	}
+    }
+
+    @POST
+    @Path("/filter")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Override
+    public List<DogWalker> getListByFilter(DogWalkerDto dogWalkerDTO) {
+        return dogWalkerRepository.getListByFilter(dogWalkerDTO);
+    }
+
+    @GET
+    @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public DogWalker get(@PathParam("id") String id) {
+        return dogWalkerRepository.find(id);
+    }
+
+    @POST
+    @Path("/")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response post(DogWalker dogWalker) {
+        return dogWalkerRepository.add(dogWalker);
+    }
+
+    @PUT
+    @Path("/")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response update(DogWalker dogWalker) {
+        return dogWalkerRepository.update(dogWalker);
+    }
+
+    @DELETE
+    @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response remove(@PathParam("id") String id) {
+        return dogWalkerRepository.remove(id);
+    }
 }

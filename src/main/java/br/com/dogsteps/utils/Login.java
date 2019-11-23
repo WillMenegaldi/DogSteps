@@ -11,11 +11,6 @@ import br.com.dogsteps.models.dto.UserDto;
 import br.com.dogsteps.repositories.DogWalkerRepository;
 import br.com.dogsteps.repositories.TutorRepository;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-
 import static java.util.stream.Collectors.toList;
 
 public class Login implements IFilterLogin

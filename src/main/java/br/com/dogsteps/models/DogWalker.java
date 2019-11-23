@@ -1,35 +1,48 @@
 package br.com.dogsteps.models;
 
+import br.com.dogsteps.interfaces.IBaseRepository;
+import br.com.dogsteps.repositories.PasseioRepository;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class 	DogWalker extends User implements Serializable {
+public class DogWalker extends User implements Serializable {
 	private static final long serialVersionUID = 1L;
-
 	private double mediaAvaliacao;
 	private String descricao;
-	private ArrayList<Avaliacao> avaliacoes;
+	private List<Avaliacao> avaliacoes;
 	private Preferencias preferencias;
 
 	public DogWalker(String nome, String photoUrl, int idade, String cpf, String email, String senha, Endereco endereco,
-			Agenda agenda, ArrayList<Avaliacao> avaliacoes, double mediaAvaliacao, String descricao) {
+			Agenda agenda, List<Avaliacao> avaliacoes, double mediaAvaliacao, String descricao) {
 		super(nome, photoUrl, idade, cpf, email, senha, endereco, agenda);
 		this.avaliacoes = avaliacoes;
 		this.mediaAvaliacao = mediaAvaliacao;
 		this.descricao = descricao;
 	}
 
-	public ArrayList<Avaliacao> getAvaliacoes() {
-		return avaliacoes;
+	public List<Avaliacao> getAvaliacoes() {
+		final IBaseRepository<Passeio> listaDePasseios = new PasseioRepository();
+
+		List<Passeio> passeios= listaDePasseios.getList().stream()
+				.filter(passeio->
+					passeio.getDogWalkerId().equals(getId()) &&
+					passeio.getAvaliacao() != null
+				).collect(Collectors.toList());
+		if(passeios.size() > 0){
+			return passeios.stream().map(Passeio::getAvaliacao).collect(Collectors.toList());
+		}
+		return new ArrayList<>();
 	}
-	public void setAvaliacoes(ArrayList<Avaliacao> avaliacoes) {
+	public void setAvaliacoes(List<Avaliacao> avaliacoes) {
 		this.avaliacoes = avaliacoes;
 	}
 
 	public double getMediaAvaliacao() {
-		return mediaAvaliacao;
+		if(this.getAvaliacoes().size() > 0)
+			return this.getAvaliacoes().stream().mapToInt(Avaliacao::getNota).average().getAsDouble();
+		return 0;
 	}
 	public void setMediaAvaliacao(double mediaAvaliacao) {
 		this.mediaAvaliacao = mediaAvaliacao;
