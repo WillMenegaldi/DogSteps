@@ -1,27 +1,38 @@
 package br.com.dogsteps.models.dto;
 
+import br.com.dogsteps.enums.ETourStatus;
+
 public class PasseioDto {
-    private String dogwalkerId;
-    private String tutorId;
+    private ETourStatus status;
+    private String idDogWalker;
+    private String idTutor;
 
-    public PasseioDto(String dogwalkerId, String tutorId){
-        setDogwalkerId(dogwalkerId);
-        setTutorId(tutorId);
-    }
-
-    public String getDogwalkerId() {
-        return dogwalkerId;
-    }
-    public void setDogwalkerId(String dogwalkerId) {
-        this.dogwalkerId = dogwalkerId;
+    public PasseioDto(ETourStatus status, String idDogWalker, String idTutor) {
+        this.status = status;
+        this.idDogWalker = idDogWalker;
+        this.idTutor = idTutor;
     }
 
-    public String getTutorId() {
-        return tutorId;
+    public ETourStatus getStatus() {
+        return status;
     }
-    public void setTutorId(String tutorId) {
-        this.tutorId = tutorId;
+    public void setStatus(ETourStatus status) {
+        this.status = status;
     }
 
-    PasseioDto(){}
+    public String getIdDogWalker() {
+        return idDogWalker;
+    }
+    public void setIdDogWalker(String idDogWalker) {
+        this.idDogWalker = idDogWalker;
+    }
+
+    public String getIdTutor() {
+        return idTutor;
+    }
+    public void setIdTutor(String idTutor) {
+        this.idTutor = idTutor;
+    }
+
+    public PasseioDto() {}
 }

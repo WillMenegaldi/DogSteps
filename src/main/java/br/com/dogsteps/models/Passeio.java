@@ -14,20 +14,18 @@ public class Passeio extends Configuracoes implements Serializable{
 	private ETourStatus status;
 	private EDuracao duracao;
 	private List<Pet> pets =  new ArrayList<>();
-	private String idDogWalker;
-	private String idTutor;
-	private int avaliacao;
+	private String dogWalkerId;
+	private String tutorId;
+	private Avaliacao avaliacao;
 
-	public Passeio(Agenda agenda, ETourStatus status, EDuracao duracao, List<Pet> pets,
-				   String dogWalker, String tutor) {
-		setId(UUID.randomUUID().toString());
-		setAgenda(agenda);
-		setStatus(status);
-		setDuracao(duracao);
-		setidDogWalker(dogWalker);
-		setidTutor(tutor);
-		setPets(pets);
-		setAvaliacao(avaliacao);
+	public Passeio(Agenda agenda, ETourStatus status, EDuracao duracao, List<Pet> pets, String dogWalkerId, String tutorId, Avaliacao avaliacao) {
+		this.agenda = agenda;
+		this.status = status;
+		this.duracao = duracao;
+		this.pets = pets;
+		this.dogWalkerId = dogWalkerId;
+		this.tutorId = tutorId;
+		this.avaliacao = avaliacao;
 	}
 
 	public Agenda getAgenda() {
@@ -58,27 +56,26 @@ public class Passeio extends Configuracoes implements Serializable{
 		this.pets = pets;
 	}
 
-	public String getidDogWalker() {
-		return idDogWalker;
+	public String getDogWalkerId() {
+		return dogWalkerId;
 	}
-	public void setidDogWalker(String idDogWalker) {
-		this.idDogWalker = idDogWalker;
-	}
-
-	public String getidTutor() {
-		return idTutor;
-	}
-	public void setidTutor(String tutor) {
-		this.idTutor = tutor;
+	public void setDogWalkerId(String dogWalkerId) {
+		this.dogWalkerId = dogWalkerId;
 	}
 
-	public int getAvaliacao(){
+	public String getTutorId() {
+		return tutorId;
+	}
+	public void setTutorId(String tutorId) {
+		this.tutorId = tutorId;
+	}
+
+	public Avaliacao getAvaliacao() {
 		return avaliacao;
 	}
-	public void setAvaliacao(int avaliacao){
+	public void setAvaliacao(Avaliacao avaliacao) {
 		this.avaliacao = avaliacao;
 	}
-
 
 	public Passeio(){
 	}

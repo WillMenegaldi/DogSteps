@@ -68,4 +68,11 @@ public class PasseioService implements IServiceDao<Passeio, String, PasseioDto> 
         return tourRepository.remove(id);
     }
 
+    @POST
+    @Path("/filter")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Override
+    public List<Passeio> getListByFilter(PasseioDto passeioDTO) {
+        return tourRepository.getListByFilter(passeioDTO);
+    }
 }

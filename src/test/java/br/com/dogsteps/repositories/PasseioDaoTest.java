@@ -1,15 +1,11 @@
 package br.com.dogsteps.repositories;
 
 import br.com.dogsteps.enums.ETourStatus;
-import br.com.dogsteps.models.DogWalker;
 import br.com.dogsteps.models.Passeio;
-import br.com.dogsteps.models.Pet;
 import org.junit.Before;
 import org.junit.Test;
 
 import javax.ws.rs.core.Response;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Random;
 
 
