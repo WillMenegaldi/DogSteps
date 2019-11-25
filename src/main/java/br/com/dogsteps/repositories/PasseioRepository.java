@@ -6,12 +6,13 @@ import br.com.dogsteps.excecoes.ValorNegativoException;
 import br.com.dogsteps.interfaces.IDao;
 import br.com.dogsteps.interfaces.IRepositoryDao;
 import br.com.dogsteps.models.Passeio;
-import br.com.dogsteps.models.dto.TourDto;
+import br.com.dogsteps.models.dto.PasseioDto;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
 
-public class PasseioRepository implements IRepositoryDao<Passeio, String, TourDto> {
+public class PasseioRepository implements IRepositoryDao<Passeio, String, PasseioDto> {
 	private static final String FILE_NAME = "database/tour.bin";
 	private final IDao<Passeio, String> TOUR_DAO = inicializarDao();
 
@@ -74,7 +75,13 @@ public class PasseioRepository implements IRepositoryDao<Passeio, String, TourDt
 	}
 
 	@Override
-	public List<Passeio> getListByFilter(TourDto tourDTO) {
+	public List<Passeio> getListByFilter(PasseioDto passeioDTO) {
+		if(passeioDTO.getStatus() != null){
+			return getList().stream().filter( passeio ->
+					passeio.getStatus().equals(passeioDTO.getStatus())
+			).collect(Collectors.toList());
+		}
+
 		return null;
 	}
 

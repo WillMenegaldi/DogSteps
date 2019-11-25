@@ -1,7 +1,6 @@
 package br.com.dogsteps.models;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -15,15 +14,18 @@ public class Passeio extends Configuracoes implements Serializable{
 	private ETourStatus status;
 	private EDuracao duracao;
 	private List<Pet> pets =  new ArrayList<>();
-	private DogWalker dogWalker;
+	private String dogWalkerId;
+	private String tutorId;
+	private Avaliacao avaliacao;
 
-	public Passeio(Agenda agenda, ETourStatus status, EDuracao duracao, List<Pet> pets, DogWalker dogWalker) {
-		setId(UUID.randomUUID().toString());
+	public Passeio(Agenda agenda, ETourStatus status, EDuracao duracao, List<Pet> pets, String dogWalkerId, String tutorId, Avaliacao avaliacao) {
 		this.agenda = agenda;
 		this.status = status;
 		this.duracao = duracao;
-		this.dogWalker = dogWalker;
 		this.pets = pets;
+		this.dogWalkerId = dogWalkerId;
+		this.tutorId = tutorId;
+		this.avaliacao = avaliacao;
 	}
 
 	public Agenda getAgenda() {
@@ -54,13 +56,28 @@ public class Passeio extends Configuracoes implements Serializable{
 		this.pets = pets;
 	}
 
-	public DogWalker getDogWalker() {
-		return dogWalker;
+	public String getDogWalkerId() {
+		return dogWalkerId;
 	}
-	public void setDogWalker(DogWalker dogWalker) {
-		this.dogWalker = dogWalker;
+	public void setDogWalkerId(String dogWalkerId) {
+		this.dogWalkerId = dogWalkerId;
+	}
+
+	public String getTutorId() {
+		return tutorId;
+	}
+	public void setTutorId(String tutorId) {
+		this.tutorId = tutorId;
+	}
+
+	public Avaliacao getAvaliacao() {
+		return avaliacao;
+	}
+	public void setAvaliacao(Avaliacao avaliacao) {
+		this.avaliacao = avaliacao;
 	}
 
 	public Passeio(){
 	}
+
 }
