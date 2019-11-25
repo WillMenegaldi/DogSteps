@@ -1,5 +1,5 @@
-database
-target
+database/
+target/
 .project
 .settings
 .idea

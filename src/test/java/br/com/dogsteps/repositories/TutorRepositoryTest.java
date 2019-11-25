@@ -104,7 +104,7 @@ public class TutorRepositoryTest {
         int idade = 18 + random.nextInt(100);
 
         return new Tutor(nomes[indiceGerado], "foto", 20, "25324554879", "email@email.com", "4924u24jdsda",
-                new Endereco(), new Agenda(), new ArrayList<Pet>(), new ArrayList<Passeio>());
+                new Endereco(), new ArrayList<Pet>(), new ArrayList<Passeio>());
     }
 
     private void tutorDefault(Tutor tutor){

@@ -13,13 +13,14 @@ public class DogWalker extends User implements Serializable {
 	private String descricao;
 	private List<Avaliacao> avaliacoes;
 	private Preferencias preferencias;
-
+	private Agenda agenda;
 	public DogWalker(String nome, String photoUrl, int idade, String cpf, String email, String senha, Endereco endereco,
 			Agenda agenda, List<Avaliacao> avaliacoes, double mediaAvaliacao, String descricao) {
-		super(nome, photoUrl, idade, cpf, email, senha, endereco, agenda);
+		super(nome, photoUrl, idade, cpf, email, senha, endereco);
 		this.avaliacoes = avaliacoes;
 		this.mediaAvaliacao = mediaAvaliacao;
 		this.descricao = descricao;
+		this.agenda = agenda;
 	}
 
 	public List<Avaliacao> getAvaliacoes() {
@@ -62,6 +63,14 @@ public class DogWalker extends User implements Serializable {
 		this.preferencias = preferencias;
 	}
 
+	public Agenda getAgenda(){
+		return agenda;
+	}
+
+	public void setAgenda(Agenda agenda){
+		this.agenda = agenda;
+	}
+
 	public DogWalker(){}
 
 	public boolean estaDentroDoPoligono(List<Coordenada> coordenadas){
@@ -71,6 +80,7 @@ public class DogWalker extends User implements Serializable {
 		return localizacao.getLatitude() > latitudes.get(0) && localizacao.getLatitude() < latitudes.get(1) &&
 				localizacao.getLongitude() > longitudes.get(0) && localizacao.getLongitude() < longitudes.get(1);
 	}
+
 
 	@Override
 	public String toString() {
