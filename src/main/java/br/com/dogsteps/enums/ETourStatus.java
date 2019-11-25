@@ -7,7 +7,9 @@ public enum ETourStatus implements Serializable {
 	INITIALIZED(2,"Passeio inicializado!"),
 	ONGOING(3, "Passeio em andamento!"),
 	TO_FINISH(4, "Passeio a ser avaliado!"),
-	COMPLETED(4, "Passeio finalizado!"),
+	COMPLETED(5, "Passeio finalizado!"),
+	CANCELLED(6, "Passeio cancelado"),
+	ACCEPTED(7, "Passeio aceito")
 	;
 
 	private int id;

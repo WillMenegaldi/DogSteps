@@ -76,15 +76,15 @@ public class PasseioRepository implements IRepositoryDao<Passeio, String, Passei
 
 	@Override
 	public List<Passeio> getListByFilter(PasseioDto passeioDTO) {
-		if(passeioDTO.getDogwalkerId() != null || passeioDTO.getTutorId() != null){
-			if(passeioDTO.getTutorId() != null){
+		if(passeioDTO.getIdDogWalker() != null || passeioDTO.getIdTutor() != null){
+			if(passeioDTO.getIdTutor()  != null){
 				return getList().stream()
-						.filter( passeio -> passeio.getidTutor().equals(passeioDTO.getTutorId()))
+						.filter( passeio -> passeio.getTutorId() .equals(passeioDTO.getIdTutor() ))
 						.collect(Collectors.toList());
 			}
 			else{
 				return getList().stream()
-						.filter(passeio -> passeio.getidDogWalker().equals(passeioDTO.getDogwalkerId()))
+						.filter(passeio -> passeio.getDogWalkerId().equals(passeioDTO.getIdDogWalker()))
 						.collect(Collectors.toList());
 			}
 		}

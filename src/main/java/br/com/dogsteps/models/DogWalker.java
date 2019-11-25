@@ -25,12 +25,13 @@ public class DogWalker extends User implements Serializable {
 	public List<Avaliacao> getAvaliacoes() {
 		final IBaseRepository<Passeio> listaDePasseios = new PasseioRepository();
 
-		List<Passeio> passeios= listaDePasseios.getList().stream()
-				.filter(passeio->
-					passeio.getDogWalkerId().equals(getId()) &&
+		System.out.println(listaDePasseios);
+		List<Passeio> passeios = listaDePasseios.getList().stream()
+				.filter(passeio ->
+					passeio.getDogWalkerId().equals(this.getId()) &&
 					passeio.getAvaliacao() != null
 				).collect(Collectors.toList());
-		if(passeios.size() > 0){
+		if(passeios != null && passeios.size() > 0){
 			return passeios.stream().map(Passeio::getAvaliacao).collect(Collectors.toList());
 		}
 		return new ArrayList<>();
