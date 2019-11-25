@@ -33,7 +33,6 @@ public class DogWalkerService implements IServiceDao<DogWalker, String, DogWalke
 	@POST
 	@Path("/filter")
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Override
 	public List<DogWalker> getListByFilter(DogWalkerDto dogWalkerDTO) {
 		return dogWalkerRepository.getListByFilter(dogWalkerDTO);
 	}
