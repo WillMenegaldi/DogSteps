@@ -30,4 +30,6 @@ public class UserDto
     {
         this.senha = senha;
     }
+
+    public UserDto() {}
 }
