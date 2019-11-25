@@ -12,9 +12,8 @@ public class User extends Configuracoes implements Serializable {
 	private String email;
 	private String senha;
 	private Endereco endereço;
-	private Agenda agenda;
 
-	public User(String nome, String photoUrl, int idade, String cpf, String email, String senha, Endereco endereco, Agenda agenda) {
+	public User(String nome, String photoUrl, int idade, String cpf, String email, String senha, Endereco endereco) {
 		this.nome = nome;
 		this.photoUrl = photoUrl;
 		this.idade = idade;
@@ -22,7 +21,7 @@ public class User extends Configuracoes implements Serializable {
 		this.email = email;
 		this.senha = senha;
 		this.endereço = endereco;
-		this.agenda = agenda;
+
 	}
 
 	public String getNome() {
@@ -79,14 +78,6 @@ public class User extends Configuracoes implements Serializable {
 
 	public void setEndereco(Endereco endereco) {
 		this.endereço = endereco;
-	}
-
-	public Agenda getAgenda() {
-		return agenda;
-	}
-
-	public void setAgenda(Agenda agenda) {
-		this.agenda = agenda;
 	}
 
 	public User(){
