@@ -14,6 +14,7 @@ public class DogWalker extends User implements Serializable {
 	private List<Avaliacao> avaliacoes;
 	private Preferencias preferencias;
 	private Agenda agenda;
+
 	public DogWalker(String nome, String photoUrl, int idade, String cpf, String email, String senha, Endereco endereco,
 			Agenda agenda, List<Avaliacao> avaliacoes, double mediaAvaliacao, String descricao) {
 		super(nome, photoUrl, idade, cpf, email, senha, endereco);
