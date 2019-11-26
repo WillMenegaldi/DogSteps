@@ -8,7 +8,6 @@ import br.com.dogsteps.models.DogWalker;
 import br.com.dogsteps.models.Passeio;
 import br.com.dogsteps.models.Pet;
 import br.com.dogsteps.models.Tutor;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -23,11 +22,11 @@ public class EstatisticasRepository implements IEstatistica<String, String> {
 
     @Override
     public String getPasseiosEstatistica() {
-        Map<String, Double> response = new HashMap<String, Double>();
+        Map<String, Integer> response = new HashMap<String, Integer>();
         for(ETourStatus status : ETourStatus.values()){
-            response.put(status.getDescription(), (double) repositoryPasseio.getList().stream()
+            response.put(status.getDescription(), (int) repositoryPasseio.getList().stream()
                     .filter( passeio ->
-                            passeio.equals(status)
+                            passeio.getStatus().equals(status)
                     ).collect(Collectors.toList())
                     .size()
             );
@@ -50,7 +49,7 @@ public class EstatisticasRepository implements IEstatistica<String, String> {
         if(totalTutores == 0){
             return "";
         }
-        Double media = (totalTutores/totalPets);
+        Double media = (totalPets/totalTutores);
 
         return media.toString();
     }
@@ -66,10 +65,10 @@ public class EstatisticasRepository implements IEstatistica<String, String> {
     @Override
     public String getMediaHorarioPasseio() {
         Map<String, Double> response = new HashMap<String, Double>();
-        for(EDuracao status : EDuracao.values()){
-            response.put(status.getDescricao(), (double) repositoryPasseio.getList().stream()
-                    .filter( duracao ->
-                            duracao.equals(status)
+        for(EDuracao duracao : EDuracao.values()){
+            response.put(duracao.getDescricao(), (double) repositoryPasseio.getList().stream()
+                    .filter( passeio ->
+                             passeio.getDuracao().equals(duracao)
                     ).collect(Collectors.toList())
                     .size()
             );
