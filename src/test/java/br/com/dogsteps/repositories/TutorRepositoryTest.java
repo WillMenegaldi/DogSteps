@@ -35,7 +35,6 @@ public class TutorRepositoryTest {
                 statusBADREQUEST, tutores.add(tutor).toString());
 
         tutorDefault(tutor);
-        tutor.setPasseios(null);
         assertEquals("espera recusar referencia null com BAD_REQUEST",
                 statusBADREQUEST, tutores.add(tutor).toString());
 
@@ -113,6 +112,5 @@ public class TutorRepositoryTest {
         tutor.setNome("Bob");
         tutor.setEmail("test@test.com");
         tutor.setEndereco(new Endereco());
-        tutor.setPasseios(new ArrayList<Passeio>());
     }
 }
