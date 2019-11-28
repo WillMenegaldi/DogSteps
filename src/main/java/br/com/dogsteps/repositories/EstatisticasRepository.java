@@ -38,6 +38,7 @@ public class EstatisticasRepository implements IEstatistica<Number> {
     @Override
     public Map<String, Integer> getPasseiosEstatistica() {
         Map<String, Integer> response = new HashMap<String, Integer>();
+        response.put("total",repositoryPasseio.getList().size());
         for(ETourStatus status : ETourStatus.values()){
             response.put(status.name(), (int) repositoryPasseio.getList().stream()
                     .filter( passeio ->
