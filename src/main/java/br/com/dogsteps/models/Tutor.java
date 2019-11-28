@@ -1,44 +1,39 @@
 package br.com.dogsteps.models;
 
+import br.com.dogsteps.interfaces.IBaseRepository;
+import br.com.dogsteps.repositories.PetRepository;
+
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Tutor extends User
 {
-	private ArrayList<Pet> pets;
-	private ArrayList<Passeio> passeios;
+	private List<Pet> pets;
 
 	public Tutor(){}
 
 	public Tutor( String name, String photoUrl, int age, String cpf, String email, String password, Endereco address
-				  , ArrayList<Pet> pets, ArrayList<Passeio> passeios) {
+				  , List<Pet> pets, ArrayList<Passeio> passeios) {
 		super(name, photoUrl, age, cpf, email, password, address);
 		this.pets = pets;
-		this.passeios = passeios;
 	}
 
-	public ArrayList<Pet> getPets() {
-		return pets;
+	public List<Pet> getPets() {
+		final IBaseRepository<Pet> listaDePasseios = new PetRepository();
+
+		List<Pet> pets= listaDePasseios.getList().stream()
+				.filter(pet->
+						pet.getTutorId().equals(getId()) &&
+								pet.getTutorId() != null
+				).collect(Collectors.toList());
+		if(pets.size() > 0){
+			return pets;
+		}
+		return new ArrayList<>();
 	}
 
-	public void setPets(ArrayList<Pet> pets) {
+	public void setPets(List<Pet> pets) {
 		this.pets = pets;
 	}
-
-	public ArrayList<Passeio> getPasseios() {
-		return passeios;
-	}
-
-	public void setPasseios(ArrayList<Passeio> passeios) {
-		this.passeios = passeios;
-	}
-
-	public void addPasseios(Passeio passeio){
-		passeios.add(passeio);
-	}
-
-	public void addPets(Pet pet){
-		pets.add(pet);
-	}
-
-
 }

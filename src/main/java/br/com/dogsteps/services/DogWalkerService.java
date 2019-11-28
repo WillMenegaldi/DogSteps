@@ -28,7 +28,6 @@ public class DogWalkerService implements IServiceDao<DogWalker, String, DogWalke
     @Produces(MediaType.APPLICATION_JSON)
     public List<DogWalker> getAll() {
         return dogWalkerRepository.getList();
-
     }
 
     @POST

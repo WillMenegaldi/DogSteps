@@ -4,10 +4,11 @@ import java.io.Serializable;
 
 public enum ETourStatus implements Serializable {
 	PENDING(1,"Aguardando passeio ser aceito!"),
-	INITIALIZED(2,"Passeio inicializado!"),
-	ONGOING(3, "Passeio em andamento!"),
-	TO_FINISH(4, "Passeio a ser avaliado!"),
-	COMPLETED(4, "Passeio finalizado!"),
+	ACCEPTED(2,"Passeio aceito!"),
+	INITIALIZED(3,"Passeio inicializado!"),
+	ONGOING(4, "Passeio em andamento!"),
+	TO_FINISH(5, "Passeio a ser avaliado!"),
+	COMPLETED(6, "Passeio finalizado!"),
 	;
 
 	private int id;

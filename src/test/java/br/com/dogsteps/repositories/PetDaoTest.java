@@ -29,8 +29,7 @@ public class PetDaoTest {
 
     @Test
     public void add() {
-        Pet pet = new Pet("Billy", 4, "fotos", "YorkShire", ESex.MALE, EPort.MINI,
-                new ArrayList<Avaliacao>(), 0, new Tutor());
+        Pet pet = new Pet("Billy", 4, "fotos", "YorkShire", ESex.MALE, "sdafgasdfaf" );
         pets.add(pet);
         String id = pet.getId();
         Pet petAdicionado = pets.find(id);
@@ -100,9 +99,7 @@ public class PetDaoTest {
         int indice = random.nextInt(10) % 10;
         int idade = (random.nextInt(12) + 1);
 
-        return new Pet(nomes[indice], idade, "fotos",
-                racas[indice], ESex.MALE, EPort.MINI,
-                new ArrayList<Avaliacao>(), 0, new Tutor());
+        return new Pet(nomes[indice], idade , "foto", racas[indice], ESex.MALE, "sdafgasdfaf");
     }
 
 }

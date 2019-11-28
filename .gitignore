@@ -4,8 +4,6 @@ target/
 .settings
 .idea
 /.metadata
-dogsteps.iml
-.pom.xml
 README.md
 .classpath
 

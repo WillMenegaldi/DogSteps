@@ -1,7 +1,5 @@
 package br.com.dogsteps.models;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.io.Serializable;
 
 public class User extends Configuracoes implements Serializable {
@@ -21,7 +19,6 @@ public class User extends Configuracoes implements Serializable {
 		this.email = email;
 		this.senha = senha;
 		this.endereço = endereco;
-
 	}
 
 	public String getNome() {

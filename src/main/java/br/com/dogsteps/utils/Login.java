@@ -11,32 +11,39 @@ import br.com.dogsteps.models.dto.UserDto;
 import br.com.dogsteps.repositories.DogWalkerRepository;
 import br.com.dogsteps.repositories.TutorRepository;
 
-import static java.util.stream.Collectors.toList;
+import java.util.List;
+import java.util.stream.Collectors;
 
-public class Login implements IFilterLogin
-{
+public class Login implements IFilterLogin<User, UserDto> {
     private static IRepositoryDao<DogWalker, String, DogWalkerDto> dogWalkerRepository = new DogWalkerRepository();
     private static IRepositoryDao<Tutor, String, TutorDto> tutorRepository = new TutorRepository();
-    private static User user;
 
     @Override
-    public User filtrarUsuario(UserDto userDto)
-    {
-        user = (DogWalker) dogWalkerRepository.getList().stream()
-            .filter( dogWalker ->
-                userDto.getEmail().equals(dogWalker.getEmail()) &&
-                userDto.getEmail().equals(dogWalker.getSenha())
-        ).collect(toList());
+    public User filtrarUsuario(UserDto userDto) {
+        List<DogWalker> listaDeDogWalkers = dogWalkerRepository.getList();
+        List<Tutor> listaDeTutores = tutorRepository.getList();
+        User usuarioLogado = null;
 
-        if(user == null)
-        {
-            user = (Tutor) tutorRepository.getList().stream()
-                .filter( tutor ->
-                        userDto.getEmail().equals(tutor.getEmail()) &&
-                                userDto.getEmail().equals(tutor.getSenha())
-            ).collect(toList());
+        listaDeDogWalkers = listaDeDogWalkers.stream()
+                .filter(dogWalker ->
+                        dogWalker.getEmail().equals(userDto.getEmail()) &&
+                                dogWalker.getSenha().equals(userDto.getSenha())
+                ).collect(Collectors.toList());
+
+        listaDeTutores  = listaDeTutores.stream()
+                        .filter(tutor ->
+                                tutor.getEmail().equals(userDto.getEmail()) &&
+                                        tutor.getSenha().equals(userDto.getSenha())
+                        ).collect(Collectors.toList());
+
+        if(listaDeDogWalkers.size() > 0){
+            usuarioLogado = listaDeDogWalkers.get(0);
         }
 
-        return user;
+        if (listaDeTutores.size() > 0) {
+            usuarioLogado = listaDeTutores.get(0);
+        }
+
+        return usuarioLogado;
     }
 }

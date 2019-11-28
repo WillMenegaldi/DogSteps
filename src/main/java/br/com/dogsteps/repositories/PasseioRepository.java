@@ -81,6 +81,16 @@ public class PasseioRepository implements IRepositoryDao<Passeio, String, Passei
 					passeio.getStatus().equals(passeioDTO.getStatus())
 			).collect(Collectors.toList());
 		}
+		if(passeioDTO.getIdDogWalker() != null){
+			return getList().stream().filter( passeio ->
+					passeio.getDogWalkerId().equals(passeioDTO.getIdDogWalker())
+			).collect(Collectors.toList());
+		}
+		if(passeioDTO.getIdTutor() != null){
+			return getList().stream().filter( passeio ->
+					passeio.getTutorId().equals(passeioDTO.getIdTutor())
+			).collect(Collectors.toList());
+		}
 
 		return null;
 	}
