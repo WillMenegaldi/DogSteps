@@ -39,7 +39,7 @@ public class EstatisticasRepository implements IEstatistica<Number> {
     public Map<String, Integer> getPasseiosEstatistica() {
         Map<String, Integer> response = new HashMap<String, Integer>();
         for(ETourStatus status : ETourStatus.values()){
-            response.put(status.getDescription(), (int) repositoryPasseio.getList().stream()
+            response.put(status.name(), (int) repositoryPasseio.getList().stream()
                     .filter( passeio ->
                             passeio.getStatus().equals(status)
                     ).collect(Collectors.toList())
@@ -63,10 +63,11 @@ public class EstatisticasRepository implements IEstatistica<Number> {
         Double totalPets    = (double) repositoryPet.getList().size();
         Map map = new HashMap<String, Double>();
         if(totalTutores == 0){
+            map.put("media", 0D);
             return map;
         }
         Double media = (totalPets/totalTutores);
-        map.put("media_pets_tutor", media);
+        map.put("media", media);
         return map;
     }
 
@@ -84,7 +85,7 @@ public class EstatisticasRepository implements IEstatistica<Number> {
     public Map<String, Double> getMediaHorarioPasseio() {
         Map<String, Double> response = new HashMap<String, Double>();
         for(EDuracao duracao : EDuracao.values()){
-            response.put(duracao.getDescricao(), (double) repositoryPasseio.getList().stream()
+            response.put(duracao.name(), (double) repositoryPasseio.getList().stream()
                     .filter( passeio ->
                              passeio.getDuracao().equals(duracao)
                     ).collect(Collectors.toList())
