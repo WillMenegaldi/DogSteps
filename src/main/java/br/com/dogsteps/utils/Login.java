@@ -10,19 +10,23 @@ import br.com.dogsteps.models.dto.TutorDto;
 import br.com.dogsteps.models.dto.UserDto;
 import br.com.dogsteps.repositories.DogWalkerRepository;
 import br.com.dogsteps.repositories.TutorRepository;
+import com.google.gson.Gson;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
-public class Login implements IFilterLogin<User, UserDto> {
+public class Login implements IFilterLogin<String, UserDto> {
     private static IRepositoryDao<DogWalker, String, DogWalkerDto> dogWalkerRepository = new DogWalkerRepository();
     private static IRepositoryDao<Tutor, String, TutorDto> tutorRepository = new TutorRepository();
 
     @Override
-    public User filtrarUsuario(UserDto userDto) {
+    public String filtrarUsuario(UserDto userDto) {
         List<DogWalker> listaDeDogWalkers = dogWalkerRepository.getList();
         List<Tutor> listaDeTutores = tutorRepository.getList();
-        User usuarioLogado = null;
+        String id = "";
+        String type = "";
 
         listaDeDogWalkers = listaDeDogWalkers.stream()
                 .filter(dogWalker ->
@@ -37,13 +41,19 @@ public class Login implements IFilterLogin<User, UserDto> {
                         ).collect(Collectors.toList());
 
         if(listaDeDogWalkers.size() > 0){
-            usuarioLogado = listaDeDogWalkers.get(0);
+            id = listaDeDogWalkers.get(0).getId();
+            type = listaDeDogWalkers.get(0).getClass().getSimpleName();
         }
 
         if (listaDeTutores.size() > 0) {
-            usuarioLogado = listaDeTutores.get(0);
+            id = listaDeTutores.get(0).getId();
+            type = listaDeTutores.get(0).getClass().getSimpleName();
         }
 
-        return usuarioLogado;
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("type",type);
+        map.put("id", id);
+
+        return new Gson().toJson(map);
     }
 }
