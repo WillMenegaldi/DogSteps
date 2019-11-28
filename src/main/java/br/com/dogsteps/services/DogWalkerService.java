@@ -20,7 +20,7 @@ import br.com.dogsteps.models.DogWalker;
 import br.com.dogsteps.repositories.DogWalkerRepository;
 
 @Path("/dogwalkers")
-public class DogWalkerService implements IServiceDao<DogWalker, String, DogWalkerDto> {
+public class DogWalkerService implements IServiceDao<DogWalker, String, DogWalkerDto>{
     private static IRepositoryDao<DogWalker, String, DogWalkerDto> dogWalkerRepository = new DogWalkerRepository();
 
     @GET

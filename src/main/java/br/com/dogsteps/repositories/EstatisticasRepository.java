@@ -14,14 +14,29 @@ import java.util.stream.Collectors;
 import com.google.gson.Gson;
 
 
-public class EstatisticasRepository implements IEstatistica<String, String> {
+public class EstatisticasRepository implements IEstatistica<Number> {
     private IBaseRepository<Pet> repositoryPet       = new PetRepository();
     private IBaseRepository<Passeio> repositoryPasseio   = new PasseioRepository();
     private IBaseRepository<Tutor> repositoryTutor     = new TutorRepository();
     private IBaseRepository<DogWalker> repositoryDogWalker = new DogWalkerRepository();
 
+    private String toJSON(Map mapa){
+        return new Gson().toJson(mapa);
+    }
+
     @Override
-    public String getPasseiosEstatistica() {
+    public String getAllEstatisticas() {
+        Map<String, Map> mapa = new HashMap<>();
+        mapa.put("passeios",getPasseiosEstatistica());
+        mapa.put("total_de_cadastros", getTotalCadastroDogWalker());
+        mapa.put("pets_por_tutor", getMediaPetsPorTutor());
+        mapa.put("media_idade_passeadores", getMediaIdadePasseadores());
+        mapa.put("media_duracao_passeio", getMediaHorarioPasseio());
+        return toJSON(mapa);
+    }
+
+    @Override
+    public Map<String, Integer> getPasseiosEstatistica() {
         Map<String, Integer> response = new HashMap<String, Integer>();
         for(ETourStatus status : ETourStatus.values()){
             response.put(status.getDescription(), (int) repositoryPasseio.getList().stream()
@@ -31,39 +46,42 @@ public class EstatisticasRepository implements IEstatistica<String, String> {
                     .size()
             );
         }
-        Gson json = new Gson();
-        return json.toJson(response);
+        return response;
     }
 
     @Override
-    public String getTotalCadastroDogWalker() {
+    public Map<String, Integer> getTotalCadastroDogWalker() {
         Integer total = repositoryDogWalker.getList().size();
-        return total.toString();
+        Map<String, Integer> response = new HashMap<String , Integer>();
+        response.put("cadastros", total);
+        return response;
     }
 
     @Override
-    public String getMediaPetsPorTutor() {
+    public Map<String, Double> getMediaPetsPorTutor() {
         Double totalTutores = (double) repositoryTutor.getList().size();
         Double totalPets    = (double) repositoryPet.getList().size();
-
+        Map map = new HashMap<String, Double>();
         if(totalTutores == 0){
-            return "";
+            return map;
         }
         Double media = (totalPets/totalTutores);
-
-        return media.toString();
+        map.put("media_pets_tutor", media);
+        return map;
     }
 
     @Override
-    public String getMediaIdadePasseadores() {
+    public Map<String, Double> getMediaIdadePasseadores() {
         Double media =  repositoryDogWalker.getList().stream()
                 .mapToDouble(DogWalker::getIdade)
                 .average().getAsDouble();
-        return media.toString();
+        Map mapa = new HashMap<String, Double>();
+        mapa.put("media_idade_passeador", media);
+        return mapa;
     }
 
     @Override
-    public String getMediaHorarioPasseio() {
+    public Map<String, Double> getMediaHorarioPasseio() {
         Map<String, Double> response = new HashMap<String, Double>();
         for(EDuracao duracao : EDuracao.values()){
             response.put(duracao.getDescricao(), (double) repositoryPasseio.getList().stream()
@@ -73,7 +91,6 @@ public class EstatisticasRepository implements IEstatistica<String, String> {
                     .size()
             );
         }
-        Gson json = new Gson();
-        return json.toJson(response);
+        return response;
     }
 }

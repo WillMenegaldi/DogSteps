@@ -1,9 +1,12 @@
 package br.com.dogsteps.interfaces;
 
-public interface IEstatistica<T, E> {
-    public E getPasseiosEstatistica();
-    public T getTotalCadastroDogWalker();
-    public T getMediaPetsPorTutor();
-    public T getMediaIdadePasseadores();
-    public E getMediaHorarioPasseio();
+import java.util.Map;
+
+public interface IEstatistica<T extends Number> {
+    public String getAllEstatisticas();
+    public Map<String, ?> getPasseiosEstatistica();
+    public Map<String, ?> getTotalCadastroDogWalker();
+    public Map<String, ?> getMediaPetsPorTutor();
+    public Map<String, ?> getMediaIdadePasseadores();
+    public Map<String, ?> getMediaHorarioPasseio();
 }
