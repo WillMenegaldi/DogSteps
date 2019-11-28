@@ -12,7 +12,6 @@ import br.com.dogsteps.repositories.DogWalkerRepository;
 import br.com.dogsteps.repositories.TutorRepository;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class Login implements IFilterLogin<User, UserDto> {
@@ -25,21 +24,24 @@ public class Login implements IFilterLogin<User, UserDto> {
         List<Tutor> listaDeTutores = tutorRepository.getList();
         User usuarioLogado = null;
 
+        listaDeDogWalkers = listaDeDogWalkers.stream()
+                .filter(dogWalker ->
+                        dogWalker.getEmail().equals(userDto.getEmail()) &&
+                                dogWalker.getSenha().equals(userDto.getSenha())
+                ).collect(Collectors.toList());
 
-        if (listaDeDogWalkers.size() > 0) {
-            usuarioLogado = listaDeDogWalkers.stream()
-                    .filter(dogWalker ->
-                            dogWalker.getEmail().equals(userDto.getEmail()) &&
-                                    dogWalker.getSenha().equals(userDto.getSenha())
-                    ).collect(Collectors.toList()).get(0);
+        listaDeTutores  = listaDeTutores.stream()
+                        .filter(tutor ->
+                                tutor.getEmail().equals(userDto.getEmail()) &&
+                                        tutor.getSenha().equals(userDto.getSenha())
+                        ).collect(Collectors.toList());
+
+        if(listaDeDogWalkers.size() > 0){
+            usuarioLogado = listaDeDogWalkers.get(0);
         }
 
         if (listaDeTutores.size() > 0) {
-            usuarioLogado = listaDeTutores.stream()
-                    .filter(tutor ->
-                            tutor.getEmail().equals(userDto.getEmail()) &&
-                                    tutor.getSenha().equals(userDto.getSenha())
-                    ).collect(Collectors.toList()).get(0);
+            usuarioLogado = listaDeTutores.get(0);
         }
 
         return usuarioLogado;

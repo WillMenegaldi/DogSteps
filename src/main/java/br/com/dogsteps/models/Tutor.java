@@ -10,7 +10,6 @@ import java.util.stream.Collectors;
 public class Tutor extends User
 {
 	private List<Pet> pets;
-	private List<Passeio> passeios;
 
 	public Tutor(){}
 
@@ -18,7 +17,6 @@ public class Tutor extends User
 				  , List<Pet> pets, ArrayList<Passeio> passeios) {
 		super(name, photoUrl, age, cpf, email, password, address);
 		this.pets = pets;
-		this.passeios = passeios;
 	}
 
 	public List<Pet> getPets() {
@@ -37,21 +35,5 @@ public class Tutor extends User
 
 	public void setPets(List<Pet> pets) {
 		this.pets = pets;
-	}
-
-	public List<Passeio> getPasseios() {
-        return new ArrayList<>();
-	}
-
-	public void setPasseios(ArrayList<Passeio> passeios) {
-		this.passeios = passeios;
-	}
-
-	public void addPasseios(Passeio passeio){
-		passeios.add(passeio);
-	}
-
-	public void addPets(Pet pet){
-		pets.add(pet);
 	}
 }
