@@ -1,7 +1,6 @@
 package br.com.dogsteps.services;
 
 import java.util.List;
-
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -20,12 +19,13 @@ import br.com.dogsteps.models.DogWalker;
 import br.com.dogsteps.repositories.DogWalkerRepository;
 
 @Path("/dogwalkers")
-public class DogWalkerService implements IServiceDao<DogWalker, String, DogWalkerDto>{
+public class DogWalkerService implements IServiceDao<DogWalker, String, DogWalkerDto> {
     private static IRepositoryDao<DogWalker, String, DogWalkerDto> dogWalkerRepository = new DogWalkerRepository();
 
     @GET
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
+    @Override
     public List<DogWalker> getAll() {
         return dogWalkerRepository.getList();
     }
@@ -41,6 +41,7 @@ public class DogWalkerService implements IServiceDao<DogWalker, String, DogWalke
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
+    @Override
     public DogWalker get(@PathParam("id") String id) {
         return dogWalkerRepository.find(id);
     }
@@ -48,6 +49,7 @@ public class DogWalkerService implements IServiceDao<DogWalker, String, DogWalke
     @POST
     @Path("/")
     @Consumes(MediaType.APPLICATION_JSON)
+    @Override
     public Response post(DogWalker dogWalker) {
         return dogWalkerRepository.add(dogWalker);
     }
@@ -55,6 +57,7 @@ public class DogWalkerService implements IServiceDao<DogWalker, String, DogWalke
     @PUT
     @Path("/")
     @Consumes(MediaType.APPLICATION_JSON)
+    @Override
     public Response update(DogWalker dogWalker) {
         return dogWalkerRepository.update(dogWalker);
     }
@@ -62,6 +65,7 @@ public class DogWalkerService implements IServiceDao<DogWalker, String, DogWalke
     @DELETE
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
+    @Override
     public Response remove(@PathParam("id") String id) {
         return dogWalkerRepository.remove(id);
     }

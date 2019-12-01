@@ -3,6 +3,7 @@ package br.com.dogsteps.models.dto;
 import br.com.dogsteps.enums.EPort;
 import br.com.dogsteps.models.Agenda;
 import br.com.dogsteps.models.Coordenada;
+
 import java.util.List;
 
 public class DogWalkerDto {
@@ -19,6 +20,7 @@ public class DogWalkerDto {
     public List<Coordenada> getCoordenadas() {
         return coordenadas;
     }
+
     public void setCoordenadas(List<Coordenada> coordenadas) {
         this.coordenadas = coordenadas;
     }
@@ -26,6 +28,7 @@ public class DogWalkerDto {
     public EPort getPorte() {
         return porte;
     }
+
     public void setPorte(EPort porte) {
         this.porte = porte;
     }
@@ -33,9 +36,11 @@ public class DogWalkerDto {
     public Agenda getAgenda() {
         return agenda;
     }
+
     public void setAgenda(Agenda agenda) {
         this.agenda = agenda;
     }
 
-    DogWalkerDto(){}
+    DogWalkerDto() {
+    }
 }

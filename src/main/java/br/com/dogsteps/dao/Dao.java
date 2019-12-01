@@ -2,7 +2,6 @@ package br.com.dogsteps.dao;
 
 import br.com.dogsteps.interfaces.IDao;
 import br.com.dogsteps.models.Configuracoes;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

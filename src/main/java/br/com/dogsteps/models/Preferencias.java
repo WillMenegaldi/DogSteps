@@ -18,6 +18,7 @@ public class Preferencias implements Serializable {
     public List<EPort> getPorte() {
         return porte;
     }
+
     public void setPorte(List<EPort> porte) {
         this.porte = porte;
     }
@@ -25,6 +26,7 @@ public class Preferencias implements Serializable {
     public List<EMood> getTemperamento() {
         return temperamento;
     }
+
     public void setTemperamento(List<EMood> temperamento) {
         this.temperamento = temperamento;
     }

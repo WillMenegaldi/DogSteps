@@ -43,7 +43,6 @@ public class PasseioRepository implements IRepositoryDao<Passeio, String, Passei
 				return Response.status(Response.Status.OK).build();
 			else
 				return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
-
 		}catch (NullPointerException | ValorNegativoException |
 				DataInvalidaException e){
 			return Response.status(Response.Status.BAD_REQUEST).build();
@@ -76,6 +75,13 @@ public class PasseioRepository implements IRepositoryDao<Passeio, String, Passei
 
 	@Override
 	public List<Passeio> getListByFilter(PasseioDto passeioDTO) {
+		if(passeioDTO.getStatus() != null && passeioDTO.getIdTutor() != null){
+			return getList().stream().filter( passeio ->
+					passeio.getStatus().equals(passeioDTO.getStatus()) &&
+					passeio.getTutorId().equals(passeioDTO.getIdTutor())
+			).collect(Collectors.toList());
+		}
+
 		if(passeioDTO.getStatus() != null){
 			return getList().stream().filter( passeio ->
 					passeio.getStatus().equals(passeioDTO.getStatus())
