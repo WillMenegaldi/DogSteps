@@ -38,7 +38,7 @@ public class PetRepository implements IRepositoryDao<Pet, String, PetDto> {
     }
 
     @Override
-    public Response add(@NotNull Pet pet) {
+    public Response add(Pet pet) {
         try {
             validarRequisicao(pet);
             if (PET_DAO.add(pet))
@@ -74,7 +74,6 @@ public class PetRepository implements IRepositoryDao<Pet, String, PetDto> {
             }
         }
         return Response.status(Response.Status.BAD_REQUEST).build();
-
     }
 
     @Override
@@ -84,7 +83,6 @@ public class PetRepository implements IRepositoryDao<Pet, String, PetDto> {
 
 
     private void validarRequisicao(Pet pet) throws ValorNegativoException, StringVaziaException {
-
         if (pet.getIdade() <= 0)
             throw new ValorNegativoException();
 

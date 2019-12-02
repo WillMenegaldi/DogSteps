@@ -5,6 +5,7 @@ import java.io.Serializable;
 public enum ETourStatus implements Serializable {
 	PENDING(1,"Aguardando passeio ser aceito!"),
 	ACCEPTED(2,"Passeio aceito!"),
+	REFUSED(2,"Passeio recusado!"),
 	INITIALIZED(3,"Passeio inicializado!"),
 	ONGOING(4, "Passeio em andamento!"),
 	TO_FINISH(5, "Passeio a ser avaliado!"),

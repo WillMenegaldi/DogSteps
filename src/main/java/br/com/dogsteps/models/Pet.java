@@ -1,6 +1,7 @@
 package br.com.dogsteps.models;
 
 import br.com.dogsteps.enums.ESex;
+
 import java.io.Serializable;
 
 public class Pet extends Configuracoes implements Serializable {
@@ -63,6 +64,14 @@ public class Pet extends Configuracoes implements Serializable {
         this.sexo = sexo;
     }
 
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
     public String getTutorId() {
         return tutorId;
     }
@@ -71,5 +80,6 @@ public class Pet extends Configuracoes implements Serializable {
         this.tutorId = tutorId;
     }
 
-    public Pet() { }
+    public Pet() {
+    }
 }

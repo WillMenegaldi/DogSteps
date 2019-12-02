@@ -1,6 +1,7 @@
 package br.com.dogsteps.services;
 
-import br.com.dogsteps.interfaces.*;
+import br.com.dogsteps.interfaces.IServiceDao;
+import br.com.dogsteps.interfaces.IRepositoryDao;
 import br.com.dogsteps.models.Tutor;
 import br.com.dogsteps.models.dto.TutorDto;
 import br.com.dogsteps.repositories.TutorRepository;

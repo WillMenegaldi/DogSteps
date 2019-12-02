@@ -25,6 +25,7 @@ public class PetService implements IServiceDao<Pet, String, PetDto> {
     @GET
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
+    @Override
     public List<Pet> getAll() {
         return petRepository.getList();
     }
@@ -32,6 +33,7 @@ public class PetService implements IServiceDao<Pet, String, PetDto> {
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
+    @Override
     public Pet get(@PathParam("id") String id) {
         return petRepository.find(id);
     }
@@ -39,6 +41,7 @@ public class PetService implements IServiceDao<Pet, String, PetDto> {
     @POST
     @Path("/")
     @Consumes(MediaType.APPLICATION_JSON)
+    @Override
     public Response post(Pet pet) {
         return petRepository.add(pet);
     }
@@ -46,6 +49,7 @@ public class PetService implements IServiceDao<Pet, String, PetDto> {
     @PUT
     @Path("/")
     @Consumes(MediaType.APPLICATION_JSON)
+    @Override
     public Response update(Pet pet) {
         return petRepository.update(pet);
     }
@@ -53,11 +57,14 @@ public class PetService implements IServiceDao<Pet, String, PetDto> {
     @DELETE
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
+    @Override
     public Response remove(@PathParam("id") String id) {
         return petRepository.remove(id);
     }
 
-    @Override
+    @POST
+    @Path("/filter")
+    @Consumes(MediaType.APPLICATION_JSON)
     public List<Pet> getListByFilter(PetDto petDTO) {
         return null;
     }

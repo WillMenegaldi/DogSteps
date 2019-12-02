@@ -16,6 +16,7 @@ public class PasseioDto {
     public ETourStatus getStatus() {
         return status;
     }
+
     public void setStatus(ETourStatus status) {
         this.status = status;
     }
@@ -23,6 +24,7 @@ public class PasseioDto {
     public String getIdDogWalker() {
         return idDogWalker;
     }
+
     public void setIdDogWalker(String idDogWalker) {
         this.idDogWalker = idDogWalker;
     }
@@ -30,9 +32,11 @@ public class PasseioDto {
     public String getIdTutor() {
         return idTutor;
     }
+
     public void setIdTutor(String idTutor) {
         this.idTutor = idTutor;
     }
 
-    public PasseioDto() {}
+    public PasseioDto() {
+    }
 }
